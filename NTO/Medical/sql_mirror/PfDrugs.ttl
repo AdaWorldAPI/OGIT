@@ -15,4 +15,13 @@ ogit.Medical:PfDrugs
     ogit:loaderStatus "stub" ;
     ogit:columnCount 8 ;
     ogit:primaryKey "id" ;
-    ogit:mysqlTable "pf_drugs" .
+    ogit:mysqlTable "pf_drugs" ;
+    dcterms:description "Patient-form recreational/illicit-drug usage snapshot: substance from combo_drugs with unit and daily intake for substance-use anamnesis." ;
+    dcterms:valid "start=2026-05-07;" ;
+    dcterms:creator "agent-mysql-transcode" ;
+    ogit:mandatory-attributes (
+        ogit:id
+    ) ;
+    ogit:optional-attributes ( ) ;
+    ogit:indexed-attributes ( ) ;
+    ogit:allowed ( ) .

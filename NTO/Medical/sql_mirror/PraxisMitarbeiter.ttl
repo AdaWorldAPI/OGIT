@@ -15,4 +15,13 @@ ogit.Medical:PraxisMitarbeiter
     ogit:loaderStatus "stub" ;
     ogit:columnCount 13 ;
     ogit:primaryKey "id" ;
-    ogit:mysqlTable "praxis_mitarbeiter" .
+    ogit:mysqlTable "praxis_mitarbeiter" ;
+    dcterms:description "Staff (Mitarbeiter) record for a clinic: login credentials, contact info, specialty, language, active flag, last-login audit, and per-user permission blob." ;
+    dcterms:valid "start=2026-05-07;" ;
+    dcterms:creator "agent-mysql-transcode" ;
+    ogit:mandatory-attributes (
+        ogit:id
+    ) ;
+    ogit:optional-attributes ( ) ;
+    ogit:indexed-attributes ( ) ;
+    ogit:allowed ( ) .

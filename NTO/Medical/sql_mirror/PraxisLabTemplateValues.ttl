@@ -15,4 +15,13 @@ ogit.Medical:PraxisLabTemplateValues
     ogit:loaderStatus "stub" ;
     ogit:columnCount 3 ;
     ogit:primaryKey "id" ;
-    ogit:mysqlTable "praxis_lab_template_values" .
+    ogit:mysqlTable "praxis_lab_template_values" ;
+    dcterms:description "Child row of a clinic's lab-order template binding a single LOINC analyte to the parent praxis_lab_template_main bundle." ;
+    dcterms:valid "start=2026-05-07;" ;
+    dcterms:creator "agent-mysql-transcode" ;
+    ogit:mandatory-attributes (
+        ogit:id
+    ) ;
+    ogit:optional-attributes ( ) ;
+    ogit:indexed-attributes ( ) ;
+    ogit:allowed ( ) .

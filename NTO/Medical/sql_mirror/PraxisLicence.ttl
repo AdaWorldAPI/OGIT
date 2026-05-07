@@ -15,4 +15,13 @@ ogit.Medical:PraxisLicence
     ogit:loaderStatus "stub" ;
     ogit:columnCount 14 ;
     ogit:primaryKey "id" ;
-    ogit:mysqlTable "praxis_licence" .
+    ogit:mysqlTable "praxis_licence" ;
+    dcterms:description "Software-licence record for a clinic install: licence type, key, hardware fingerprints, expiry, autologin, and last-use audit fields." ;
+    dcterms:valid "start=2026-05-07;" ;
+    dcterms:creator "agent-mysql-transcode" ;
+    ogit:mandatory-attributes (
+        ogit:id
+    ) ;
+    ogit:optional-attributes ( ) ;
+    ogit:indexed-attributes ( ) ;
+    ogit:allowed ( ) .

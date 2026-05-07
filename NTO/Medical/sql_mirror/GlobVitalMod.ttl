@@ -15,4 +15,13 @@ ogit.Medical:GlobVitalMod
     ogit:loaderStatus "stub" ;
     ogit:columnCount 42 ;
     ogit:primaryKey "id" ;
-    ogit:mysqlTable "glob_vital_mod" .
+    ogit:mysqlTable "glob_vital_mod" ;
+    dcterms:description "Global vital-sign module configuration: defines up to 8 dynamic vital channels (name, unit, mask, active flag), multilingual checklists, owning office right, and multilingual headers for custom vital-capture forms." ;
+    dcterms:valid "start=2026-05-07;" ;
+    dcterms:creator "agent-mysql-transcode" ;
+    ogit:mandatory-attributes (
+        ogit:id
+    ) ;
+    ogit:optional-attributes ( ) ;
+    ogit:indexed-attributes ( ) ;
+    ogit:allowed ( ) .

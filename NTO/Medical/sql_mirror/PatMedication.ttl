@@ -15,4 +15,13 @@ ogit.Medical:PatMedication
     ogit:loaderStatus "stub" ;
     ogit:columnCount 24 ;
     ogit:primaryKey "id" ;
-    ogit:mysqlTable "pat_medication" .
+    ogit:mysqlTable "pat_medication" ;
+    dcterms:description "Per-patient prescription record: drug identity (praepid + name), dose and unit, type, start/stop dates, interval, daily dose, and stop-reason for medication-list reconciliation." ;
+    dcterms:valid "start=2026-05-07;" ;
+    dcterms:creator "agent-mysql-transcode" ;
+    ogit:mandatory-attributes (
+        ogit:id
+    ) ;
+    ogit:optional-attributes ( ) ;
+    ogit:indexed-attributes ( ) ;
+    ogit:allowed ( ) .

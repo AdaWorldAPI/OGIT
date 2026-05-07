@@ -15,4 +15,13 @@ ogit.Medical:PraxisAddexamination
     ogit:loaderStatus "stub" ;
     ogit:columnCount 3 ;
     ogit:primaryKey "id" ;
-    ogit:mysqlTable "praxis_addexamination" .
+    ogit:mysqlTable "praxis_addexamination" ;
+    dcterms:description "Per-clinic catalog row enabling a specific additional examination type from the global combo_addexamination list." ;
+    dcterms:valid "start=2026-05-07;" ;
+    dcterms:creator "agent-mysql-transcode" ;
+    ogit:mandatory-attributes (
+        ogit:id
+    ) ;
+    ogit:optional-attributes ( ) ;
+    ogit:indexed-attributes ( ) ;
+    ogit:allowed ( ) .

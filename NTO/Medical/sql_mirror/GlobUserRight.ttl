@@ -15,4 +15,13 @@ ogit.Medical:GlobUserRight
     ogit:loaderStatus "stub" ;
     ogit:columnCount 7 ;
     ogit:primaryKey "id" ;
-    ogit:mysqlTable "glob_user_right" .
+    ogit:mysqlTable "glob_user_right" ;
+    dcterms:description "Global permission catalog: a single named right (bereich) with multilingual labels (de/en/fr/sp) and a visible-right text used to bind RBAC permissions to staff." ;
+    dcterms:valid "start=2026-05-07;" ;
+    dcterms:creator "agent-mysql-transcode" ;
+    ogit:mandatory-attributes (
+        ogit:id
+    ) ;
+    ogit:optional-attributes ( ) ;
+    ogit:indexed-attributes ( ) ;
+    ogit:allowed ( ) .

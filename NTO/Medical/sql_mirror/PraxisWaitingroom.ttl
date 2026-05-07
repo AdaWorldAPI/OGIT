@@ -15,4 +15,13 @@ ogit.Medical:PraxisWaitingroom
     ogit:loaderStatus "stub" ;
     ogit:columnCount 8 ;
     ogit:primaryKey "id" ;
-    ogit:mysqlTable "praxis_waitingroom" .
+    ogit:mysqlTable "praxis_waitingroom" ;
+    dcterms:description "Logical waiting-room queue defined by a clinic: name, capacity, owning doctor, active flags, and notice for triage staff." ;
+    dcterms:valid "start=2026-05-07;" ;
+    dcterms:creator "agent-mysql-transcode" ;
+    ogit:mandatory-attributes (
+        ogit:id
+    ) ;
+    ogit:optional-attributes ( ) ;
+    ogit:indexed-attributes ( ) ;
+    ogit:allowed ( ) .
