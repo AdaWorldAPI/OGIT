@@ -1,0 +1,17 @@
+@prefix ogit:               <http://www.purl.org/ogit/> .
+@prefix ogit.Medical:       <http://www.purl.org/ogit/Medical/> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:            <http://purl.org/dc/terms/> .
+
+ogit.Medical:FMA
+	a ogit:Namespace ;
+	rdfs:label "Foundational Model of Anatomy" ;
+	rdfs:comment "Reference ontology of canonical human anatomy covering structural relationships among body parts, organs, tissues, and cells, authored by the University of Washington." ;
+	ogit:contextIri <http://purl.bioontology.org/ontology/FMA/> ;
+	ogit:contextId 13 ;
+	dcterms:source "AdaWorldAPI/MedCare-rs/releases/tag/bioportal-ontologies-2026-05-05/fma.owl" ;
+	dcterms:license "CC-BY-3.0" ;
+	ogit:fileSize "266.2 MB" ;
+	ogit:tripleCount "~1.5M (estimate)" ;
+	ogit:loaderCrate "lance-graph-rdf" ;
+	ogit:loaderStatus "stub" .

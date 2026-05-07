@@ -1,0 +1,17 @@
+@prefix ogit:               <http://www.purl.org/ogit/> .
+@prefix ogit.Medical:       <http://www.purl.org/ogit/Medical/> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:            <http://purl.org/dc/terms/> .
+
+ogit.Medical:MONDO
+	a ogit:Namespace ;
+	rdfs:label "Mondo Disease Ontology" ;
+	rdfs:comment "Unified disease ontology that harmonizes terms across DOID, OMIM, Orphanet, ICD, MeSH, and NCIt to provide cross-walked disease concepts for translational research." ;
+	ogit:contextIri <http://purl.bioontology.org/ontology/MONDO/> ;
+	ogit:contextId 16 ;
+	dcterms:source "AdaWorldAPI/MedCare-rs/releases/tag/bioportal-ontologies-2026-05-05/mondo-simple.owl" ;
+	dcterms:license "CC-BY-4.0" ;
+	ogit:fileSize "215.5 MB" ;
+	ogit:tripleCount "~1.2M (estimate)" ;
+	ogit:loaderCrate "lance-graph-rdf" ;
+	ogit:loaderStatus "stub" .

@@ -1,0 +1,17 @@
+@prefix ogit:               <http://www.purl.org/ogit/> .
+@prefix ogit.Medical:       <http://www.purl.org/ogit/Medical/> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:            <http://purl.org/dc/terms/> .
+
+ogit.Medical:RxNorm
+	a ogit:Namespace ;
+	rdfs:label "RxNorm Normalized Drug Names" ;
+	rdfs:comment "Standardized vocabulary of clinical drugs published by the U.S. National Library of Medicine, mapping ingredients, strengths, dose forms, and brand names to normalized concepts." ;
+	ogit:contextIri <http://purl.bioontology.org/ontology/RXNORM/> ;
+	ogit:contextId 11 ;
+	dcterms:source "AdaWorldAPI/MedCare-rs/releases/tag/bioportal-ontologies-2026-05-05/RXNORM.ttl" ;
+	dcterms:license "UMLS-Metathesaurus" ;
+	ogit:fileSize "218.8 MB" ;
+	ogit:tripleCount "~9M (estimate)" ;
+	ogit:loaderCrate "lance-graph-rdf" ;
+	ogit:loaderStatus "stub" .

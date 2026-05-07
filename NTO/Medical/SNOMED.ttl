@@ -1,0 +1,17 @@
+@prefix ogit:               <http://www.purl.org/ogit/> .
+@prefix ogit.Medical:       <http://www.purl.org/ogit/Medical/> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:            <http://purl.org/dc/terms/> .
+
+ogit.Medical:SNOMED
+	a ogit:Namespace ;
+	rdfs:label "SNOMED CT (partial: SCTO upper-level)" ;
+	rdfs:comment "Systematized Nomenclature of Medicine Clinical Terms — comprehensive clinical terminology spanning findings, disorders, procedures, and observable entities; this stub references the SCTO upper-level partial pending affiliate-licensed full ingestion." ;
+	ogit:contextIri <http://purl.bioontology.org/ontology/SNOMEDCT/> ;
+	ogit:contextId 15 ;
+	dcterms:source "AdaWorldAPI/MedCare-rs/releases/tag/bioportal-ontologies-2026-05-05/SCTO.owl" ;
+	dcterms:license "SNOMED-Affiliate" ;
+	ogit:fileSize "666 KB" ;
+	ogit:tripleCount "~50K (partial estimate)" ;
+	ogit:loaderCrate "lance-graph-rdf" ;
+	ogit:loaderStatus "stub" .
