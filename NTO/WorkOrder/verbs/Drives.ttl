@@ -1,0 +1,16 @@
+@prefix ogit:               <http://www.purl.org/ogit/> .
+@prefix ogit.WorkOrder:     <http://www.purl.org/ogit/WorkOrder/> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:            <http://purl.org/dc/terms/> .
+
+ogit.WorkOrder:drives
+    a rdfs:Class;
+    rdfs:subClassOf ogit:Verb;
+    rdfs:label "drives";
+    dcterms:description "User drives (records) a LogbookEntry (Fahrtenbuch trip with km, route, vehicle, business/private split). One User can drive many LogbookEntries (one-to-many)." ;
+    dcterms:source "AdaWorldAPI/WoA/models.py:LogbookEntry.user_id -> User.id" ;
+    ogit:scope "NTO";
+    ogit:from-to (
+        [ ogit:from ogit.WorkOrder:User ; ogit:to ogit.WorkOrder:LogbookEntry ]
+    ) ;
+.

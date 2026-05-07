@@ -1,0 +1,74 @@
+@prefix ogit:               <http://www.purl.org/ogit/> .
+@prefix ogit.WorkOrder:     <http://www.purl.org/ogit/WorkOrder/> .
+@prefix owl:                <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:            <http://purl.org/dc/terms/> .
+
+ogit.WorkOrder:TimeSheet
+	a rdfs:Class;
+	rdfs:subClassOf ogit:Entity;
+	rdfs:label "TimeSheet";
+	dcterms:description "Stundenzettel — a time-tracking record booked against a Customer (mandatory) and authored by a User (optional). Stores duration in minutes, a free-text description, and an 'abgerechnet' flag indicating whether the entry has been billed onto a downstream invoice. Provides 15-minute-rounded display values and decimal-hour conversion via instance methods.";
+	dcterms:source "AdaWorldAPI/WoA/models.py:TimeSheet";
+	dcterms:creator "bus-compiler";
+	ogit:scope "NTO";
+	ogit:parent ogit:Node;
+	ogit:mandatory-attributes (
+		ogit:id
+	);
+	ogit:optional-attributes (
+		ogit.WorkOrder:datum
+		ogit.WorkOrder:minuten
+		ogit.WorkOrder:beschreibung
+		ogit.WorkOrder:timerStart
+		ogit.WorkOrder:abgerechnet
+		ogit.WorkOrder:createdAt
+		ogit.WorkOrder:updatedAt
+	);
+	ogit:indexed-attributes (
+		ogit.WorkOrder:datum
+		ogit.WorkOrder:abgerechnet
+	);
+	ogit:allowed (
+			[ ogit:belongs  ogit.WorkOrder:Customer ]
+			[ ogit:belongs  ogit.WorkOrder:Tenant ]
+			[ ogit:relates  ogit.WorkOrder:User ]
+	);
+.
+
+# ── attributes ───────────────────────────────────────────────────────────
+
+ogit.WorkOrder:minuten
+	a rdfs:Property;
+	rdfs:label "minuten";
+	dcterms:description "Duration of the recorded work in minutes (integer). Display helpers round up to the nearest 15-minute increment for billing.";
+	dcterms:source "AdaWorldAPI/WoA/models.py:TimeSheet.minuten";
+.
+
+ogit.WorkOrder:timerStart
+	a rdfs:Property;
+	rdfs:label "timerStart";
+	dcterms:description "ISO-8601 UTC timestamp marking when a live timer was started for this entry. Null when not currently running.";
+	dcterms:source "AdaWorldAPI/WoA/models.py:TimeSheet.timer_start";
+.
+
+ogit.WorkOrder:abgerechnet
+	a rdfs:Property;
+	rdfs:label "abgerechnet";
+	dcterms:description "Boolean billed-flag. True once the time entry has been transferred onto an invoice document, preventing double-billing.";
+	dcterms:source "AdaWorldAPI/WoA/models.py:TimeSheet.abgerechnet";
+.
+
+ogit.WorkOrder:beschreibung
+	a rdfs:Property;
+	rdfs:label "beschreibung";
+	dcterms:description "Free-text description of the work performed during this time entry.";
+	dcterms:source "AdaWorldAPI/WoA/models.py:TimeSheet.beschreibung";
+.
+
+ogit.WorkOrder:updatedAt
+	a rdfs:Property;
+	rdfs:label "updatedAt";
+	dcterms:description "ISO-8601 UTC timestamp of the most recent persisted update to the row.";
+	dcterms:source "AdaWorldAPI/WoA/models.py";
+.

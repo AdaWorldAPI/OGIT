@@ -1,0 +1,42 @@
+@prefix ogit:               <http://www.purl.org/ogit/> .
+@prefix ogit.WorkOrder:     <http://www.purl.org/ogit/WorkOrder/> .
+@prefix owl:                <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:            <http://purl.org/dc/terms/> .
+
+ogit.WorkOrder:CustomerPortalUser
+	a rdfs:Class;
+	rdfs:subClassOf ogit:Entity;
+	rdfs:label "CustomerPortalUser";
+	dcterms:description "External self-service portal login bound to exactly one Customer. Authenticates via the same werkzeug pbkdf2:sha256 scheme as the internal User (with legacy SHA256+salt fallback and transparent upgrade), but has NO admin/superadmin scope. Used by customers to view their own work orders, invoices, and pay-status. Tracks last-login for audit, and carries an active-flag for soft-disabling and a forced-password-change marker.";
+	dcterms:source "AdaWorldAPI/WoA/models.py:CustomerPortalUser";
+	dcterms:creator "bus-compiler";
+	ogit:scope "NTO";
+	ogit:parent ogit:Node;
+	ogit:mandatory-attributes (
+		ogit:id
+	);
+	ogit:optional-attributes (
+		ogit.WorkOrder:username
+		ogit.WorkOrder:passwordHash
+		ogit.WorkOrder:aktiv
+		ogit.WorkOrder:mustChangePw
+		ogit.WorkOrder:lastLogin
+		ogit.WorkOrder:createdAt
+	);
+	ogit:indexed-attributes (
+		ogit.WorkOrder:username
+	);
+	ogit:allowed (
+			[ ogit:belongs  ogit.WorkOrder:Customer ]
+	);
+.
+
+# ── attributes ───────────────────────────────────────────────────────────
+
+ogit.WorkOrder:lastLogin
+	a rdfs:Property;
+	rdfs:label "lastLogin";
+	dcterms:description "ISO-8601 UTC timestamp of the most recent successful portal login. Null on accounts that have never signed in.";
+	dcterms:source "AdaWorldAPI/WoA/models.py:CustomerPortalUser.last_login";
+.

@@ -1,0 +1,46 @@
+@prefix ogit:               <http://www.purl.org/ogit/> .
+@prefix ogit.WorkOrder:     <http://www.purl.org/ogit/WorkOrder/> .
+@prefix owl:                <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:            <http://purl.org/dc/terms/> .
+
+ogit.WorkOrder:NumberSequence
+	a rdfs:Class;
+	rdfs:subClassOf ogit:Entity;
+	rdfs:label "NumberSequence";
+	dcterms:description "Per-tenant atomic counter used to mint sequential business document numbers (offer-, order-, invoice-, credit-numbers). Each sequence has a stable name (the sequence kind), an optional prefix, and a monotonically incrementing 'current' integer; next_val() increments the counter and concatenates prefix + current to produce the next document number.";
+	dcterms:source "AdaWorldAPI/WoA/models.py:NumberSequence";
+	dcterms:creator "bus-compiler";
+	ogit:scope "NTO";
+	ogit:parent ogit:Node;
+	ogit:mandatory-attributes (
+		ogit:id
+	);
+	ogit:optional-attributes (
+		ogit:name
+		ogit.WorkOrder:prefix
+		ogit.WorkOrder:current
+	);
+	ogit:indexed-attributes (
+		ogit:name
+	);
+	ogit:allowed (
+			[ ogit:belongs  ogit.WorkOrder:Tenant ]
+	);
+.
+
+# ── attributes ───────────────────────────────────────────────────────────
+
+ogit.WorkOrder:prefix
+	a rdfs:Property;
+	rdfs:label "prefix";
+	dcterms:description "Static string concatenated in front of the counter when minting a new number (e.g. 'AB-', 'RE-', max 10 chars).";
+	dcterms:source "AdaWorldAPI/WoA/models.py:NumberSequence.prefix";
+.
+
+ogit.WorkOrder:current
+	a rdfs:Property;
+	rdfs:label "current";
+	dcterms:description "Monotonically increasing integer holding the most-recently-issued counter value. Incremented in-place by next_val() inside a database transaction.";
+	dcterms:source "AdaWorldAPI/WoA/models.py:NumberSequence.current";
+.

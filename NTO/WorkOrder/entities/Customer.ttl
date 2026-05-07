@@ -1,0 +1,126 @@
+@prefix ogit:               <http://www.purl.org/ogit/> .
+@prefix ogit.WorkOrder:     <http://www.purl.org/ogit/WorkOrder/> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:            <http://purl.org/dc/terms/> .
+
+ogit.WorkOrder:Customer
+    a rdfs:Class;
+    rdfs:subClassOf ogit:Entity;
+    rdfs:label "Customer";
+    dcterms:description "Customer (Kunde) of a WoA tenant. Holds postal address, billing parameters (Zahlungsziel, Stundensatz) and is the parent of all work orders, time sheets and password-vault entries belonging to that customer.";
+    dcterms:source "AdaWorldAPI/WoA/models.py:Customer";
+    ogit:scope "NTO";
+    ogit:parent ogit:Node;
+    ogit:mandatory-attributes (
+        ogit:id
+    );
+    ogit:optional-attributes (
+        ogit.WorkOrder:kdnr
+        ogit.WorkOrder:firma
+        ogit.WorkOrder:vorname
+        ogit.WorkOrder:nachname
+        ogit:email
+        ogit.WorkOrder:telefon
+        ogit.WorkOrder:strasse
+        ogit.WorkOrder:plz
+        ogit.WorkOrder:ort
+        ogit.WorkOrder:iban
+        ogit.WorkOrder:taxId
+        ogit.WorkOrder:zahlungsziel
+        ogit.WorkOrder:stundensatz
+    );
+    ogit:indexed-attributes (
+        ogit:id
+        ogit.WorkOrder:kdnr
+        ogit:email
+    );
+    ogit:allowed (
+            [ ogit:belongs  ogit.WorkOrder:Tenant ]
+    );
+.
+
+# ── attributes ───────────────────────────────────────────────────────────
+
+ogit.WorkOrder:kdnr
+    a rdfs:Property;
+    rdfs:label "kdnr";
+    dcterms:description "Customer number (Kundennummer). Tenant-local short code used on invoices and in correspondence.";
+    dcterms:source "AdaWorldAPI/WoA/models.py:Customer.kdnr";
+.
+
+ogit.WorkOrder:firma
+    a rdfs:Property;
+    rdfs:label "firma";
+    dcterms:description "Company name (Firma). Empty for private customers; in that case display falls back to vorname + nachname.";
+    dcterms:source "AdaWorldAPI/WoA/models.py:Customer.firma";
+.
+
+ogit.WorkOrder:vorname
+    a rdfs:Property;
+    rdfs:label "vorname";
+    dcterms:description "Given name (Vorname) of the contact person.";
+    dcterms:source "AdaWorldAPI/WoA/models.py:Customer.vorname";
+.
+
+ogit.WorkOrder:nachname
+    a rdfs:Property;
+    rdfs:label "nachname";
+    dcterms:description "Family name (Nachname) of the contact person.";
+    dcterms:source "AdaWorldAPI/WoA/models.py:Customer.nachname";
+.
+
+ogit.WorkOrder:telefon
+    a rdfs:Property;
+    rdfs:label "telefon";
+    dcterms:description "Telephone number (Telefon) of the customer. Free-form string; no E.164 normalization is enforced by the source model.";
+    dcterms:source "AdaWorldAPI/WoA/models.py:Customer.telefon";
+.
+
+ogit.WorkOrder:strasse
+    a rdfs:Property;
+    rdfs:label "strasse";
+    dcterms:description "Street and house number (Strasse).";
+    dcterms:source "AdaWorldAPI/WoA/models.py:Customer.strasse";
+.
+
+ogit.WorkOrder:plz
+    a rdfs:Property;
+    rdfs:label "plz";
+    dcterms:description "Postal code (Postleitzahl).";
+    dcterms:source "AdaWorldAPI/WoA/models.py:Customer.plz";
+.
+
+ogit.WorkOrder:ort
+    a rdfs:Property;
+    rdfs:label "ort";
+    dcterms:description "City / town (Ort).";
+    dcterms:source "AdaWorldAPI/WoA/models.py:Customer.ort";
+.
+
+ogit.WorkOrder:iban
+    a rdfs:Property;
+    rdfs:label "iban";
+    dcterms:description "International Bank Account Number for SEPA payments. Optional; not modelled as a column in the current Python source but reserved here for the OGIT projection.";
+    dcterms:source "AdaWorldAPI/WoA/models.py:Customer";
+.
+
+ogit.WorkOrder:taxId
+    a rdfs:Property;
+    rdfs:label "taxId";
+    dcterms:description "Tax identification number (USt-IdNr / Steuernummer). Optional; reserved attribute for the OGIT projection of customer billing data.";
+    dcterms:source "AdaWorldAPI/WoA/models.py:Customer";
+.
+
+ogit.WorkOrder:zahlungsziel
+    a rdfs:Property;
+    rdfs:label "zahlungsziel";
+    dcterms:description "Payment term (Zahlungsziel) in days; default 14. Drives the faellig_am derivation on Order.";
+    dcterms:source "AdaWorldAPI/WoA/models.py:Customer.zahlungsziel";
+.
+
+ogit.WorkOrder:stundensatz
+    a rdfs:Property;
+    rdfs:label "stundensatz";
+    dcterms:description "Hourly rate (Stundensatz) in the tenant's currency, used by labour line items. Float, default 60.0.";
+    dcterms:source "AdaWorldAPI/WoA/models.py:Customer.stundensatz";
+.

@@ -1,0 +1,53 @@
+@prefix ogit:               <http://www.purl.org/ogit/> .
+@prefix ogit.WorkOrder:     <http://www.purl.org/ogit/WorkOrder/> .
+@prefix owl:                <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:            <http://purl.org/dc/terms/> .
+
+ogit.WorkOrder:Setting
+	a rdfs:Class;
+	rdfs:subClassOf ogit:Entity;
+	rdfs:label "Setting";
+	dcterms:description "Per-tenant key/value configuration row. Stores arbitrary string-typed application settings (e.g. company address fields, default VAT rate, PDF footer text) outside of code. The label provides a human-readable caption used in admin UIs; the value is free-form text.";
+	dcterms:source "AdaWorldAPI/WoA/models.py:Setting";
+	dcterms:creator "bus-compiler";
+	ogit:scope "NTO";
+	ogit:parent ogit:Node;
+	ogit:mandatory-attributes (
+		ogit:id
+	);
+	ogit:optional-attributes (
+		ogit.WorkOrder:settingKey
+		ogit.WorkOrder:settingValue
+		ogit.WorkOrder:label
+	);
+	ogit:indexed-attributes (
+		ogit.WorkOrder:settingKey
+	);
+	ogit:allowed (
+			[ ogit:belongs  ogit.WorkOrder:Tenant ]
+	);
+.
+
+# ── attributes ───────────────────────────────────────────────────────────
+
+ogit.WorkOrder:settingKey
+	a rdfs:Property;
+	rdfs:label "settingKey";
+	dcterms:description "Setting identifier (max 100 chars), unique per tenant. Conventionally dot-namespaced (e.g. 'company.address', 'pdf.footer').";
+	dcterms:source "AdaWorldAPI/WoA/models.py:Setting.key";
+.
+
+ogit.WorkOrder:settingValue
+	a rdfs:Property;
+	rdfs:label "settingValue";
+	dcterms:description "Free-form text value associated with the key. Application-side code is responsible for any type coercion (int/bool/json).";
+	dcterms:source "AdaWorldAPI/WoA/models.py:Setting.value";
+.
+
+ogit.WorkOrder:label
+	a rdfs:Property;
+	rdfs:label "label";
+	dcterms:description "Human-readable caption (max 200 chars) shown next to the key in admin UIs.";
+	dcterms:source "AdaWorldAPI/WoA/models.py:Setting.label";
+.

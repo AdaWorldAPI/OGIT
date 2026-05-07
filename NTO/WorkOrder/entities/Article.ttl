@@ -1,0 +1,77 @@
+@prefix ogit:               <http://www.purl.org/ogit/> .
+@prefix ogit.WorkOrder:     <http://www.purl.org/ogit/WorkOrder/> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:            <http://purl.org/dc/terms/> .
+
+ogit.WorkOrder:Article
+    a rdfs:Class;
+    rdfs:subClassOf ogit:Entity;
+    rdfs:label "Article";
+    dcterms:description "Article master-data record (Artikelstamm / WaWi). Referenced by Position rows on an Order via article_id. Carries selling and purchase prices, VAT rate and supplier reference; derived margin (marge / marge_pct) is computed on demand by the Python model.";
+    dcterms:source "AdaWorldAPI/WoA/models.py:Article";
+    ogit:scope "NTO";
+    ogit:parent ogit:Node;
+    ogit:mandatory-attributes (
+        ogit:id
+        ogit.WorkOrder:beschreibung
+    );
+    ogit:optional-attributes (
+        ogit.WorkOrder:artikelnr
+        ogit.WorkOrder:preisNetto
+        ogit.WorkOrder:ekPreis
+        ogit.WorkOrder:mwstSatz
+        ogit.WorkOrder:lieferant
+        ogit.WorkOrder:aktiv
+    );
+    ogit:indexed-attributes (
+        ogit:id
+        ogit.WorkOrder:artikelnr
+    );
+    ogit:allowed (
+            [ ogit:belongs  ogit.WorkOrder:Tenant ]
+    );
+.
+
+# ── attributes ───────────────────────────────────────────────────────────
+
+ogit.WorkOrder:artikelnr
+    a rdfs:Property;
+    rdfs:label "artikelnr";
+    dcterms:description "Article number (Artikelnummer). Tenant-local short code used on invoices, lookup forms and inventory listings.";
+    dcterms:source "AdaWorldAPI/WoA/models.py:Article.artikelnr";
+.
+
+ogit.WorkOrder:beschreibung
+    a rdfs:Property;
+    rdfs:label "beschreibung";
+    dcterms:description "Article description (Beschreibung) printed on order positions. Mandatory in the source model.";
+    dcterms:source "AdaWorldAPI/WoA/models.py:Article.beschreibung";
+.
+
+ogit.WorkOrder:preisNetto
+    a rdfs:Property;
+    rdfs:label "preisNetto";
+    dcterms:description "Net selling price (Preis netto) in the tenant's currency. Float, default 0.0.";
+    dcterms:source "AdaWorldAPI/WoA/models.py:Article.preis_netto";
+.
+
+ogit.WorkOrder:ekPreis
+    a rdfs:Property;
+    rdfs:label "ekPreis";
+    dcterms:description "Purchase price (Einkaufspreis) used for margin calculation against preisNetto.";
+    dcterms:source "AdaWorldAPI/WoA/models.py:Article.ek_preis";
+.
+
+ogit.WorkOrder:mwstSatz
+    a rdfs:Property;
+    rdfs:label "mwstSatz";
+    dcterms:description "VAT rate (MwSt-Satz) in percent applied when this article appears as a position. Float, default 19.0.";
+    dcterms:source "AdaWorldAPI/WoA/models.py:Article.mwst_satz";
+.
+
+ogit.WorkOrder:lieferant
+    a rdfs:Property;
+    rdfs:label "lieferant";
+    dcterms:description "Supplier name (Lieferant) the article is normally sourced from. Free-form string; not a relation to a separate Supplier class in the current source.";
+    dcterms:source "AdaWorldAPI/WoA/models.py:Article.lieferant";
+.

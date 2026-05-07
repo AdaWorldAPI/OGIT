@@ -1,0 +1,16 @@
+@prefix ogit:               <http://www.purl.org/ogit/> .
+@prefix ogit.WorkOrder:     <http://www.purl.org/ogit/WorkOrder/> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:            <http://purl.org/dc/terms/> .
+
+ogit.WorkOrder:hasPicture
+    a rdfs:Class;
+    rdfs:subClassOf ogit:Verb;
+    rdfs:label "hasPicture";
+    dcterms:description "Order has-many Picture attachments (photos for documentation, logbook, or customer-facing). One Order can attach many Pictures (one-to-many, cascade-delete)." ;
+    dcterms:source "AdaWorldAPI/WoA/models.py:WorkOrder.pictures -> Picture.workorder_id" ;
+    ogit:scope "NTO";
+    ogit:from-to (
+        [ ogit:from ogit.WorkOrder:Order ; ogit:to ogit.WorkOrder:Picture ]
+    ) ;
+.

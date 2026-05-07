@@ -1,0 +1,16 @@
+@prefix ogit:               <http://www.purl.org/ogit/> .
+@prefix ogit.WorkOrder:     <http://www.purl.org/ogit/WorkOrder/> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:            <http://purl.org/dc/terms/> .
+
+ogit.WorkOrder:refersToArticle
+    a rdfs:Class;
+    rdfs:subClassOf ogit:Verb;
+    rdfs:label "refersToArticle";
+    dcterms:description "Position refers-to an Article in the catalogue (price, description source). Many Positions may reference the same Article (many-to-one, optional)." ;
+    dcterms:source "AdaWorldAPI/WoA/models.py:Position.article_id -> Article.id" ;
+    ogit:scope "NTO";
+    ogit:from-to (
+        [ ogit:from ogit.WorkOrder:Position ; ogit:to ogit.WorkOrder:Article ]
+    ) ;
+.

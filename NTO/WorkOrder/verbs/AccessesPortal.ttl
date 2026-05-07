@@ -1,0 +1,16 @@
+@prefix ogit:               <http://www.purl.org/ogit/> .
+@prefix ogit.WorkOrder:     <http://www.purl.org/ogit/WorkOrder/> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:            <http://purl.org/dc/terms/> .
+
+ogit.WorkOrder:accessesPortal
+    a rdfs:Class;
+    rdfs:subClassOf ogit:Verb;
+    rdfs:label "accessesPortal";
+    dcterms:description "CustomerPortalUser accesses-portal as a specific Customer (login binding). Each portal login row binds exactly one credential to one Customer (one-to-one)." ;
+    dcterms:source "AdaWorldAPI/WoA/models.py:CustomerPortalUser.customer_id -> Customer.id" ;
+    ogit:scope "NTO";
+    ogit:from-to (
+        [ ogit:from ogit.WorkOrder:CustomerPortalUser ; ogit:to ogit.WorkOrder:Customer ]
+    ) ;
+.
