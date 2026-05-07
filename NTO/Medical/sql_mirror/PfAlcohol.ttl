@@ -15,4 +15,13 @@ ogit.Medical:PfAlcohol
     ogit:loaderStatus "stub" ;
     ogit:columnCount 11 ;
     ogit:primaryKey "id" ;
-    ogit:mysqlTable "pf_alcohol" .
+    ogit:mysqlTable "pf_alcohol" ;
+    dcterms:description "Patient-form alcohol-consumption snapshot recording daily intake of beer, sparkling wine, wine, liqueur, whiskey, and a daily total for substance-use anamnesis." ;
+    dcterms:valid "start=2026-05-07;" ;
+    dcterms:creator "agent-mysql-transcode" ;
+    ogit:mandatory-attributes (
+        ogit:id
+    ) ;
+    ogit:optional-attributes ( ) ;
+    ogit:indexed-attributes ( ) ;
+    ogit:allowed ( ) .

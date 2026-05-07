@@ -15,4 +15,13 @@ ogit.Medical:PfFormMain
     ogit:loaderStatus "stub" ;
     ogit:columnCount 11 ;
     ogit:primaryKey "id" ;
-    ogit:mysqlTable "pf_form_main" .
+    ogit:mysqlTable "pf_form_main" ;
+    dcterms:description "Generic patient-form free-form note bound to a glob_formular template id with file_Text body, used for arbitrary clinic-defined documentation." ;
+    dcterms:valid "start=2026-05-07;" ;
+    dcterms:creator "agent-mysql-transcode" ;
+    ogit:mandatory-attributes (
+        ogit:id
+    ) ;
+    ogit:optional-attributes ( ) ;
+    ogit:indexed-attributes ( ) ;
+    ogit:allowed ( ) .

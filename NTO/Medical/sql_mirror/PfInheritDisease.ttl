@@ -15,4 +15,13 @@ ogit.Medical:PfInheritDisease
     ogit:loaderStatus "stub" ;
     ogit:columnCount 8 ;
     ogit:primaryKey "id" ;
-    ogit:mysqlTable "pf_inherit_disease" .
+    ogit:mysqlTable "pf_inherit_disease" ;
+    dcterms:description "Patient-form hereditary-disease entry naming a disease (combo_inherit_disease) attributed to a relation source for family-history risk assessment." ;
+    dcterms:valid "start=2026-05-07;" ;
+    dcterms:creator "agent-mysql-transcode" ;
+    ogit:mandatory-attributes (
+        ogit:id
+    ) ;
+    ogit:optional-attributes ( ) ;
+    ogit:indexed-attributes ( ) ;
+    ogit:allowed ( ) .

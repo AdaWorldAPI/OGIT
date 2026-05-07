@@ -15,4 +15,13 @@ ogit.Medical:PatSpecialist
     ogit:loaderStatus "stub" ;
     ogit:columnCount 21 ;
     ogit:primaryKey "id" ;
-    ogit:mysqlTable "pat_specialist" .
+    ogit:mysqlTable "pat_specialist" ;
+    dcterms:description "Per-patient specialist referral: target specialty, doctor-letter requirement, sms/mail notification flags and audit, free-text notice, completion flag, and result-DB linkage." ;
+    dcterms:valid "start=2026-05-07;" ;
+    dcterms:creator "agent-mysql-transcode" ;
+    ogit:mandatory-attributes (
+        ogit:id
+    ) ;
+    ogit:optional-attributes ( ) ;
+    ogit:indexed-attributes ( ) ;
+    ogit:allowed ( ) .

@@ -15,4 +15,13 @@ ogit.Medical:PfDiagnosis
     ogit:loaderStatus "stub" ;
     ogit:columnCount 17 ;
     ogit:primaryKey "id" ;
-    ogit:mysqlTable "pf_diagnosis" .
+    ogit:mysqlTable "pf_diagnosis" ;
+    dcterms:description "Patient-form diagnosis row binding an ICD code, label, free text, and lead/chronic-diagnosis flags (ld/kd) to the patient timeline." ;
+    dcterms:valid "start=2026-05-07;" ;
+    dcterms:creator "agent-mysql-transcode" ;
+    ogit:mandatory-attributes (
+        ogit:id
+    ) ;
+    ogit:optional-attributes ( ) ;
+    ogit:indexed-attributes ( ) ;
+    ogit:allowed ( ) .

@@ -15,4 +15,13 @@ ogit.Medical:PfAllergy
     ogit:loaderStatus "stub" ;
     ogit:columnCount 8 ;
     ogit:primaryKey "id" ;
-    ogit:mysqlTable "pf_allergy" .
+    ogit:mysqlTable "pf_allergy" ;
+    dcterms:description "Patient-form allergy entry: substance code (stoffcode), severity, and reaction lookups capturing a documented hypersensitivity for safety alerts." ;
+    dcterms:valid "start=2026-05-07;" ;
+    dcterms:creator "agent-mysql-transcode" ;
+    ogit:mandatory-attributes (
+        ogit:id
+    ) ;
+    ogit:optional-attributes ( ) ;
+    ogit:indexed-attributes ( ) ;
+    ogit:allowed ( ) .

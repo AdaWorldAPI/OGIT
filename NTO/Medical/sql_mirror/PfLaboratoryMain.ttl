@@ -15,4 +15,13 @@ ogit.Medical:PfLaboratoryMain
     ogit:loaderStatus "stub" ;
     ogit:columnCount 14 ;
     ogit:primaryKey "id" ;
-    ogit:mysqlTable "pf_laboratory_main" .
+    ogit:mysqlTable "pf_laboratory_main" ;
+    dcterms:description "Patient-form laboratory-order header: per-patient lab request with date, status, type, and notice that owns a set of pf_laboratory_values rows." ;
+    dcterms:valid "start=2026-05-07;" ;
+    dcterms:creator "agent-mysql-transcode" ;
+    ogit:mandatory-attributes (
+        ogit:id
+    ) ;
+    ogit:optional-attributes ( ) ;
+    ogit:indexed-attributes ( ) ;
+    ogit:allowed ( ) .
