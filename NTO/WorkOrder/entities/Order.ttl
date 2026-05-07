@@ -1,0 +1,97 @@
+@prefix ogit:               <http://www.purl.org/ogit/> .
+@prefix ogit.WorkOrder:     <http://www.purl.org/ogit/WorkOrder/> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:            <http://purl.org/dc/terms/> .
+
+ogit.WorkOrder:Order
+    a rdfs:Class;
+    rdfs:subClassOf ogit:Entity;
+    rdfs:label "Order";
+    dcterms:description "Central work-order document of WoA. A single SQLAlchemy table 'workorders' represents five doc_type variants — workorder (Arbeitsauftrag), offer (Angebot), order (Auftrag), invoice (Rechnung), credit (Gutschrift). The doc_type column selects the variant; OGIT consumers should treat 'Order' as the umbrella class and filter by doc_type for variant-specific logic. Holds positions, activities, pictures and history as child collections, and exposes derived totals netto_summe / mwst_betrag / brutto_summe.";
+    dcterms:source "AdaWorldAPI/WoA/models.py:WorkOrder";
+    ogit:scope "NTO";
+    ogit:parent ogit:Node;
+    ogit:mandatory-attributes (
+        ogit:id
+        ogit.WorkOrder:orderId
+    );
+    ogit:optional-attributes (
+        ogit:status
+        ogit.WorkOrder:docType
+        ogit.WorkOrder:datum
+        ogit.WorkOrder:betreff
+        ogit.WorkOrder:nettoSumme
+        ogit.WorkOrder:mwstBetrag
+        ogit.WorkOrder:bruttoSumme
+        ogit.WorkOrder:bezahlt
+    );
+    ogit:indexed-attributes (
+        ogit:id
+        ogit.WorkOrder:orderId
+        ogit:status
+        ogit.WorkOrder:datum
+    );
+    ogit:allowed (
+            [ ogit:belongs  ogit.WorkOrder:Tenant ]
+            [ ogit:relates  ogit.WorkOrder:Customer ]
+            [ ogit:relates  ogit.WorkOrder:Article ]
+    );
+.
+
+# ── attributes ───────────────────────────────────────────────────────────
+
+ogit.WorkOrder:orderId
+    a rdfs:Property;
+    rdfs:label "orderId";
+    dcterms:description "Public document number. The Python source carries five parallel slots (angebot_nr, auftrags_nr, workorder_nr, rechnung_nr, gutschrift_nr) plus a derived beleg_nr that picks the active one. orderId is the OGIT-side projection of beleg_nr — the human-facing identifier regardless of doc_type.";
+    dcterms:source "AdaWorldAPI/WoA/models.py:WorkOrder.beleg_nr";
+.
+
+ogit.WorkOrder:docType
+    a rdfs:Property;
+    rdfs:label "docType";
+    dcterms:description "Discriminator for the document variant. One of: workorder, offer, order, invoice, credit. Mirrors WorkOrder.doc_type in the source.";
+    dcterms:source "AdaWorldAPI/WoA/models.py:WorkOrder.doc_type";
+.
+
+ogit.WorkOrder:datum
+    a rdfs:Property;
+    rdfs:label "datum";
+    dcterms:description "Document date (Datum). ISO-8601 date; defaults to creation day. Drives the dunning / due-date derivations.";
+    dcterms:source "AdaWorldAPI/WoA/models.py:WorkOrder.datum";
+.
+
+ogit.WorkOrder:betreff
+    a rdfs:Property;
+    rdfs:label "betreff";
+    dcterms:description "Subject / heading line (Betreff) printed at the top of the document.";
+    dcterms:source "AdaWorldAPI/WoA/models.py:WorkOrder.betreff";
+.
+
+ogit.WorkOrder:nettoSumme
+    a rdfs:Property;
+    rdfs:label "nettoSumme";
+    dcterms:description "Net total (Netto-Summe). Derived in Python as sum(menge × einzelpreis) over all positions; materialised on the OGIT projection.";
+    dcterms:source "AdaWorldAPI/WoA/models.py:WorkOrder.netto_summe";
+.
+
+ogit.WorkOrder:mwstBetrag
+    a rdfs:Property;
+    rdfs:label "mwstBetrag";
+    dcterms:description "VAT amount (MwSt-Betrag). Derived in Python as sum(menge × einzelpreis × mwst_satz / 100) over all positions.";
+    dcterms:source "AdaWorldAPI/WoA/models.py:WorkOrder.mwst_betrag";
+.
+
+ogit.WorkOrder:bruttoSumme
+    a rdfs:Property;
+    rdfs:label "bruttoSumme";
+    dcterms:description "Gross total (Brutto-Summe) = nettoSumme + mwstBetrag.";
+    dcterms:source "AdaWorldAPI/WoA/models.py:WorkOrder.brutto_summe";
+.
+
+ogit.WorkOrder:bezahlt
+    a rdfs:Property;
+    rdfs:label "bezahlt";
+    dcterms:description "Payment-received flag. Boolean; true once the order has been settled by the customer.";
+    dcterms:source "AdaWorldAPI/WoA/models.py:WorkOrder.bezahlt";
+.

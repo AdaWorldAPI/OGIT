@@ -1,0 +1,21 @@
+@prefix ogit:               <http://www.purl.org/ogit/> .
+@prefix ogit.WorkOrder:     <http://www.purl.org/ogit/WorkOrder/> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:            <http://purl.org/dc/terms/> .
+
+ogit.WorkOrder:belongsToTenant
+    a rdfs:Class;
+    rdfs:subClassOf ogit:Verb;
+    rdfs:label "belongsToTenant";
+    dcterms:description "Every multi-tenant business entity belongs-to-tenant (mandatory partition for row-level isolation). Many entities of any business class belong to one Tenant (many-to-one)." ;
+    dcterms:source "AdaWorldAPI/WoA/models.py: tenant_id FK on User, Customer, Article, WorkOrder, PasswordEntry, TimeSheet, NumberSequence, Setting -> Tenant.id" ;
+    ogit:scope "NTO";
+    ogit:from-to (
+        [ ogit:from ogit.WorkOrder:User ;            ogit:to ogit.WorkOrder:Tenant ]
+        [ ogit:from ogit.WorkOrder:Customer ;        ogit:to ogit.WorkOrder:Tenant ]
+        [ ogit:from ogit.WorkOrder:Article ;         ogit:to ogit.WorkOrder:Tenant ]
+        [ ogit:from ogit.WorkOrder:Order ;           ogit:to ogit.WorkOrder:Tenant ]
+        [ ogit:from ogit.WorkOrder:PasswordEntry ;   ogit:to ogit.WorkOrder:Tenant ]
+        [ ogit:from ogit.WorkOrder:TimeSheet ;       ogit:to ogit.WorkOrder:Tenant ]
+    ) ;
+.

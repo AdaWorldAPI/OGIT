@@ -1,0 +1,32 @@
+@prefix ogit:               <http://www.purl.org/ogit/> .
+@prefix ogit.WorkOrder:     <http://www.purl.org/ogit/WorkOrder/> .
+@prefix owl:                <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:            <http://purl.org/dc/terms/> .
+
+ogit.WorkOrder:HistoryEntry
+	a rdfs:Class;
+	rdfs:subClassOf ogit:Entity;
+	rdfs:label "HistoryEntry";
+	dcterms:description "An immutable audit/log row for a WorkOrder. Records an action label (aktion), free-text details, the User who performed the action, and a creation timestamp. Append-only: every state change to an Order should produce one HistoryEntry.";
+	dcterms:source "AdaWorldAPI/WoA/models.py:HistoryEntry";
+	dcterms:creator "family-codec-smith";
+	ogit:scope "NTO";
+	ogit:parent ogit:Node;
+	ogit:mandatory-attributes (
+		ogit:id
+	);
+	ogit:optional-attributes (
+		ogit.WorkOrder:aktion
+		ogit.WorkOrder:details
+		ogit:created-at
+	);
+	ogit:indexed-attributes (
+		ogit:created-at
+		ogit.WorkOrder:aktion
+	);
+	ogit:allowed (
+			[ ogit:belongs  ogit.WorkOrder:Order ]
+			[ ogit:relates  ogit.WorkOrder:User ]
+	);
+.

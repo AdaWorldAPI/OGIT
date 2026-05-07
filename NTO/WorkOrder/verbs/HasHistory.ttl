@@ -1,0 +1,16 @@
+@prefix ogit:               <http://www.purl.org/ogit/> .
+@prefix ogit.WorkOrder:     <http://www.purl.org/ogit/WorkOrder/> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:            <http://purl.org/dc/terms/> .
+
+ogit.WorkOrder:hasHistory
+    a rdfs:Class;
+    rdfs:subClassOf ogit:Verb;
+    rdfs:label "hasHistory";
+    dcterms:description "Order has-many HistoryEntry audit records (status transitions, edits). One Order accumulates many HistoryEntries (one-to-many, cascade-delete, ordered by created_at desc)." ;
+    dcterms:source "AdaWorldAPI/WoA/models.py:WorkOrder.history -> HistoryEntry.workorder_id" ;
+    ogit:scope "NTO";
+    ogit:from-to (
+        [ ogit:from ogit.WorkOrder:Order ; ogit:to ogit.WorkOrder:HistoryEntry ]
+    ) ;
+.

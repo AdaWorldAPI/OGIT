@@ -1,0 +1,37 @@
+@prefix ogit:               <http://www.purl.org/ogit/> .
+@prefix ogit.WorkOrder:     <http://www.purl.org/ogit/WorkOrder/> .
+@prefix owl:                <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:            <http://purl.org/dc/terms/> .
+
+ogit.WorkOrder:Position
+	a rdfs:Class;
+	rdfs:subClassOf ogit:Entity;
+	rdfs:label "Position";
+	dcterms:description "A line item (Position) on a WorkOrder/Order document. Represents one billable or descriptive row carrying quantity, unit, unit-price, VAT rate, optional Article reference, and ordering. Used across offer/order/invoice/credit doc types.";
+	dcterms:source "AdaWorldAPI/WoA/models.py:Position";
+	dcterms:creator "family-codec-smith";
+	ogit:scope "NTO";
+	ogit:parent ogit:Node;
+	ogit:mandatory-attributes (
+		ogit:id
+	);
+	ogit:optional-attributes (
+		ogit.WorkOrder:sortOrder
+		ogit.WorkOrder:posTyp
+		ogit.WorkOrder:beschreibung
+		ogit.WorkOrder:menge
+		ogit.WorkOrder:einheit
+		ogit.WorkOrder:einzelpreis
+		ogit.WorkOrder:mwstSatz
+		ogit.WorkOrder:versteckt
+	);
+	ogit:indexed-attributes (
+		ogit.WorkOrder:sortOrder
+		ogit.WorkOrder:posTyp
+	);
+	ogit:allowed (
+			[ ogit:belongs  ogit.WorkOrder:Order ]
+			[ ogit:relates  ogit.WorkOrder:Article ]
+	);
+.

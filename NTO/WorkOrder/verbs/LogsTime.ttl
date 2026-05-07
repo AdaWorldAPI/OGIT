@@ -1,0 +1,16 @@
+@prefix ogit:               <http://www.purl.org/ogit/> .
+@prefix ogit.WorkOrder:     <http://www.purl.org/ogit/WorkOrder/> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:            <http://purl.org/dc/terms/> .
+
+ogit.WorkOrder:logsTime
+    a rdfs:Class;
+    rdfs:subClassOf ogit:Verb;
+    rdfs:label "logsTime";
+    dcterms:description "User logs-time on a TimeSheet entry (billable minutes per Customer/day). One User can log many TimeSheet rows (one-to-many)." ;
+    dcterms:source "AdaWorldAPI/WoA/models.py:TimeSheet.user_id -> User.id" ;
+    ogit:scope "NTO";
+    ogit:from-to (
+        [ ogit:from ogit.WorkOrder:User ; ogit:to ogit.WorkOrder:TimeSheet ]
+    ) ;
+.

@@ -1,0 +1,32 @@
+@prefix ogit:               <http://www.purl.org/ogit/> .
+@prefix ogit.WorkOrder:     <http://www.purl.org/ogit/WorkOrder/> .
+@prefix owl:                <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:            <http://purl.org/dc/terms/> .
+
+ogit.WorkOrder:Picture
+	a rdfs:Class;
+	rdfs:subClassOf ogit:Entity;
+	rdfs:label "Picture";
+	dcterms:description "An image/document attachment on a WorkOrder. Carries the stored filename (dateiname), an optional caption (beschreibung), a logbook flag (include in driver/work logbook export), an an_kunde flag (visible to / send to customer), and a creation timestamp.";
+	dcterms:source "AdaWorldAPI/WoA/models.py:Picture";
+	dcterms:creator "family-codec-smith";
+	ogit:scope "NTO";
+	ogit:parent ogit:Node;
+	ogit:mandatory-attributes (
+		ogit:id
+	);
+	ogit:optional-attributes (
+		ogit.WorkOrder:dateiname
+		ogit.WorkOrder:beschreibung
+		ogit.WorkOrder:logbuch
+		ogit.WorkOrder:anKunde
+		ogit:created-at
+	);
+	ogit:indexed-attributes (
+		ogit:created-at
+	);
+	ogit:allowed (
+			[ ogit:belongs  ogit.WorkOrder:Order ]
+	);
+.

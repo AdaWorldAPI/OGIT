@@ -1,0 +1,120 @@
+@prefix ogit:               <http://www.purl.org/ogit/> .
+@prefix ogit.WorkOrder:     <http://www.purl.org/ogit/WorkOrder/> .
+@prefix owl:                <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:            <http://purl.org/dc/terms/> .
+
+ogit.WorkOrder:LogbookEntry
+	a rdfs:Class;
+	rdfs:subClassOf ogit:Entity;
+	rdfs:label "LogbookEntry";
+	dcterms:description "A driving-logbook (Fahrtenbuch) row capturing one trip: start/end odometer reading, departure/arrival times, route description, business purpose, vehicle, and the private-share kilometers split out for tax purposes. Optionally references a User (driver), Customer (visited), and Order (the work-order driven for).";
+	dcterms:source "AdaWorldAPI/WoA/models.py:LogbookEntry";
+	dcterms:creator "bus-compiler";
+	ogit:scope "NTO";
+	ogit:parent ogit:Node;
+	ogit:mandatory-attributes (
+		ogit:id
+	);
+	ogit:optional-attributes (
+		ogit.WorkOrder:datum
+		ogit.WorkOrder:abfahrt
+		ogit.WorkOrder:ankunft
+		ogit.WorkOrder:rueckfahrt
+		ogit.WorkOrder:zurueck
+		ogit.WorkOrder:startKm
+		ogit.WorkOrder:endeKm
+		ogit.WorkOrder:route
+		ogit.WorkOrder:zweck
+		ogit.WorkOrder:fahrzeug
+		ogit.WorkOrder:privatAnteil
+		ogit.WorkOrder:createdAt
+	);
+	ogit:indexed-attributes (
+		ogit.WorkOrder:datum
+	);
+	ogit:allowed (
+			[ ogit:relates  ogit.WorkOrder:User ]
+			[ ogit:relates  ogit.WorkOrder:Customer ]
+			[ ogit:relates  ogit.WorkOrder:Order ]
+	);
+.
+
+# ── attributes ───────────────────────────────────────────────────────────
+
+ogit.WorkOrder:datum
+	a rdfs:Property;
+	rdfs:label "datum";
+	dcterms:description "ISO-8601 calendar date the trip took place (mandatory; defaults to today on insert).";
+	dcterms:source "AdaWorldAPI/WoA/models.py:LogbookEntry.datum";
+.
+
+ogit.WorkOrder:abfahrt
+	a rdfs:Property;
+	rdfs:label "abfahrt";
+	dcterms:description "Departure time as HH:MM string (max 5 chars).";
+	dcterms:source "AdaWorldAPI/WoA/models.py:LogbookEntry.abfahrt";
+.
+
+ogit.WorkOrder:ankunft
+	a rdfs:Property;
+	rdfs:label "ankunft";
+	dcterms:description "Arrival time at destination as HH:MM string (max 5 chars).";
+	dcterms:source "AdaWorldAPI/WoA/models.py:LogbookEntry.ankunft";
+.
+
+ogit.WorkOrder:rueckfahrt
+	a rdfs:Property;
+	rdfs:label "rueckfahrt";
+	dcterms:description "Return-trip departure time as HH:MM string (max 5 chars).";
+	dcterms:source "AdaWorldAPI/WoA/models.py:LogbookEntry.rueckfahrt";
+.
+
+ogit.WorkOrder:zurueck
+	a rdfs:Property;
+	rdfs:label "zurueck";
+	dcterms:description "Return-trip arrival time as HH:MM string (max 5 chars).";
+	dcterms:source "AdaWorldAPI/WoA/models.py:LogbookEntry.zurueck";
+.
+
+ogit.WorkOrder:startKm
+	a rdfs:Property;
+	rdfs:label "startKm";
+	dcterms:description "Odometer reading at trip start (kilometers, float).";
+	dcterms:source "AdaWorldAPI/WoA/models.py:LogbookEntry.start_km";
+.
+
+ogit.WorkOrder:endeKm
+	a rdfs:Property;
+	rdfs:label "endeKm";
+	dcterms:description "Odometer reading at trip end (kilometers, float). The trip's total distance is end_km - start_km.";
+	dcterms:source "AdaWorldAPI/WoA/models.py:LogbookEntry.ende_km";
+.
+
+ogit.WorkOrder:route
+	a rdfs:Property;
+	rdfs:label "route";
+	dcterms:description "Free-text route description (e.g. 'Würzburg - Frankfurt - Würzburg', max 300 chars).";
+	dcterms:source "AdaWorldAPI/WoA/models.py:LogbookEntry.route";
+.
+
+ogit.WorkOrder:zweck
+	a rdfs:Property;
+	rdfs:label "zweck";
+	dcterms:description "Business purpose of the trip (max 300 chars). Required by German tax law for the Fahrtenbuch.";
+	dcterms:source "AdaWorldAPI/WoA/models.py:LogbookEntry.zweck";
+.
+
+ogit.WorkOrder:fahrzeug
+	a rdfs:Property;
+	rdfs:label "fahrzeug";
+	dcterms:description "Vehicle identifier (license plate or fleet name, max 100 chars).";
+	dcterms:source "AdaWorldAPI/WoA/models.py:LogbookEntry.fahrzeug";
+.
+
+ogit.WorkOrder:privatAnteil
+	a rdfs:Property;
+	rdfs:label "privatAnteil";
+	dcterms:description "Kilometers attributed to private use within this trip (float). Subtracted from the total to derive km_geschaeftlich.";
+	dcterms:source "AdaWorldAPI/WoA/models.py:LogbookEntry.privat_anteil";
+.

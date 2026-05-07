@@ -1,0 +1,102 @@
+@prefix ogit:               <http://www.purl.org/ogit/> .
+@prefix ogit.WorkOrder:     <http://www.purl.org/ogit/WorkOrder/> .
+@prefix owl:                <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:            <http://purl.org/dc/terms/> .
+
+ogit.WorkOrder:User
+	a rdfs:Class;
+	rdfs:subClassOf ogit:Entity;
+	rdfs:label "User";
+	dcterms:description "Internal WoA user / operator. Authenticates against pbkdf2:sha256 password hashes (werkzeug, 600k iterations, salted) with transparent migration from a legacy SHA256+salt format. Carries optional contact metadata (firstname, lastname, email, phone), the admin/superadmin flags that gate Flask routes, and a forced-password-change marker. Each User belongs to exactly one Tenant via tenant_id.";
+	dcterms:source "AdaWorldAPI/WoA/models.py:User";
+	dcterms:creator "bus-compiler";
+	ogit:scope "NTO";
+	ogit:parent ogit:Node;
+	ogit:mandatory-attributes (
+		ogit:id
+	);
+	ogit:optional-attributes (
+		ogit.WorkOrder:username
+		ogit.WorkOrder:passwordHash
+		ogit.WorkOrder:firstname
+		ogit.WorkOrder:lastname
+		ogit.WorkOrder:email
+		ogit.WorkOrder:phone
+		ogit.WorkOrder:isAdmin
+		ogit.WorkOrder:isSuperadmin
+		ogit.WorkOrder:mustChangePw
+		ogit.WorkOrder:createdAt
+	);
+	ogit:indexed-attributes (
+		ogit.WorkOrder:username
+	);
+	ogit:allowed (
+			[ ogit:belongs  ogit.WorkOrder:Tenant ]
+	);
+.
+
+# ── attributes ───────────────────────────────────────────────────────────
+
+ogit.WorkOrder:username
+	a rdfs:Property;
+	rdfs:label "username";
+	dcterms:description "Globally unique login handle (max 120 chars). Primary credential identifier used for password authentication.";
+	dcterms:source "AdaWorldAPI/WoA/models.py:User.username";
+.
+
+ogit.WorkOrder:passwordHash
+	a rdfs:Property;
+	rdfs:label "passwordHash";
+	dcterms:description "Werkzeug-formatted password hash (pbkdf2:sha256:<iter>$<salt>$<hash>, max 256 chars). Legacy two-part SHA256+salt hashes are accepted on first login and transparently upgraded to pbkdf2.";
+	dcterms:source "AdaWorldAPI/WoA/models.py:User.password_hash";
+.
+
+ogit.WorkOrder:firstname
+	a rdfs:Property;
+	rdfs:label "firstname";
+	dcterms:description "User's given name (max 120 chars).";
+	dcterms:source "AdaWorldAPI/WoA/models.py:User.firstname";
+.
+
+ogit.WorkOrder:lastname
+	a rdfs:Property;
+	rdfs:label "lastname";
+	dcterms:description "User's family name (max 120 chars).";
+	dcterms:source "AdaWorldAPI/WoA/models.py:User.lastname";
+.
+
+ogit.WorkOrder:email
+	a rdfs:Property;
+	rdfs:label "email";
+	dcterms:description "User's primary email address (max 200 chars). Used for notifications and password resets.";
+	dcterms:source "AdaWorldAPI/WoA/models.py:User.email";
+.
+
+ogit.WorkOrder:phone
+	a rdfs:Property;
+	rdfs:label "phone";
+	dcterms:description "User's contact telephone number (max 100 chars).";
+	dcterms:source "AdaWorldAPI/WoA/models.py:User.phone";
+.
+
+ogit.WorkOrder:isAdmin
+	a rdfs:Property;
+	rdfs:label "isAdmin";
+	dcterms:description "Boolean flag granting admin-level access within the User's tenant scope (manage customers, articles, settings).";
+	dcterms:source "AdaWorldAPI/WoA/models.py:User.is_admin";
+.
+
+ogit.WorkOrder:isSuperadmin
+	a rdfs:Property;
+	rdfs:label "isSuperadmin";
+	dcterms:description "Boolean flag granting cross-tenant superadmin access (manage tenants, system-wide configuration).";
+	dcterms:source "AdaWorldAPI/WoA/models.py:User.is_superadmin";
+.
+
+ogit.WorkOrder:mustChangePw
+	a rdfs:Property;
+	rdfs:label "mustChangePw";
+	dcterms:description "Boolean forced-password-change marker. When true, the next successful login redirects the user to the password-reset flow.";
+	dcterms:source "AdaWorldAPI/WoA/models.py:User.must_change_pw";
+.

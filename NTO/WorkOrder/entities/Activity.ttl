@@ -1,0 +1,32 @@
+@prefix ogit:               <http://www.purl.org/ogit/> .
+@prefix ogit.WorkOrder:     <http://www.purl.org/ogit/WorkOrder/> .
+@prefix owl:                <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:            <http://purl.org/dc/terms/> .
+
+ogit.WorkOrder:Activity
+	a rdfs:Class;
+	rdfs:subClassOf ogit:Entity;
+	rdfs:label "Activity";
+	dcterms:description "A logged work activity attached to a WorkOrder. Carries optional device/asset reference (geraet), free-text description, logbook flag (export to driver/work logbook), internal-only flag, and creation timestamp. One Activity per discrete on-site or remote action.";
+	dcterms:source "AdaWorldAPI/WoA/models.py:Activity";
+	dcterms:creator "family-codec-smith";
+	ogit:scope "NTO";
+	ogit:parent ogit:Node;
+	ogit:mandatory-attributes (
+		ogit:id
+	);
+	ogit:optional-attributes (
+		ogit.WorkOrder:geraet
+		ogit.WorkOrder:beschreibung
+		ogit.WorkOrder:logbuch
+		ogit.WorkOrder:intern
+		ogit:created-at
+	);
+	ogit:indexed-attributes (
+		ogit:created-at
+	);
+	ogit:allowed (
+			[ ogit:belongs  ogit.WorkOrder:Order ]
+	);
+.

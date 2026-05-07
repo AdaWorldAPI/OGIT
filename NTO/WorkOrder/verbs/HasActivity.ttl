@@ -1,0 +1,16 @@
+@prefix ogit:               <http://www.purl.org/ogit/> .
+@prefix ogit.WorkOrder:     <http://www.purl.org/ogit/WorkOrder/> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:            <http://purl.org/dc/terms/> .
+
+ogit.WorkOrder:hasActivity
+    a rdfs:Class;
+    rdfs:subClassOf ogit:Verb;
+    rdfs:label "hasActivity";
+    dcterms:description "Order has-many Activity records (work performed on devices). One Order can record many Activities (one-to-many, cascade-delete)." ;
+    dcterms:source "AdaWorldAPI/WoA/models.py:WorkOrder.activities -> Activity.workorder_id" ;
+    ogit:scope "NTO";
+    ogit:from-to (
+        [ ogit:from ogit.WorkOrder:Order ; ogit:to ogit.WorkOrder:Activity ]
+    ) ;
+.
