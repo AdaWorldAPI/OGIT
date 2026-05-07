@@ -1,0 +1,19 @@
+@prefix ogit.SharePoint:        <http://www.purl.org/ogit/SharePoint/> .
+@prefix ogit:                   <http://www.purl.org/ogit/> .
+@prefix owl:                    <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:                   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:                <http://purl.org/dc/terms/> .
+
+ogit.SharePoint:SiteId
+	a owl:DatatypeProperty;
+	rdfs:subPropertyOf ogit:Attribute;
+	rdfs:label "SiteId";
+	dcterms:description """Holds the canonical Microsoft Graph site identifier for a
+    SharePoint Online site collection or sub-site (e.g. `contoso.sharepoint.com,a1b2…,c3d4…`).
+    Forms half of the addressing pair (SiteId, DriveId) used by the
+    Sharepoint→smb-office-rs orchestrator to route UploadIntent records to the
+    correct target tenant. Stable across migrations; unaffected by
+    site renaming.""";
+	dcterms:valid "start=2026-05-07;";
+	dcterms:creator "Claude (lance-graph-bridge integration)";
+.
