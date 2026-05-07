@@ -1,0 +1,18 @@
+@prefix ogit:               <http://www.purl.org/ogit/> .
+@prefix ogit.Medical:       <http://www.purl.org/ogit/Medical/> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:            <http://purl.org/dc/terms/> .
+@prefix xsd:                <http://www.w3.org/2001/XMLSchema#> .
+
+ogit.Medical:GlobVitalMod
+    a rdfs:Class ;
+    rdfs:subClassOf ogit:Entity ;
+    rdfs:label "GlobVitalMod" ;
+    rdfs:comment "Global vital-sign module configuration: defines up to 8 dynamic vital channels (name, unit, mask, active flag), multilingual checklists, owning office right, and multilingual headers for custom vital-capture forms." ;
+    dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:glob_vital_mod" ;
+    ogit:scope "NTO" ;
+    ogit:parent ogit:Node ;
+    ogit:loaderStatus "stub" ;
+    ogit:columnCount 42 ;
+    ogit:primaryKey "id" ;
+    ogit:mysqlTable "glob_vital_mod" .

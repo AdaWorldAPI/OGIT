@@ -1,0 +1,18 @@
+@prefix ogit:               <http://www.purl.org/ogit/> .
+@prefix ogit.Medical:       <http://www.purl.org/ogit/Medical/> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:            <http://purl.org/dc/terms/> .
+@prefix xsd:                <http://www.w3.org/2001/XMLSchema#> .
+
+ogit.Medical:PraxisPatient
+    a rdfs:Class ;
+    rdfs:subClassOf ogit:Entity ;
+    rdfs:label "PraxisPatient" ;
+    rdfs:comment "Master patient demographic record per clinic tenant: identity, sex flags, ethnicity, address, contact, specialty grouping, anonymisation flag, and mobile-device pairing fields." ;
+    dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:praxis_patient" ;
+    ogit:scope "NTO" ;
+    ogit:parent ogit:Node ;
+    ogit:loaderStatus "stub" ;
+    ogit:columnCount 29 ;
+    ogit:primaryKey "id" ;
+    ogit:mysqlTable "praxis_patient" .

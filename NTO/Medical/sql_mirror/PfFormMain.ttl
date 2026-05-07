@@ -1,0 +1,18 @@
+@prefix ogit:               <http://www.purl.org/ogit/> .
+@prefix ogit.Medical:       <http://www.purl.org/ogit/Medical/> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:            <http://purl.org/dc/terms/> .
+@prefix xsd:                <http://www.w3.org/2001/XMLSchema#> .
+
+ogit.Medical:PfFormMain
+    a rdfs:Class ;
+    rdfs:subClassOf ogit:Entity ;
+    rdfs:label "PfFormMain" ;
+    rdfs:comment "Generic patient-form free-form note bound to a glob_formular template id with file_Text body, used for arbitrary clinic-defined documentation." ;
+    dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:pf_form_main" ;
+    ogit:scope "NTO" ;
+    ogit:parent ogit:Node ;
+    ogit:loaderStatus "stub" ;
+    ogit:columnCount 11 ;
+    ogit:primaryKey "id" ;
+    ogit:mysqlTable "pf_form_main" .

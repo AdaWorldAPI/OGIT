@@ -1,0 +1,18 @@
+@prefix ogit:               <http://www.purl.org/ogit/> .
+@prefix ogit.Medical:       <http://www.purl.org/ogit/Medical/> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:            <http://purl.org/dc/terms/> .
+@prefix xsd:                <http://www.w3.org/2001/XMLSchema#> .
+
+ogit.Medical:PraxisMitarbeiter
+    a rdfs:Class ;
+    rdfs:subClassOf ogit:Entity ;
+    rdfs:label "PraxisMitarbeiter" ;
+    rdfs:comment "Staff (Mitarbeiter) record for a clinic: login credentials, contact info, specialty, language, active flag, last-login audit, and per-user permission blob." ;
+    dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:praxis_mitarbeiter" ;
+    ogit:scope "NTO" ;
+    ogit:parent ogit:Node ;
+    ogit:loaderStatus "stub" ;
+    ogit:columnCount 13 ;
+    ogit:primaryKey "id" ;
+    ogit:mysqlTable "praxis_mitarbeiter" .

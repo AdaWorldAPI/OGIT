@@ -1,0 +1,18 @@
+@prefix ogit:               <http://www.purl.org/ogit/> .
+@prefix ogit.Medical:       <http://www.purl.org/ogit/Medical/> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:            <http://purl.org/dc/terms/> .
+@prefix xsd:                <http://www.w3.org/2001/XMLSchema#> .
+
+ogit.Medical:PatAddexamination
+    a rdfs:Class ;
+    rdfs:subClassOf ogit:Entity ;
+    rdfs:label "PatAddexamination" ;
+    rdfs:comment "Per-patient additional-examination order: links a patient to a combo_addexamination type with file-counter progress, in-house flag, start date, and free-text notice." ;
+    dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:pat_addexamination" ;
+    ogit:scope "NTO" ;
+    ogit:parent ogit:Node ;
+    ogit:loaderStatus "stub" ;
+    ogit:columnCount 16 ;
+    ogit:primaryKey "id" ;
+    ogit:mysqlTable "pat_addexamination" .
