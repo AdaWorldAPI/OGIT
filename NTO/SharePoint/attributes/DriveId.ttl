@@ -1,0 +1,20 @@
+@prefix ogit.SharePoint:        <http://www.purl.org/ogit/SharePoint/> .
+@prefix ogit:                   <http://www.purl.org/ogit/> .
+@prefix owl:                    <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:                   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:                <http://purl.org/dc/terms/> .
+
+ogit.SharePoint:DriveId
+	a owl:DatatypeProperty;
+	rdfs:subPropertyOf ogit:Attribute;
+	rdfs:label "DriveId";
+	dcterms:description """Holds the canonical Microsoft Graph drive identifier for a
+    SharePoint document library or OneDrive root (e.g. a base64url drive id of the form
+    `b!…`). Forms the second half of the addressing pair (SiteId, DriveId) used by the
+    Sharepoint→smb-office-rs orchestrator to route UploadIntent records to the correct
+    target document library. The DriveScopeKind enum on the orchestrator side
+    (Me / DriveId / SiteDrive / Simaf / Abap) selects which of the three identifiers
+    is authoritative for a given upload.""";
+	dcterms:valid "start=2026-05-07;";
+	dcterms:creator "Claude (lance-graph-bridge integration)";
+.
