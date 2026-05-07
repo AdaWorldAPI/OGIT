@@ -1,0 +1,17 @@
+@prefix ogit:               <http://www.purl.org/ogit/> .
+@prefix ogit.Medical:       <http://www.purl.org/ogit/Medical/> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:            <http://purl.org/dc/terms/> .
+
+ogit.Medical:RadLex
+	a ogit:Namespace ;
+	rdfs:label "RadLex Radiology Lexicon" ;
+	rdfs:comment "Controlled terminology for radiology covering imaging modalities, anatomy, observations, and procedures, maintained by the Radiological Society of North America." ;
+	ogit:contextIri <http://purl.bioontology.org/ontology/RADLEX/> ;
+	ogit:contextId 14 ;
+	dcterms:source "AdaWorldAPI/MedCare-rs/releases/tag/bioportal-ontologies-2026-05-05/RadLex.owl" ;
+	dcterms:license "RadLex-Free" ;
+	ogit:fileSize "64.9 MB" ;
+	ogit:tripleCount "~600K (estimate)" ;
+	ogit:loaderCrate "lance-graph-rdf" ;
+	ogit:loaderStatus "stub" .

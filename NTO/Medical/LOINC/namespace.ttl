@@ -1,0 +1,17 @@
+@prefix ogit:               <http://www.purl.org/ogit/> .
+@prefix ogit.Medical:       <http://www.purl.org/ogit/Medical/> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:            <http://purl.org/dc/terms/> .
+
+ogit.Medical:LOINC
+	a ogit:Namespace ;
+	rdfs:label "Logical Observation Identifiers Names and Codes" ;
+	rdfs:comment "Universal code system for identifying laboratory and clinical observations such as lab tests, vital signs, and survey instruments, maintained by the Regenstrief Institute." ;
+	ogit:contextIri <http://purl.bioontology.org/ontology/LOINC/> ;
+	ogit:contextId 12 ;
+	dcterms:source "AdaWorldAPI/MedCare-rs/releases/tag/bioportal-ontologies-2026-05-05/LOINC.ttl" ;
+	dcterms:license "LOINC-License" ;
+	ogit:fileSize "739.2 MB" ;
+	ogit:tripleCount "~30M (estimate)" ;
+	ogit:loaderCrate "lance-graph-rdf" ;
+	ogit:loaderStatus "stub" .

@@ -1,0 +1,17 @@
+@prefix ogit:               <http://www.purl.org/ogit/> .
+@prefix ogit.Medical:       <http://www.purl.org/ogit/Medical/> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:            <http://purl.org/dc/terms/> .
+
+ogit.Medical:CHEBI
+	a ogit:Namespace ;
+	rdfs:label "Chemical Entities of Biological Interest" ;
+	rdfs:comment "Open-license ontology of small molecular entities focused on biologically relevant compounds, classifying chemicals by structure and biological role; maintained by the EBI." ;
+	ogit:contextIri <http://purl.bioontology.org/ontology/CHEBI/> ;
+	ogit:contextId 19 ;
+	dcterms:source "AdaWorldAPI/MedCare-rs/releases/tag/bioportal-ontologies-2026-05-05/chebi.obo" ;
+	dcterms:license "CC-BY-4.0" ;
+	ogit:fileSize "259.6 MB" ;
+	ogit:tripleCount "~1.5M (estimate)" ;
+	ogit:loaderCrate "lance-graph-rdf" ;
+	ogit:loaderStatus "stub" .

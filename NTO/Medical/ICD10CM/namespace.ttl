@@ -1,0 +1,17 @@
+@prefix ogit:               <http://www.purl.org/ogit/> .
+@prefix ogit.Medical:       <http://www.purl.org/ogit/Medical/> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:            <http://purl.org/dc/terms/> .
+
+ogit.Medical:ICD10CM
+	a ogit:Namespace ;
+	rdfs:label "ICD-10 Clinical Modification" ;
+	rdfs:comment "U.S. clinical modification of WHO ICD-10 used for diagnosis coding in healthcare billing, encounters, and population health reporting." ;
+	ogit:contextIri <http://purl.bioontology.org/ontology/ICD10CM/> ;
+	ogit:contextId 10 ;
+	dcterms:source "AdaWorldAPI/MedCare-rs/releases/tag/bioportal-ontologies-2026-05-05/ICD10CM.ttl" ;
+	dcterms:license "UMLS-Metathesaurus" ;
+	ogit:fileSize "51.6 MB" ;
+	ogit:tripleCount "~1.8M (estimate)" ;
+	ogit:loaderCrate "lance-graph-rdf" ;
+	ogit:loaderStatus "stub" .

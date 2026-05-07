@@ -1,0 +1,17 @@
+@prefix ogit:               <http://www.purl.org/ogit/> .
+@prefix ogit.Medical:       <http://www.purl.org/ogit/Medical/> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:            <http://purl.org/dc/terms/> .
+
+ogit.Medical:DRON
+	a ogit:Namespace ;
+	rdfs:label "Drug Ontology" ;
+	rdfs:comment "Comprehensive ontology of drug products, ingredients, and pharmaceutical preparations derived from RxNorm and FDA sources, supporting pharmacovigilance and clinical decision support." ;
+	ogit:contextIri <http://purl.bioontology.org/ontology/DRON/> ;
+	ogit:contextId 18 ;
+	dcterms:source "AdaWorldAPI/MedCare-rs/releases/tag/bioportal-ontologies-2026-05-05/dron.owl" ;
+	dcterms:license "CC-BY-3.0" ;
+	ogit:fileSize "701.7 MB" ;
+	ogit:tripleCount "~3M (estimate)" ;
+	ogit:loaderCrate "lance-graph-rdf" ;
+	ogit:loaderStatus "stub" .

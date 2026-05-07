@@ -1,0 +1,17 @@
+@prefix ogit:               <http://www.purl.org/ogit/> .
+@prefix ogit.Medical:       <http://www.purl.org/ogit/Medical/> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:            <http://purl.org/dc/terms/> .
+
+ogit.Medical:HPO
+	a ogit:Namespace ;
+	rdfs:label "Human Phenotype Ontology" ;
+	rdfs:comment "Standardized vocabulary of phenotypic abnormalities encountered in human disease, used for deep phenotyping in rare-disease diagnostics and genomic medicine." ;
+	ogit:contextIri <http://purl.bioontology.org/ontology/HP/> ;
+	ogit:contextId 17 ;
+	dcterms:source "AdaWorldAPI/MedCare-rs/releases/tag/bioportal-ontologies-2026-05-05/hp.obo" ;
+	dcterms:license "HPO-License" ;
+	ogit:fileSize "10.7 MB" ;
+	ogit:tripleCount "~150K (estimate)" ;
+	ogit:loaderCrate "lance-graph-rdf" ;
+	ogit:loaderStatus "stub" .
