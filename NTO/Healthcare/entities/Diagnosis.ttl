@@ -1,0 +1,95 @@
+@prefix ogit:               <http://www.purl.org/ogit/> .
+@prefix ogit.Healthcare:    <http://www.purl.org/ogit/Healthcare/> .
+@prefix owl:                <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:            <http://purl.org/dc/terms/> .
+@prefix xsd:                <http://www.w3.org/2001/XMLSchema#> .
+
+ogit.Healthcare:Diagnosis
+	a rdfs:Class;
+	rdfs:subClassOf ogit:Entity;
+	rdfs:label "Diagnosis";
+	dcterms:description "A clinical diagnosis attached to a patient (and optionally a visit). Carries ICD code, free-text diagnosis description, leading-diagnosis and chronic flags. Source-of-truth: pf_diagnosis (17 cols).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:pf_diagnosis";
+	dcterms:creator "claude-ogit-bootstrap";
+	ogit:scope "NTO";
+	ogit:parent ogit:Node;
+	ogit:mandatory-attributes (
+		ogit:id
+	);
+	ogit:optional-attributes (
+		ogit.Healthcare:fileIcd
+		ogit.Healthcare:fileDiag
+		ogit.Healthcare:fileText
+		ogit.Healthcare:createDate
+		ogit.Healthcare:dbSpezId
+		ogit.Healthcare:fileLd
+		ogit.Healthcare:fileKd
+		ogit.Healthcare:fileDate
+	);
+	ogit:indexed-attributes (
+		ogit.Healthcare:fileIcd
+		ogit.Healthcare:createDate
+		ogit.Healthcare:fileLd
+	);
+	ogit:allowed (
+			[ ogit:belongs  ogit.Healthcare:Patient ]
+			[ ogit:relates  ogit.Healthcare:Visit ]
+	);
+.
+
+ogit.Healthcare:fileIcd
+	a ogit:Property;
+	rdfs:label "fileIcd";
+	dcterms:description "ICD-10 code for the diagnosis (pf_diagnosis.file_icd).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:pf_diagnosis.file_icd";
+	ogit:type "xsd:string" .
+
+ogit.Healthcare:fileDiag
+	a ogit:Property;
+	rdfs:label "fileDiag";
+	dcterms:description "Short diagnosis label (pf_diagnosis.file_diag).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:pf_diagnosis.file_diag";
+	ogit:type "xsd:string" .
+
+ogit.Healthcare:fileText
+	a ogit:Property;
+	rdfs:label "fileText";
+	dcterms:description "Free-text clinical description (pf_diagnosis.file_Text).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:pf_diagnosis.file_Text";
+	ogit:type "xsd:string" .
+
+ogit.Healthcare:createDate
+	a ogit:Property;
+	rdfs:label "createDate";
+	dcterms:description "Entry creation timestamp (pf_diagnosis.d_createdate).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:pf_diagnosis.d_createdate";
+	ogit:type "xsd:dateTime" .
+
+ogit.Healthcare:dbSpezId
+	a ogit:Property;
+	rdfs:label "dbSpezId";
+	dcterms:description "Specialty FK -> combo_spez.id (pf_diagnosis.db_spezid).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:pf_diagnosis.db_spezid";
+	ogit:type "xsd:integer" .
+
+ogit.Healthcare:fileLd
+	a ogit:Property;
+	rdfs:label "fileLd";
+	dcterms:description "Leading-diagnosis flag (pf_diagnosis.file_ld).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:pf_diagnosis.file_ld";
+	ogit:type "xsd:boolean" .
+
+ogit.Healthcare:fileKd
+	a ogit:Property;
+	rdfs:label "fileKd";
+	dcterms:description "Chronic-diagnosis flag (pf_diagnosis.file_kd).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:pf_diagnosis.file_kd";
+	ogit:type "xsd:boolean" .
+
+ogit.Healthcare:fileDate
+	a ogit:Property;
+	rdfs:label "fileDate";
+	dcterms:description "Clinical event date the diagnosis refers to (pf_diagnosis.file_date).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:pf_diagnosis.file_date";
+	ogit:type "xsd:dateTime" .

@@ -1,0 +1,28 @@
+@prefix ogit:               <http://www.purl.org/ogit/> .
+@prefix ogit.Healthcare:    <http://www.purl.org/ogit/Healthcare/> .
+@prefix owl:                <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:            <http://purl.org/dc/terms/> .
+@prefix xsd:                <http://www.w3.org/2001/XMLSchema#> .
+
+ogit.Healthcare:combo_medication_dose_unit
+	a rdfs:Class;
+	rdfs:subClassOf ogit:Enumeration;
+	rdfs:label "combo_medication_dose_unit";
+	dcterms:description "Enumeration of medication dose units (mg, ml, IU, etc.). Values populated as a follow-on import from MedCare-rs.";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:combo_medication_dose_unit";
+	dcterms:creator "claude-ogit-bootstrap";
+	ogit:scope "NTO";
+	ogit:parent ogit:Node;
+	ogit:mandatory-attributes (
+		ogit:id
+		ogit:name
+	);
+	ogit:optional-attributes (
+	);
+	ogit:indexed-attributes (
+		ogit:name
+	);
+	ogit:allowed (
+	);
+.

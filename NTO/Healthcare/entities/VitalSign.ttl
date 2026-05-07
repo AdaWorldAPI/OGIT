@@ -1,0 +1,60 @@
+@prefix ogit:               <http://www.purl.org/ogit/> .
+@prefix ogit.Healthcare:    <http://www.purl.org/ogit/Healthcare/> .
+@prefix owl:                <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:            <http://purl.org/dc/terms/> .
+@prefix xsd:                <http://www.w3.org/2001/XMLSchema#> .
+
+ogit.Healthcare:VitalSign
+	a rdfs:Class;
+	rdfs:subClassOf ogit:Entity;
+	rdfs:label "VitalSign";
+	dcterms:description "A patient vital-sign measurement. Modelled here as the base class for the pf_vital_* family — the canonical / minimal source-of-truth is pf_vital_bloodpressure (id, pid, datum, sys, dia, pulse). Subclasses (pf_vital_dynmodule, pf_vital_temperature, etc.) extend with module-specific columns.";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:pf_vital_bloodpressure";
+	dcterms:creator "claude-ogit-bootstrap";
+	ogit:scope "NTO";
+	ogit:parent ogit:Node;
+	ogit:mandatory-attributes (
+		ogit:id
+	);
+	ogit:optional-attributes (
+		ogit.Healthcare:datum
+		ogit.Healthcare:bloodPressureSystolic
+		ogit.Healthcare:bloodPressureDiastolic
+		ogit.Healthcare:pulse
+	);
+	ogit:indexed-attributes (
+		ogit.Healthcare:datum
+	);
+	ogit:allowed (
+			[ ogit:belongs  ogit.Healthcare:Patient ]
+	);
+.
+
+ogit.Healthcare:datum
+	a ogit:Property;
+	rdfs:label "datum";
+	dcterms:description "Measurement timestamp (pf_vital_bloodpressure.datum).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:pf_vital_bloodpressure.datum";
+	ogit:type "xsd:dateTime" .
+
+ogit.Healthcare:bloodPressureSystolic
+	a ogit:Property;
+	rdfs:label "bloodPressureSystolic";
+	dcterms:description "Systolic blood pressure in mmHg (pf_vital_bloodpressure.sys).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:pf_vital_bloodpressure.sys";
+	ogit:type "xsd:float" .
+
+ogit.Healthcare:bloodPressureDiastolic
+	a ogit:Property;
+	rdfs:label "bloodPressureDiastolic";
+	dcterms:description "Diastolic blood pressure in mmHg (pf_vital_bloodpressure.dia).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:pf_vital_bloodpressure.dia";
+	ogit:type "xsd:float" .
+
+ogit.Healthcare:pulse
+	a ogit:Property;
+	rdfs:label "pulse";
+	dcterms:description "Pulse rate (bpm) (pf_vital_bloodpressure.pulse).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:pf_vital_bloodpressure.pulse";
+	ogit:type "xsd:float" .

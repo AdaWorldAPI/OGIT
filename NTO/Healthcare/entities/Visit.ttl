@@ -1,0 +1,86 @@
+@prefix ogit:               <http://www.purl.org/ogit/> .
+@prefix ogit.Healthcare:    <http://www.purl.org/ogit/Healthcare/> .
+@prefix owl:                <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:            <http://purl.org/dc/terms/> .
+@prefix xsd:                <http://www.w3.org/2001/XMLSchema#> .
+
+ogit.Healthcare:Visit
+	a rdfs:Class;
+	rdfs:subClassOf ogit:Entity;
+	rdfs:label "Visit";
+	dcterms:description "A patient visit / waiting-room session — login, doctor assignment, priority, time-in-waiting and logout. Source-of-truth: praxis_patient_waitingroom.";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:praxis_patient_waitingroom";
+	dcterms:creator "claude-ogit-bootstrap";
+	ogit:scope "NTO";
+	ogit:parent ogit:Node;
+	ogit:mandatory-attributes (
+		ogit:id
+	);
+	ogit:optional-attributes (
+		ogit.Healthcare:waitingroomId
+		ogit.Healthcare:toDocId
+		ogit.Healthcare:loginAt
+		ogit.Healthcare:logoutAt
+		ogit.Healthcare:timeInWaiting
+		ogit.Healthcare:priority
+		ogit.Healthcare:noticeForDoc
+	);
+	ogit:indexed-attributes (
+		ogit.Healthcare:loginAt
+		ogit.Healthcare:toDocId
+		ogit.Healthcare:priority
+	);
+	ogit:allowed (
+			[ ogit:belongs  ogit.Healthcare:Patient ]
+	);
+.
+
+ogit.Healthcare:waitingroomId
+	a ogit:Property;
+	rdfs:label "waitingroomId";
+	dcterms:description "FK to praxis_waitingroom (praxis_patient_waitingroom.praxis_waitingroomid).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:praxis_patient_waitingroom.praxis_waitingroomid";
+	ogit:type "xsd:integer" .
+
+ogit.Healthcare:toDocId
+	a ogit:Property;
+	rdfs:label "toDocId";
+	dcterms:description "Doctor assigned to handle the visit (praxis_patient_waitingroom.p_to_doc_id).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:praxis_patient_waitingroom.p_to_doc_id";
+	ogit:type "xsd:integer" .
+
+ogit.Healthcare:loginAt
+	a ogit:Property;
+	rdfs:label "loginAt";
+	dcterms:description "Patient login time into waiting room (praxis_patient_waitingroom.p_login).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:praxis_patient_waitingroom.p_login";
+	ogit:type "xsd:dateTime" .
+
+ogit.Healthcare:logoutAt
+	a ogit:Property;
+	rdfs:label "logoutAt";
+	dcterms:description "Patient logout / visit-end time (praxis_patient_waitingroom.p_logout).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:praxis_patient_waitingroom.p_logout";
+	ogit:type "xsd:dateTime" .
+
+ogit.Healthcare:timeInWaiting
+	a ogit:Property;
+	rdfs:label "timeInWaiting";
+	dcterms:description "Computed waiting duration in minutes (praxis_patient_waitingroom.p_time_in_waiting).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:praxis_patient_waitingroom.p_time_in_waiting";
+	ogit:type "xsd:integer" .
+
+ogit.Healthcare:priority
+	a ogit:Property;
+	rdfs:label "priority";
+	dcterms:description "Visit triage priority (praxis_patient_waitingroom.p_priority).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:praxis_patient_waitingroom.p_priority";
+	ogit:type "xsd:integer" .
+
+ogit.Healthcare:noticeForDoc
+	a ogit:Property;
+	rdfs:label "noticeForDoc";
+	dcterms:description "Free-text reception notice for the doctor (praxis_patient_waitingroom.p_notice_for_doc).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:praxis_patient_waitingroom.p_notice_for_doc";
+	ogit:type "xsd:string" .

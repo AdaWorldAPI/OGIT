@@ -1,0 +1,62 @@
+@prefix ogit:               <http://www.purl.org/ogit/> .
+@prefix ogit.Healthcare:    <http://www.purl.org/ogit/Healthcare/> .
+@prefix owl:                <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:            <http://purl.org/dc/terms/> .
+@prefix xsd:                <http://www.w3.org/2001/XMLSchema#> .
+
+ogit.Healthcare:LabValue
+	a rdfs:Class;
+	rdfs:subClassOf ogit:Entity;
+	rdfs:label "LabValue";
+	dcterms:description "A laboratory measurement for a patient. LOINC-coded test (loincid) with a numeric value (werte) and lab-internal id. Source-of-truth: pf_laboratory_values (9 cols).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:pf_laboratory_values";
+	dcterms:creator "claude-ogit-bootstrap";
+	ogit:scope "NTO";
+	ogit:parent ogit:Node;
+	ogit:mandatory-attributes (
+		ogit:id
+	);
+	ogit:optional-attributes (
+		ogit.Healthcare:createDate
+		ogit.Healthcare:labId
+		ogit.Healthcare:loincId
+		ogit.Healthcare:werte
+	);
+	ogit:indexed-attributes (
+		ogit.Healthcare:createDate
+		ogit.Healthcare:loincId
+	);
+	ogit:allowed (
+			[ ogit:belongs  ogit.Healthcare:Patient ]
+			[ ogit:relates  ogit.Healthcare:loincRef ]
+	);
+.
+
+ogit.Healthcare:labId
+	a ogit:Property;
+	rdfs:label "labId";
+	dcterms:description "Laboratory FK / partner identifier (pf_laboratory_values.labid).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:pf_laboratory_values.labid";
+	ogit:type "xsd:integer" .
+
+ogit.Healthcare:loincId
+	a ogit:Property;
+	rdfs:label "loincId";
+	dcterms:description "LOINC reference code identifier (pf_laboratory_values.loincid).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:pf_laboratory_values.loincid";
+	ogit:type "xsd:integer" .
+
+ogit.Healthcare:werte
+	a ogit:Property;
+	rdfs:label "werte";
+	dcterms:description "Numeric measured value (pf_laboratory_values.werte).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:pf_laboratory_values.werte";
+	ogit:type "xsd:float" .
+
+ogit.Healthcare:loincRef
+	a ogit:Property;
+	rdfs:label "loincRef";
+	dcterms:description "Out-of-namespace reference to LOINC concept. Carried as a property reference rather than an in-namespace entity since LOINC is governed externally.";
+	dcterms:source "loinc:<id>";
+	ogit:type "xsd:anyURI" .

@@ -1,0 +1,166 @@
+@prefix ogit:               <http://www.purl.org/ogit/> .
+@prefix ogit.Healthcare:    <http://www.purl.org/ogit/Healthcare/> .
+@prefix owl:                <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:            <http://purl.org/dc/terms/> .
+@prefix xsd:                <http://www.w3.org/2001/XMLSchema#> .
+
+ogit.Healthcare:Patient
+	a rdfs:Class;
+	rdfs:subClassOf ogit:Entity;
+	rdfs:label "Patient";
+	dcterms:description "A patient record in a clinical practice. Identified by an internal id, scoped to a tenant (clinic), with demographic, contact, and specialty fields. Source-of-truth: praxis_patient (30 cols).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:praxis_patient";
+	dcterms:creator "claude-ogit-bootstrap";
+	ogit:scope "NTO";
+	ogit:parent ogit:Node;
+	ogit:mandatory-attributes (
+		ogit:id
+	);
+	ogit:optional-attributes (
+		ogit.Healthcare:firstname
+		ogit.Healthcare:lastname
+		ogit.Healthcare:birth
+		ogit.Healthcare:sexm
+		ogit.Healthcare:sexf
+		ogit.Healthcare:sexd
+		ogit.Healthcare:ethnic
+		ogit.Healthcare:mail
+		ogit.Healthcare:mobil
+		ogit.Healthcare:country
+		ogit.Healthcare:zip
+		ogit.Healthcare:place
+		ogit.Healthcare:street
+		ogit.Healthcare:spez
+		ogit.Healthcare:title1
+		ogit.Healthcare:title2
+		ogit.Healthcare:anomize
+	);
+	ogit:indexed-attributes (
+		ogit.Healthcare:lastname
+		ogit.Healthcare:birth
+		ogit.Healthcare:mail
+	);
+	ogit:allowed (
+			[ ogit:belongs  ogit:Tenant ]
+	);
+.
+
+ogit.Healthcare:firstname
+	a ogit:Property;
+	rdfs:label "firstname";
+	dcterms:description "Patient given name (praxis_patient.p_firstname).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:praxis_patient.p_firstname";
+	ogit:type "xsd:string" .
+
+ogit.Healthcare:lastname
+	a ogit:Property;
+	rdfs:label "lastname";
+	dcterms:description "Patient family name (praxis_patient.p_lastname).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:praxis_patient.p_lastname";
+	ogit:type "xsd:string" .
+
+ogit.Healthcare:birth
+	a ogit:Property;
+	rdfs:label "birth";
+	dcterms:description "Patient date of birth (praxis_patient.p_birth).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:praxis_patient.p_birth";
+	ogit:type "xsd:dateTime" .
+
+ogit.Healthcare:sexm
+	a ogit:Property;
+	rdfs:label "sexm";
+	dcterms:description "Boolean: patient identifies as male (praxis_patient.p_sexm).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:praxis_patient.p_sexm";
+	ogit:type "xsd:boolean" .
+
+ogit.Healthcare:sexf
+	a ogit:Property;
+	rdfs:label "sexf";
+	dcterms:description "Boolean: patient identifies as female (praxis_patient.p_sexf).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:praxis_patient.p_sexf";
+	ogit:type "xsd:boolean" .
+
+ogit.Healthcare:sexd
+	a ogit:Property;
+	rdfs:label "sexd";
+	dcterms:description "Boolean: patient identifies as diverse (praxis_patient.p_sexd).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:praxis_patient.p_sexd";
+	ogit:type "xsd:boolean" .
+
+ogit.Healthcare:ethnic
+	a ogit:Property;
+	rdfs:label "ethnic";
+	dcterms:description "Self-declared ethnicity (praxis_patient.p_ethnic).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:praxis_patient.p_ethnic";
+	ogit:type "xsd:string" .
+
+ogit.Healthcare:mail
+	a ogit:Property;
+	rdfs:label "mail";
+	dcterms:description "Patient email (praxis_patient.p_mail).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:praxis_patient.p_mail";
+	ogit:type "xsd:string" .
+
+ogit.Healthcare:mobil
+	a ogit:Property;
+	rdfs:label "mobil";
+	dcterms:description "Patient mobile phone (praxis_patient.p_mobil).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:praxis_patient.p_mobil";
+	ogit:type "xsd:string" .
+
+ogit.Healthcare:country
+	a ogit:Property;
+	rdfs:label "country";
+	dcterms:description "Patient country (praxis_patient.p_country).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:praxis_patient.p_country";
+	ogit:type "xsd:string" .
+
+ogit.Healthcare:zip
+	a ogit:Property;
+	rdfs:label "zip";
+	dcterms:description "Postal code (praxis_patient.p_zip).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:praxis_patient.p_zip";
+	ogit:type "xsd:string" .
+
+ogit.Healthcare:place
+	a ogit:Property;
+	rdfs:label "place";
+	dcterms:description "City / place of residence (praxis_patient.p_place).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:praxis_patient.p_place";
+	ogit:type "xsd:string" .
+
+ogit.Healthcare:street
+	a ogit:Property;
+	rdfs:label "street";
+	dcterms:description "Street address (praxis_patient.p_street).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:praxis_patient.p_street";
+	ogit:type "xsd:string" .
+
+ogit.Healthcare:spez
+	a ogit:Property;
+	rdfs:label "spez";
+	dcterms:description "Specialty / profile assigned to the patient (praxis_patient.p_spez).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:praxis_patient.p_spez";
+	ogit:type "xsd:string" .
+
+ogit.Healthcare:title1
+	a ogit:Property;
+	rdfs:label "title1";
+	dcterms:description "Honorific title (praxis_patient.p_title1).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:praxis_patient.p_title1";
+	ogit:type "xsd:string" .
+
+ogit.Healthcare:title2
+	a ogit:Property;
+	rdfs:label "title2";
+	dcterms:description "Academic title (praxis_patient.p_title2).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:praxis_patient.p_title2";
+	ogit:type "xsd:string" .
+
+ogit.Healthcare:anomize
+	a ogit:Property;
+	rdfs:label "anomize";
+	dcterms:description "Anonymisation flag for research export (praxis_patient.p_anomize).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:praxis_patient.p_anomize";
+	ogit:type "xsd:boolean" .
