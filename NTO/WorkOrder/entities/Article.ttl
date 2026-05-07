@@ -21,6 +21,7 @@ ogit.WorkOrder:Article
         ogit.WorkOrder:ekPreis
         ogit.WorkOrder:mwstSatz
         ogit.WorkOrder:lieferant
+        ogit.WorkOrder:lieferantAnr
         ogit.WorkOrder:aktiv
     );
     ogit:indexed-attributes (
@@ -74,4 +75,18 @@ ogit.WorkOrder:lieferant
     rdfs:label "lieferant";
     dcterms:description "Supplier name (Lieferant) the article is normally sourced from. Free-form string; not a relation to a separate Supplier class in the current source.";
     dcterms:source "AdaWorldAPI/WoA/models.py:Article.lieferant";
+.
+
+ogit.WorkOrder:lieferantAnr
+    a rdfs:Property;
+    rdfs:label "lieferantAnr";
+    dcterms:description "Supplier-side article number (Lieferanten-Artikelnummer). Used when reordering: the artikelnr is the tenant-local code, lieferantAnr is the SKU at the supplier.";
+    dcterms:source "AdaWorldAPI/WoA/models.py:Article.lieferant_anr";
+.
+
+ogit.WorkOrder:aktiv
+    a rdfs:Property;
+    rdfs:label "aktiv";
+    dcterms:description "Active flag (aktiv). Boolean; false hides the article from the new-position picker without deleting historical references. Default true.";
+    dcterms:source "AdaWorldAPI/WoA/models.py:Article.aktiv";
 .
