@@ -17,17 +17,25 @@ ogit.WorkOrder:Customer
     ogit:optional-attributes (
         ogit.WorkOrder:kdnr
         ogit.WorkOrder:firma
+        ogit.WorkOrder:anrede
         ogit.WorkOrder:vorname
         ogit.WorkOrder:nachname
+        ogit.WorkOrder:mailAnrede
         ogit:email
         ogit.WorkOrder:telefon
         ogit.WorkOrder:strasse
+        ogit.WorkOrder:adresszusatz
         ogit.WorkOrder:plz
         ogit.WorkOrder:ort
         ogit.WorkOrder:iban
         ogit.WorkOrder:taxId
         ogit.WorkOrder:zahlungsziel
         ogit.WorkOrder:stundensatz
+        ogit.WorkOrder:fahrtKm
+        ogit.WorkOrder:fahrtKosten
+        ogit.WorkOrder:notizen
+        ogit.WorkOrder:aktiv
+        ogit.WorkOrder:createdAt
     );
     ogit:indexed-attributes (
         ogit:id
@@ -123,4 +131,60 @@ ogit.WorkOrder:stundensatz
     rdfs:label "stundensatz";
     dcterms:description "Hourly rate (Stundensatz) in the tenant's currency, used by labour line items. Float, default 60.0.";
     dcterms:source "AdaWorldAPI/WoA/models.py:Customer.stundensatz";
+.
+
+ogit.WorkOrder:anrede
+    a rdfs:Property;
+    rdfs:label "anrede";
+    dcterms:description "Form of address (Anrede). One of: Herr, Frau, Firma. Drives salutation rendering on the document.";
+    dcterms:source "AdaWorldAPI/WoA/models.py:Customer.anrede";
+.
+
+ogit.WorkOrder:mailAnrede
+    a rdfs:Property;
+    rdfs:label "mailAnrede";
+    dcterms:description "Email salutation override (mail_anrede). Free-text override for the opening line of automated mails (e.g. 'Sehr geehrte Frau Mueller'). When empty, derived from anrede + nachname.";
+    dcterms:source "AdaWorldAPI/WoA/models.py:Customer.mail_anrede";
+.
+
+ogit.WorkOrder:adresszusatz
+    a rdfs:Property;
+    rdfs:label "adresszusatz";
+    dcterms:description "Address line 2 (Adresszusatz). Optional second address line for c/o, building, suite, etc.";
+    dcterms:source "AdaWorldAPI/WoA/models.py:Customer.adresszusatz";
+.
+
+ogit.WorkOrder:fahrtKm
+    a rdfs:Property;
+    rdfs:label "fahrtKm";
+    dcterms:description "One-way travel distance in kilometres (Fahrt km). Multiplied by Order.anfahrten and fahrtKosten to compute the trip-cost line item.";
+    dcterms:source "AdaWorldAPI/WoA/models.py:Customer.fahrt_km";
+.
+
+ogit.WorkOrder:fahrtKosten
+    a rdfs:Property;
+    rdfs:label "fahrtKosten";
+    dcterms:description "Per-kilometre travel cost in the tenant's currency (Fahrt Kosten). Float; default 0.0. Used together with fahrtKm and Order.anfahrten to compute trip-cost line items.";
+    dcterms:source "AdaWorldAPI/WoA/models.py:Customer.fahrt_kosten";
+.
+
+ogit.WorkOrder:notizen
+    a rdfs:Property;
+    rdfs:label "notizen";
+    dcterms:description "Free-text customer notes (Notizen). Internal-only; not printed on customer-facing documents. Distinct from Order.notizen which is per-order.";
+    dcterms:source "AdaWorldAPI/WoA/models.py:Customer.notizen";
+.
+
+ogit.WorkOrder:aktiv
+    a rdfs:Property;
+    rdfs:label "aktiv";
+    dcterms:description "Active flag (aktiv). Boolean; false marks the customer as archived. The Python views filter on aktiv = true for the default customer list.";
+    dcterms:source "AdaWorldAPI/WoA/models.py:Customer.aktiv";
+.
+
+ogit.WorkOrder:createdAt
+    a rdfs:Property;
+    rdfs:label "createdAt";
+    dcterms:description "Customer row creation timestamp. ISO-8601, set on first insert. Mirrors the global ogit:created-at semantically; declared workspace-scoped to keep the projection consistent across WoA entities.";
+    dcterms:source "AdaWorldAPI/WoA/models.py:Customer.created_at";
 .

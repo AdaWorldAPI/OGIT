@@ -1,0 +1,124 @@
+@prefix ogit:               <http://www.purl.org/ogit/> .
+@prefix ogit.Healthcare:    <http://www.purl.org/ogit/Healthcare/> .
+@prefix owl:                <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:            <http://purl.org/dc/terms/> .
+@prefix xsd:                <http://www.w3.org/2001/XMLSchema#> .
+
+ogit.Healthcare:Medication
+	a rdfs:Class;
+	rdfs:subClassOf ogit:Entity;
+	rdfs:label "Medication";
+	dcterms:description "A prescribed / dispensed medication for a patient. Carries product id, dose, interval, daily dose, dose unit, stop reason, start/stop dates. Source-of-truth: pat_medication (25 cols).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:pat_medication";
+	dcterms:creator "claude-ogit-bootstrap";
+	ogit:scope "NTO";
+	ogit:parent ogit:Node;
+	ogit:mandatory-attributes (
+		ogit:id
+	);
+	ogit:optional-attributes (
+		ogit.Healthcare:filePraepId
+		ogit.Healthcare:fileMedicineName
+		ogit.Healthcare:fileMedicineDose
+		ogit.Healthcare:fileMedicineTyp
+		ogit.Healthcare:fileStart
+		ogit.Healthcare:fileStop
+		ogit.Healthcare:fileNotice
+		ogit.Healthcare:medicationInterval
+		ogit.Healthcare:medicationDailyDose
+		ogit.Healthcare:medicationStopReason
+		ogit.Healthcare:medicationDoseUnit
+		ogit.Healthcare:dbSourceDb
+	);
+	ogit:indexed-attributes (
+		ogit.Healthcare:filePraepId
+		ogit.Healthcare:fileMedicineName
+		ogit.Healthcare:fileStart
+	);
+	ogit:allowed (
+			[ ogit:belongs  ogit.Healthcare:Patient ]
+			[ ogit:relates  ogit.Healthcare:combo_medication_typ ]
+			[ ogit:relates  ogit.Healthcare:combo_medication_interval ]
+			[ ogit:relates  ogit.Healthcare:combo_medication_dailydose ]
+			[ ogit:relates  ogit.Healthcare:combo_medication_dose_unit ]
+			[ ogit:relates  ogit.Healthcare:combo_medication_stop_reason ]
+	);
+.
+
+ogit.Healthcare:filePraepId
+	a ogit:Property;
+	rdfs:label "filePraepId";
+	dcterms:description "Drug-product identifier in the medicines master (pat_medication.file_praepid).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:pat_medication.file_praepid";
+	ogit:type "xsd:string" .
+
+ogit.Healthcare:fileMedicineName
+	a ogit:Property;
+	rdfs:label "fileMedicineName";
+	dcterms:description "Trade / display name of the medicine (pat_medication.file_medicine_name).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:pat_medication.file_medicine_name";
+	ogit:type "xsd:string" .
+
+ogit.Healthcare:fileMedicineDose
+	a ogit:Property;
+	rdfs:label "fileMedicineDose";
+	dcterms:description "Numeric per-administration dose (pat_medication.file_medicine_dose).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:pat_medication.file_medicine_dose";
+	ogit:type "xsd:float" .
+
+ogit.Healthcare:fileMedicineTyp
+	a ogit:Property;
+	rdfs:label "fileMedicineTyp";
+	dcterms:description "Medicine type FK -> combo_medication_typ.id (pat_medication.file_medicine_typ).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:pat_medication.file_medicine_typ";
+	ogit:type "xsd:integer" .
+
+ogit.Healthcare:fileStart
+	a ogit:Property;
+	rdfs:label "fileStart";
+	dcterms:description "Treatment start date (pat_medication.file_start).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:pat_medication.file_start";
+	ogit:type "xsd:dateTime" .
+
+ogit.Healthcare:fileStop
+	a ogit:Property;
+	rdfs:label "fileStop";
+	dcterms:description "Treatment stop date (pat_medication.file_stop).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:pat_medication.file_stop";
+	ogit:type "xsd:dateTime" .
+
+ogit.Healthcare:fileNotice
+	a ogit:Property;
+	rdfs:label "fileNotice";
+	dcterms:description "Free-text notice attached to the prescription (pat_medication.file_notice).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:pat_medication.file_notice";
+	ogit:type "xsd:string" .
+
+ogit.Healthcare:medicationInterval
+	a ogit:Property;
+	rdfs:label "medicationInterval";
+	dcterms:description "Interval-of-administration FK -> combo_medication_interval.id (pat_medication.pf_medication_interval).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:pat_medication.pf_medication_interval";
+	ogit:type "xsd:integer" .
+
+ogit.Healthcare:medicationDailyDose
+	a ogit:Property;
+	rdfs:label "medicationDailyDose";
+	dcterms:description "Daily-dose FK -> combo_medication_dailydose.id (pat_medication.pf_medication_dailydose).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:pat_medication.pf_medication_dailydose";
+	ogit:type "xsd:integer" .
+
+ogit.Healthcare:medicationStopReason
+	a ogit:Property;
+	rdfs:label "medicationStopReason";
+	dcterms:description "Stop-reason FK -> combo_medication_stop_reason.id (pat_medication.pf_medication_stop_reason).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:pat_medication.pf_medication_stop_reason";
+	ogit:type "xsd:integer" .
+
+ogit.Healthcare:medicationDoseUnit
+	a ogit:Property;
+	rdfs:label "medicationDoseUnit";
+	dcterms:description "Dose-unit FK -> combo_medication_dose_unit.id (pat_medication.pf_medication_dose_unit).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:pat_medication.pf_medication_dose_unit";
+	ogit:type "xsd:integer" .

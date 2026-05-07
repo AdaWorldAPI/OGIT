@@ -1,0 +1,57 @@
+@prefix ogit:               <http://www.purl.org/ogit/> .
+@prefix ogit.Healthcare:    <http://www.purl.org/ogit/Healthcare/> .
+@prefix owl:                <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:            <http://purl.org/dc/terms/> .
+@prefix xsd:                <http://www.w3.org/2001/XMLSchema#> .
+
+ogit.Healthcare:Treatment
+	a rdfs:Class;
+	rdfs:subClassOf ogit:Entity;
+	rdfs:label "Treatment";
+	dcterms:description "A therapy / treatment record attached to a patient. Free-text-driven (keyword + Text), provenance-aware (db_sourcedb). Source-of-truth: pf_therapy (16 cols).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:pf_therapy";
+	dcterms:creator "claude-ogit-bootstrap";
+	ogit:scope "NTO";
+	ogit:parent ogit:Node;
+	ogit:mandatory-attributes (
+		ogit:id
+	);
+	ogit:optional-attributes (
+		ogit.Healthcare:fileKeyword
+		ogit.Healthcare:fileText
+		ogit.Healthcare:createDate
+		ogit.Healthcare:fileDate
+		ogit.Healthcare:dbSpezId
+		ogit.Healthcare:dbSourceDb
+		ogit.Healthcare:dbSourceId
+	);
+	ogit:indexed-attributes (
+		ogit.Healthcare:fileKeyword
+		ogit.Healthcare:createDate
+	);
+	ogit:allowed (
+			[ ogit:belongs  ogit.Healthcare:Patient ]
+	);
+.
+
+ogit.Healthcare:fileKeyword
+	a ogit:Property;
+	rdfs:label "fileKeyword";
+	dcterms:description "Therapy keyword / short label (pf_therapy.file_keyword).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:pf_therapy.file_keyword";
+	ogit:type "xsd:string" .
+
+ogit.Healthcare:dbSourceDb
+	a ogit:Property;
+	rdfs:label "dbSourceDb";
+	dcterms:description "Provenance: name of the source database the row was imported from (pf_therapy.db_sourcedb).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:pf_therapy.db_sourcedb";
+	ogit:type "xsd:string" .
+
+ogit.Healthcare:dbSourceId
+	a ogit:Property;
+	rdfs:label "dbSourceId";
+	dcterms:description "Provenance: row id in the source database (pf_therapy.db_sourceid).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:pf_therapy.db_sourceid";
+	ogit:type "xsd:integer" .

@@ -24,6 +24,20 @@ ogit.WorkOrder:Order
         ogit.WorkOrder:mwstBetrag
         ogit.WorkOrder:bruttoSumme
         ogit.WorkOrder:bezahlt
+        ogit.WorkOrder:zeitStart
+        ogit.WorkOrder:zeitEnde
+        ogit.WorkOrder:anfahrten
+        ogit.WorkOrder:mitarbeiter
+        ogit.WorkOrder:pauseStunden
+        ogit.WorkOrder:zusatzStunden
+        ogit.WorkOrder:notizen
+        ogit.WorkOrder:internNotizen
+        ogit.WorkOrder:bezahltAm
+        ogit.WorkOrder:mahnstufe
+        ogit.WorkOrder:letzteMahnung
+        ogit.WorkOrder:unterschrift
+        ogit.WorkOrder:createdAt
+        ogit.WorkOrder:updatedAt
     );
     ogit:indexed-attributes (
         ogit:id
@@ -94,4 +108,102 @@ ogit.WorkOrder:bezahlt
     rdfs:label "bezahlt";
     dcterms:description "Payment-received flag. Boolean; true once the order has been settled by the customer.";
     dcterms:source "AdaWorldAPI/WoA/models.py:WorkOrder.bezahlt";
+.
+
+ogit.WorkOrder:zeitStart
+    a rdfs:Property;
+    rdfs:label "zeitStart";
+    dcterms:description "Engagement start (Zeit Start). Begin of the on-site / labour window for this Order; ISO-8601 timestamp.";
+    dcterms:source "AdaWorldAPI/WoA/models.py:WorkOrder.zeit_start";
+.
+
+ogit.WorkOrder:zeitEnde
+    a rdfs:Property;
+    rdfs:label "zeitEnde";
+    dcterms:description "Engagement end (Zeit Ende). End of the on-site / labour window for this Order; ISO-8601 timestamp.";
+    dcterms:source "AdaWorldAPI/WoA/models.py:WorkOrder.zeit_ende";
+.
+
+ogit.WorkOrder:anfahrten
+    a rdfs:Property;
+    rdfs:label "anfahrten";
+    dcterms:description "Number of approach trips (Anfahrten) charged to the Order. Integer count used by the trip-cost derivation against Customer.fahrtKm / fahrtKosten.";
+    dcterms:source "AdaWorldAPI/WoA/models.py:WorkOrder.anfahrten";
+.
+
+ogit.WorkOrder:mitarbeiter
+    a rdfs:Property;
+    rdfs:label "mitarbeiter";
+    dcterms:description "Crew on site (Mitarbeiter). Free-form short label or comma-separated names; the Python source keeps it as a string column rather than a User-relation join because crew composition is often informal.";
+    dcterms:source "AdaWorldAPI/WoA/models.py:WorkOrder.mitarbeiter";
+.
+
+ogit.WorkOrder:pauseStunden
+    a rdfs:Property;
+    rdfs:label "pauseStunden";
+    dcterms:description "Break time in hours (Pause). Subtracted from (zeitEnde - zeitStart) when the labour total is computed.";
+    dcterms:source "AdaWorldAPI/WoA/models.py:WorkOrder.pause_h";
+.
+
+ogit.WorkOrder:zusatzStunden
+    a rdfs:Property;
+    rdfs:label "zusatzStunden";
+    dcterms:description "Extra hours (Zusatzstunden) added on top of the (zeitEnde - zeitStart - pauseStunden) computation. Used for after-hours work or punch-list additions.";
+    dcterms:source "AdaWorldAPI/WoA/models.py:WorkOrder.zusatz_h";
+.
+
+ogit.WorkOrder:notizen
+    a rdfs:Property;
+    rdfs:label "notizen";
+    dcterms:description "Customer-facing notes (Notizen). Free-text block printed on the document below the position list.";
+    dcterms:source "AdaWorldAPI/WoA/models.py:WorkOrder.notizen";
+.
+
+ogit.WorkOrder:internNotizen
+    a rdfs:Property;
+    rdfs:label "internNotizen";
+    dcterms:description "Internal notes (interne Notizen). Free-text block visible only to staff; never printed on the customer-facing document.";
+    dcterms:source "AdaWorldAPI/WoA/models.py:WorkOrder.intern_notizen";
+.
+
+ogit.WorkOrder:bezahltAm
+    a rdfs:Property;
+    rdfs:label "bezahltAm";
+    dcterms:description "Payment date (bezahlt am). ISO-8601 date set when the bezahlt flag is flipped from false to true. Drives the close-of-books reconciliation.";
+    dcterms:source "AdaWorldAPI/WoA/models.py:WorkOrder.bezahlt_am";
+.
+
+ogit.WorkOrder:mahnstufe
+    a rdfs:Property;
+    rdfs:label "mahnstufe";
+    dcterms:description "Dunning level (Mahnstufe). Integer 0-3: 0 = nothing sent, 1-3 = three escalation tiers per the Mahnwesen workflow.";
+    dcterms:source "AdaWorldAPI/WoA/models.py:WorkOrder.mahnstufe";
+.
+
+ogit.WorkOrder:letzteMahnung
+    a rdfs:Property;
+    rdfs:label "letzteMahnung";
+    dcterms:description "Date of the most recent dunning notice (letzte Mahnung). ISO-8601 date, advanced when mahnstufe is incremented.";
+    dcterms:source "AdaWorldAPI/WoA/models.py:WorkOrder.letzte_mahnung";
+.
+
+ogit.WorkOrder:unterschrift
+    a rdfs:Property;
+    rdfs:label "unterschrift";
+    dcterms:description "Customer signature blob (Unterschrift). Base64-encoded bitmap captured at on-site checkout; not printed in PDF rendering by default.";
+    dcterms:source "AdaWorldAPI/WoA/models.py:WorkOrder.unterschrift";
+.
+
+ogit.WorkOrder:createdAt
+    a rdfs:Property;
+    rdfs:label "createdAt";
+    dcterms:description "Order row creation timestamp. ISO-8601, set on first insert. Distinct from datum (the document's effective date).";
+    dcterms:source "AdaWorldAPI/WoA/models.py:WorkOrder.created_at";
+.
+
+ogit.WorkOrder:updatedAt
+    a rdfs:Property;
+    rdfs:label "updatedAt";
+    dcterms:description "Order row last-modified timestamp. ISO-8601, advanced on every UPDATE. Distinct from datum and bezahltAm.";
+    dcterms:source "AdaWorldAPI/WoA/models.py:WorkOrder.updated_at";
 .
