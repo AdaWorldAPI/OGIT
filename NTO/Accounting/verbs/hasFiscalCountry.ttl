@@ -1,0 +1,14 @@
+@prefix ogit.Accounting:  <http://www.purl.org/ogit/Accounting/> .
+@prefix ogit:             <http://www.purl.org/ogit/> .
+@prefix owl:              <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:             <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:          <http://purl.org/dc/terms/> .
+
+ogit.Accounting:hasFiscalCountry
+	a owl:ObjectProperty;
+	rdfs:subPropertyOf ogit:Verb;
+	rdfs:label "hasFiscalCountry";
+	dcterms:description "Direct edge from a fiscal entity (JournalEntry, CompanyEntity, FinancialInstrument, Tax) to its fiscal jurisdiction (FiscalJurisdiction codebook entry / FinancialMarket:Country). Collapses the Odoo 2-hop chain `entity.company_id.account_fiscal_country_id` and the 3-hop variant `entity.company_id.account_fiscal_country_id.code` into one typed edge in the EdgeColumn. Targets: ogit.Accounting:FiscalJurisdiction (preferred) or ogit.FinancialMarket:Country.";
+	dcterms:valid "start=2026-05-28;";
+	dcterms:creator "Claude (AdaWorldAPI/lance-graph 3-hop optim)";
+.

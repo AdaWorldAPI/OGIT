@@ -1,0 +1,14 @@
+@prefix ogit.Accounting:  <http://www.purl.org/ogit/Accounting/> .
+@prefix ogit:             <http://www.purl.org/ogit/> .
+@prefix owl:              <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:             <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:          <http://purl.org/dc/terms/> .
+
+ogit.Accounting:commercialPartnerCountryCode
+	a owl:DatatypeProperty;
+	rdfs:subPropertyOf ogit:Attribute;
+	rdfs:label "commercialPartnerCountryCode";
+	dcterms:description "ISO 3166-1 alpha-2 code of the commercial partner's country. Denormalised root-level promotion of the Odoo 3-hop chain `partner_id.commercial_partner_id.country_id.code` (or `move_id.commercial_partner_id.country_id`). Load-bearing for sanctions cross-reference (OFAC/EU/UN list jurisdiction match), VAT reverse-charge determination, and Peppol/UBL e-invoice routing. Maintained via ComputeRecompute cascade on the parent partner-chain.";
+	dcterms:valid "start=2026-05-28;";
+	dcterms:creator "Claude (AdaWorldAPI/lance-graph 3-hop optim)";
+.
