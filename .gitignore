@@ -1,20 +1,6 @@
-# Ignoring the following types
-.DS_Store
-# for Emacs
-*~
-# for Vim
-*.swp
-# Generated documentation
-docs/doxy.java
-docs/html/
-docs/latex/
-docs/man/
-docs/rtf/
-docs/searchdata.xml
-docs/xml/
-tmp/
-docs/*.txtdoc
-!docs/overview.txtdoc
-!docs/issue_processing.txtdoc
-# misc
-.idea
+# OGIT repo .gitignore
+# Existing entries (preserve manually; this file is regenerated on update)
+
+# Rust build artefacts (added by Cargo.toml + build.rs)
+/target
+Cargo.lock

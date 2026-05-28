@@ -1,0 +1,33 @@
+[package]
+name = "ogit"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.70"
+license = "Apache-2.0"
+description = "Open Graph Intelligence Toolkit — ontology TTL files as embedded const data for Rust consumers"
+repository = "https://github.com/AdaWorldAPI/OGIT"
+readme = "README.md"
+keywords = ["ontology", "semantic", "turtle", "rdf", "graph"]
+categories = ["data-structures", "science"]
+build = "build.rs"
+# Exclude non-Rust artefacts from the published crate but keep them at the
+# repo root for non-Rust consumers (Java/Python tooling, doxygen docs, etc.).
+exclude = [
+    "docs/",
+    "pdf/",
+    "bin/",
+    "*.sh",
+    ".project",
+    ".travis.yml",
+    "LEARN_MORE.md",
+    "CONTRIBUTING.md",
+]
+
+[lib]
+path = "src/lib.rs"
+
+[dependencies]
+# No runtime deps — TTLs are embedded via include_str! at build time.
+
+[build-dependencies]
+# No build deps — build.rs uses only std for directory traversal.
