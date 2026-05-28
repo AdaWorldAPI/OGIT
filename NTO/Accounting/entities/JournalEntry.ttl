@@ -1,0 +1,42 @@
+@prefix ogit.Accounting:  <http://www.purl.org/ogit/Accounting/> .
+@prefix ogit.FinancialMarket: <http://www.purl.org/ogit/FinancialMarket/> .
+@prefix ogit:             <http://www.purl.org/ogit/> .
+@prefix rdfs:             <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:          <http://purl.org/dc/terms/> .
+
+ogit.Accounting:JournalEntry
+	a rdfs:Class;
+	rdfs:subClassOf ogit:Entity;
+	rdfs:label "JournalEntry";
+	dcterms:description "A double-entry accounting journal entry — the canonical OGIT projection of Odoo `account.move` (and the deeply analogous SAP `BSEG` document line, MS Dynamics `JournalLine`, DATEV `Buchung`). Demonstrates the 3-hop optimisation doctrine: instead of the lookups `entity.company_id.account_fiscal_country_id.code` (5+ Odoo sites) and `move.commercial_partner_id.country_id`, the leaf attributes are promoted onto JournalEntry directly (`fiscalCountryCode`, `commercialPartnerCountryCode`) and the intermediate hops are also accessible via the shortcut verb `hasFiscalCountry` for graph traversal. Both routes are kept — promoted attribute for hot-path reads, edge verb for cascade traversal — and the EdgeColumn ComputeRecompute cascade keeps them coherent.";
+	dcterms:valid "start=2026-05-28;";
+	dcterms:creator "Claude (AdaWorldAPI/lance-graph 3-hop optim)";
+	ogit:scope "NTO";
+	ogit:parent ogit:Node;
+	ogit:mandatory-attributes (
+		ogit:id
+		ogit:currency
+		ogit:status
+	);
+	ogit:optional-attributes (
+		ogit:name
+		ogit:type
+		ogit:summary
+		ogit:createdAt
+		ogit:lastUpdatedAt
+		ogit.Accounting:fiscalCountryCode
+		ogit.Accounting:commercialPartnerCountryCode
+	);
+	ogit:indexed-attributes (
+		ogit:id
+		ogit:status
+		ogit.Accounting:fiscalCountryCode
+		ogit.Accounting:commercialPartnerCountryCode
+	);
+	ogit:allowed (
+		[ ogit.Accounting:hasFiscalCountry ogit.Accounting:FiscalJurisdiction ]
+		[ ogit:references ogit.FinancialMarket:Country ]
+		[ ogit:reports ogit:Timeseries ]
+		[ ogit:generates ogit:Timeseries ]
+	);
+.

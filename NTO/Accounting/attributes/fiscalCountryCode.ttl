@@ -1,0 +1,14 @@
+@prefix ogit.Accounting:  <http://www.purl.org/ogit/Accounting/> .
+@prefix ogit:             <http://www.purl.org/ogit/> .
+@prefix owl:              <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:             <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:          <http://purl.org/dc/terms/> .
+
+ogit.Accounting:fiscalCountryCode
+	a owl:DatatypeProperty;
+	rdfs:subPropertyOf ogit:Attribute;
+	rdfs:label "fiscalCountryCode";
+	dcterms:description "ISO 3166-1 alpha-2 code of the fiscal country of this entity's company. Denormalised root-level promotion of the Odoo 3-hop chain `company_id.account_fiscal_country_id.code` (5 occurrences across TIER-1 addons per lance-graph EXT-1..6). Collapses VAT calc / sanctions cross-reference / jurisdiction routing reads from O(3) Many2one traversal to O(1) codebook lookup. Recomputed via ComputeRecompute cascade when the entity's company or that company's fiscal country changes.";
+	dcterms:valid "start=2026-05-28;";
+	dcterms:creator "Claude (AdaWorldAPI/lance-graph 3-hop optim)";
+.

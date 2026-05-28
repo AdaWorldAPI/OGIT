@@ -1,0 +1,14 @@
+@prefix ogit.Accounting:  <http://www.purl.org/ogit/Accounting/> .
+@prefix ogit:             <http://www.purl.org/ogit/> .
+@prefix owl:              <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:             <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:          <http://purl.org/dc/terms/> .
+
+ogit.Accounting:productCategoryComplete
+	a owl:DatatypeProperty;
+	rdfs:subPropertyOf ogit:Attribute;
+	rdfs:label "productCategoryComplete";
+	dcterms:description "Slash-separated full category path of a product (e.g. `All / Saleable / Goods`). Denormalised root-level promotion of the Odoo 3-hop chain `product_id.product_tmpl_id.categ_id.complete_name` (and the 2-hop variant `product_id.categ_id.complete_name`). Hot path for tax-category routing, MwSt-Satz selection (SKR03/SKR04 mapping), and inventory cost-method dispatch. Recomputed on product template or category change.";
+	dcterms:valid "start=2026-05-28;";
+	dcterms:creator "Claude (AdaWorldAPI/lance-graph 3-hop optim)";
+.

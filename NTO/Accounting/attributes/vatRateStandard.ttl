@@ -1,0 +1,14 @@
+@prefix ogit.Accounting:  <http://www.purl.org/ogit/Accounting/> .
+@prefix ogit:             <http://www.purl.org/ogit/> .
+@prefix owl:              <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:             <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:          <http://purl.org/dc/terms/> .
+
+ogit.Accounting:vatRateStandard
+	a owl:DatatypeProperty;
+	rdfs:subPropertyOf ogit:Attribute;
+	rdfs:label "vatRateStandard";
+	dcterms:description "Standard VAT / Mehrwertsteuer rate of this fiscal jurisdiction, expressed as a decimal fraction (e.g. `0.19` for the German 19% Regelsteuersatz). Codebook attribute on FiscalJurisdiction. Reduced rates and special exemptions are not modelled here — use the per-jurisdiction Tax entity for those.";
+	dcterms:valid "start=2026-05-28;";
+	dcterms:creator "Claude (AdaWorldAPI/lance-graph 3-hop optim)";
+.
