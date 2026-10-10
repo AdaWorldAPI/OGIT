@@ -28,6 +28,7 @@ ogit:Timeseries
 		ogit:instance
 		ogit:isMutable
 		ogit:isPermanent
+		ogit:tenantId
 	);
 	ogit:indexed-attributes (
 		ogit:name

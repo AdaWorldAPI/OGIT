@@ -31,11 +31,14 @@ ogit.Legal:LegalNorm
 		ogit:url
 		ogit:startedAt
 		ogit:endedAt
+		ogit:type
+		ogit:subType
 		ogit:sharedWith
 		ogit:cleanContent
 		ogit:url
 	);
 	ogit:indexed-attributes (
+		ogit:name
 	);
 	ogit:allowed (
 		[ ogit:contains  ogit.Legal:LegalClause ]

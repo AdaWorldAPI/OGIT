@@ -4,6 +4,8 @@
 @prefix ogit:    	<http://www.purl.org/ogit/> .
 @prefix ogit.Legal: <http://www.purl.org/ogit/Legal/> .
 @prefix ogit.Forms: <http://www.purl.org/ogit/Forms/> .
+@prefix ogit.Documents: <http://www.purl.org/ogit/Documents/> .
+@prefix ogit.ServiceManagement: <http://www.purl.org/ogit/ServiceManagement/> .
 
 ogit.Forms:Form
 	a rdfs:Class;
@@ -29,8 +31,14 @@ ogit.Forms:Form
 		ogit:type
 		ogit:tenantId
 		ogit:favorite
+		ogit:email
+		ogit:followers
+		ogit:url
 	);
 	ogit:indexed-attributes (
+		ogit:name
+		ogit:id
+		ogit:description
 	);
 	ogit:allowed (
 		[ ogit:references  ogit.Forms:Form ]
@@ -39,6 +47,13 @@ ogit.Forms:Form
 		[ ogit:contains  ogit.Forms:FormField ]
 		[ ogit:complies  ogit.Legal:LegalClause ]
 		[ ogit:complies  ogit.Legal:LegalNorm ]
+		[ ogit:complies  ogit.Legal:LegalSection ]
+		[ ogit:complies  ogit.Legal:LegalIndentation ]
 		[ ogit:has       ogit:Attachment ]
+		[ ogit:precedes  ogit.Forms:Form]
+		[ ogit:generatedFrom  ogit.Documents:Document ]
+		[ ogit:generatedFrom  ogit.Forms:Form ]
+		[ ogit:generatedFrom  ogit.Legal:LegalClause ]
+		[ ogit:generatedFrom  ogit.ServiceManagement:Service ]
 	);
 .

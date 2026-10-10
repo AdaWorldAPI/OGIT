@@ -49,6 +49,7 @@ stored directly in the graph itself or be referenced by an external url link."""
 		ogit:tenantId
 	);
 	ogit:indexed-attributes (
+		ogit:name
 
 	);
 	ogit:allowed (

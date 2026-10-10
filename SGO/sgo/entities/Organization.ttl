@@ -16,7 +16,6 @@
 @prefix ogit.ServiceManagement: <http://www.purl.org/ogit/ServiceManagement/> .
 @prefix ogit.CustomerSupport:   <http://www.purl.org/ogit/CustomerSupport/> .
 @prefix ogit.Survey:            <http://www.purl.org/ogit/Survey/> .
-@prefix ogit.Project:           <http://www.purl.org/ogit/Project/> .
 @prefix ogit.Factory:   		<http://www.purl.org/ogit/Factory/> .
 @prefix ogit.MRO.Aviation:      <http://www.purl.org/ogit/MRO/Aviation/> .
 @prefix ogit.FinancialMarket:   <http://www.purl.org/ogit/FinancialMarket/> .
@@ -35,6 +34,8 @@
 @prefix ogit.ClassificationStandard:              <http://www.purl.org/ogit/ClassificationStandard/> .
 @prefix ogit.Compliance:        <http://www.purl.org/ogit/Compliance/> .
 @prefix ogit.HR.Recruiting:     <http://www.purl.org/ogit/HR/Recruiting/> .
+@prefix ogit.Forms: <http://www.purl.org/ogit/Forms/> .
+@prefix ogit.Project: <http://www.purl.org/ogit/Project/> .
 
 ogit:Organization
 	a rdfs:Class;
@@ -59,6 +60,7 @@ The ogit/function attribute should be used to tell what kind of grouping an enti
 		ogit:function
 		ogit:status
 		ogit:email
+		ogit:fax
 		ogit:streetAddress
 		ogit:city
 		ogit:country
@@ -68,6 +70,7 @@ The ogit/function attribute should be used to tell what kind of grouping an enti
 		ogit:tenantId
 		ogit:sourceId
 		ogit:phone
+		ogit:mobilePhone
 		ogit:alias
 		ogit:externalId
 		ogit:sharedWith
@@ -120,6 +123,7 @@ The ogit/function attribute should be used to tell what kind of grouping an enti
 			[ ogit:provides  ogit:ConfigurationItem ]
 			[ ogit:provides  ogit.Documents:Document ]
 			[ ogit:provides  ogit:Product ]
+			[ ogit:provides  ogit:Course ]
 			[ ogit:supervises  ogit.ServiceManagement:SubTask ]
 			[ ogit:supervises  ogit.ServiceManagement:ChangeRequest ]
 			[ ogit:supervises  ogit.ServiceManagement:Order ]
@@ -167,6 +171,7 @@ The ogit/function attribute should be used to tell what kind of grouping an enti
 			[ ogit:has ogit.Politics:Reaction ]
 			[ ogit:issues ogit.Legal:LegalNorm ]
 			[ ogit:conducts ogit.FinancialMarket:Activity ]
+			[ ogit:has ogit.FinancialMarket:OwnershipRelation ]
 			[ ogit.ClassificationStandard:classifiedUnder ogit.ClassificationStandard:ClassificationStandardTreeBranch ]
 			[ ogit:supports  ogit.ServiceManagement:ServiceMapping ]
 			[ ogit:publishes ogit.Publications:Publication ]
@@ -175,6 +180,8 @@ The ogit/function attribute should be used to tell what kind of grouping an enti
 			[ ogit:locatedIn ogit.Location:Address ]
 			[ ogit:leads ogit.Religion:BeliefSystem ]
 			[ ogit:follows ogit.Religion:BeliefSystem ]
+			[ ogit:provides ogit.Forms:Form]
+			[ ogit:contributes ogit.Project:Project ]
 
 			# --- OSINT Security Extension additions (2026-05-02) ---
 			# Reuse existing verbs (extending allowed-target lists)

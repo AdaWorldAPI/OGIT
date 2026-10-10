@@ -1,0 +1,31 @@
+@prefix ogit:                   <http://www.purl.org/ogit/> .
+@prefix rdfs:                   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:                <http://purl.org/dc/terms/> .
+@prefix ogit.ServiceManagement: <http://www.purl.org/ogit/ServiceManagement/> .
+@prefix ogit.Forms: 				<http://www.purl.org/ogit/Forms/> .
+
+ogit:Hyperedge
+	a rdfs:Class;
+	rdfs:subClassOf ogit:Entity;
+	rdfs:label "Hyperedge";
+	dcterms:description """General entity to enable n-ary connections, applicable to all n-ary cases. It is used to connect one, two, three or arbitrarily many vertices at once. The entity may be left empty or carry free attributes referencing the connected entities by their ogit/_id.""";
+	# For ranges, see https://www.dublincore.org/specifications/dublin-core/dcmi-period/
+	dcterms:valid "start=2026-08-10;";
+	dcterms:creator "Daniel Brommer";
+	ogit:scope "SGO";
+	ogit:parent ogit:Node;
+	ogit:any-attributes "true";
+	ogit:mandatory-attributes (
+	);
+	ogit:optional-attributes (
+        ogit:type
+	);
+	ogit:indexed-attributes (
+		
+	);
+	ogit:allowed (
+        [ ogit:connects  ogit.ServiceManagement:Service ]
+        [ ogit:connects  ogit.Forms:Form ]
+        [ ogit:connects  ogit:Organization ]
+	);
+.

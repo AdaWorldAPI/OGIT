@@ -1,0 +1,14 @@
+@prefix ogit:                   <http://www.purl.org/ogit/> .
+@prefix owl:                    <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:                   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:                <http://purl.org/dc/terms/> .
+
+ogit:synonyms
+    a owl:DatatypeProperty ;
+    rdfs:subPropertyOf ogit:Attribute ;
+    rdfs:label "synonyms" ;
+    dcterms:description """A comma-separated list of words or phrases that have the same or nearly the same meaning as the entity's name.""";
+	# For ranges, see https://www.dublincore.org/specifications/dublin-core/dcmi-period/
+	dcterms:valid "start=2026-07-31;";
+	dcterms:creator "Daniel Brommer";
+.

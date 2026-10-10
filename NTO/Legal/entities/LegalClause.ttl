@@ -29,14 +29,19 @@ ogit.Legal:LegalClause
 		ogit:lastUpdatedAt
 		ogit:startedAt
 		ogit:endedAt
+		ogit:type
+		ogit:subType
 		ogit:sharedWith
 		ogit:cleanContent
 		ogit:description
 		ogit:url
 	);
 	ogit:indexed-attributes (
+		ogit:name
+		ogit:content
 	);
 	ogit:allowed (
+			[ ogit:contains ogit.Legal:LegalSection	]
 			[ ogit:references  ogit.Legal:LegalClause ]
 			[ ogit:references  ogit:Attachment ]
 			[ ogit:causes  ogit.ServiceManagement:Service ]
