@@ -27,8 +27,11 @@ ogit.PublicAdministration:Evidence
 		ogit:validTo
 		ogit:reviewedAt
 		ogit:source
+		ogit:id
+		ogit:externalId
 	);
 	ogit:indexed-attributes (
+		ogit:name
 	);
 	ogit:allowed (
 		[ ogit:describes  ogit.PublicAdministration:PublicService ]
@@ -38,6 +41,7 @@ ogit.PublicAdministration:Evidence
 		[ ogit:proves  ogit.PublicAdministration:PublicRequirement ]
 		[ ogit:generatedFrom  ogit.PublicAdministration:TextualInformation ]
 		[ ogit:validFor  ogit:Region ]
+		[ ogit:validFor  ogit:Organization ]
 		[ ogit:validFor  ogit.PublicAdministration:CharacteristicValue ]
 	);
 .
