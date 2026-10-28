@@ -62,9 +62,18 @@ class ImportCheck(unittest.TestCase):
         _, codes = run({"T/entities/C.ttl": HEAD + "ogit.T:C a rdfs:Class ; rdfs:subClassOf ogit:Entity ; ogit:allowed ( [ ogit.T:links ogit.X:Y ] ) .\n"})
         self.assertIn("C01", codes)
 
-    def test_c02_class_shaped_verb(self):
+    def test_c02_class_shaped_verb_without_from_to(self):
         _, codes = run({"T/verbs/links.ttl": HEAD + "ogit.T:links a rdfs:Class ; rdfs:subClassOf ogit:Verb .\n"})
         self.assertEqual(codes, ["C02"])
+
+    def test_c02_property_verb_must_be_an_object_property(self):
+        _, codes = run({"T/verbs/links.ttl": HEAD + "ogit.T:links a rdfs:Property ; rdfs:subPropertyOf ogit:Verb .\n"})
+        self.assertEqual(codes, ["C02"])
+
+    def test_class_verb_with_from_to_is_supported(self):
+        verb = HEAD + "ogit.T:links a rdfs:Class ; rdfs:subClassOf ogit:Verb ; ogit:from-to ( [ ogit:from ogit.T:A ; ogit:to ogit.T:B ] ) .\n"
+        _, codes = run({"T/verbs/links.ttl": verb})
+        self.assertEqual(codes, [])
 
     def test_c03_file_name_case(self):
         _, codes = run({"T/verbs/links.ttl": None,
@@ -94,7 +103,7 @@ class ImportCheck(unittest.TestCase):
     def test_from_to_edges_are_collected_and_checked(self):
         verb = HEAD + "ogit.T:has a rdfs:Class ; rdfs:subClassOf ogit:Verb ; ogit:from-to ( [ ogit:from ogit.T:A ; ogit:to ogit.T:Z ] ) .\n"
         model, codes = run({"T/verbs/has.ttl": verb})
-        self.assertEqual(codes, ["C02", "C05"])
+        self.assertEqual(codes, ["C05"])
         self.assertEqual(sum(1 for e in model["edges"] if e[5] == "from-to"), 1)
 
     def test_parse_error_is_reported_not_raised(self):

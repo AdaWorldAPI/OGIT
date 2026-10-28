@@ -19,7 +19,9 @@ the arguments were wrong. `--warn CODE` reports a check without failing.
 
 Checks:
   C01  a prefixed name uses a prefix the file does not declare
-  C02  a verb is not `owl:ObjectProperty` + `rdfs:subPropertyOf ogit:Verb`
+  C02  a verb has neither supported shape: `owl:ObjectProperty` +
+       `rdfs:subPropertyOf ogit:Verb`, or `rdfs:Class` + `rdfs:subClassOf
+       ogit:Verb` with an `ogit:from-to` list (the verb-as-class form)
   C03  the file name differs from the local name of the term it declares
   C04  an `ogit:allowed` or `ogit:from-to` verb is not declared anywhere
   C05  an `ogit:allowed` or `ogit:from-to` target is not a declared entity
@@ -363,9 +365,9 @@ def run(root, files):
             stem = os.path.splitext(os.path.basename(path))[0]
             if os.path.basename(path) != "ogit.ttl" and local_name(iri) != stem:
                 findings.append(("C03", path, line, f"{c(iri)} is declared in {os.path.basename(path)}"))
-        if iri in cverbs:
+        if iri in cverbs and not any(p.get(FROM_TO) for _, p, _ in ds):
             findings.append(("C02", ds[0][0], ds[0][2],
-                             f"{c(iri)} is an rdfs:Class under ogit:Verb, not an owl:ObjectProperty"))
+                             f"{c(iri)} is an rdfs:Class under ogit:Verb without an ogit:from-to list"))
         elif iri in pverbs and OBJECT_PROPERTY not in types.get(iri, ()):
             findings.append(("C02", ds[0][0], ds[0][2],
                              f"{c(iri)} is a sub-property of ogit:Verb but not an owl:ObjectProperty"))

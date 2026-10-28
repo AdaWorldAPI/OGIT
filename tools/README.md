@@ -20,7 +20,7 @@ python3 -I tools/test_import_check.py
 | code | finding |
 |---|---|
 | C01 | a prefixed name uses a prefix the file does not declare |
-| C02 | a verb is not `owl:ObjectProperty` + `rdfs:subPropertyOf ogit:Verb` |
+| C02 | a verb has neither supported shape: `owl:ObjectProperty` + `rdfs:subPropertyOf ogit:Verb`, or `rdfs:Class` + `rdfs:subClassOf ogit:Verb` with `ogit:from-to` |
 | C03 | the file name differs from the local name of the term it declares |
 | C04 | an `ogit:allowed` or `ogit:from-to` verb is not declared |
 | C05 | an allowed or from-to source/target is not a declared entity |
