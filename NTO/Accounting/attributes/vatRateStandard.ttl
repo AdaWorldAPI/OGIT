@@ -8,7 +8,7 @@ ogit.Accounting:vatRateStandard
 	a owl:DatatypeProperty;
 	rdfs:subPropertyOf ogit:Attribute;
 	rdfs:label "vatRateStandard";
-	dcterms:description "Standard VAT / Mehrwertsteuer rate of this fiscal jurisdiction, expressed as a decimal fraction (e.g. `0.19` for the German 19% Regelsteuersatz). Codebook attribute on FiscalJurisdiction. Reduced rates and special exemptions are not modelled here — use the per-jurisdiction Tax entity for those.";
+	dcterms:description "Standard VAT rate of this fiscal jurisdiction as a decimal fraction (for example `0.19` for 19%). Reduced rates and exemptions are not modelled here; use the jurisdiction's Tax entity for those.";
 	dcterms:valid "start=2026-05-28;";
-	dcterms:creator "Claude (AdaWorldAPI/lance-graph 3-hop optim)";
+	dcterms:creator "Claude (AdaWorldAPI)";
 .

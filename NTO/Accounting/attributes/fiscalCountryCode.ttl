@@ -8,7 +8,7 @@ ogit.Accounting:fiscalCountryCode
 	a owl:DatatypeProperty;
 	rdfs:subPropertyOf ogit:Attribute;
 	rdfs:label "fiscalCountryCode";
-	dcterms:description "ISO 3166-1 alpha-2 code of the fiscal country of this entity's company. Denormalised root-level promotion of the Odoo 3-hop chain `company_id.account_fiscal_country_id.code` (5 occurrences across TIER-1 addons per lance-graph EXT-1..6). Collapses VAT calc / sanctions cross-reference / jurisdiction routing reads from O(3) Many2one traversal to O(1) codebook lookup. Recomputed via ComputeRecompute cascade when the entity's company or that company's fiscal country changes.";
+	dcterms:description "ISO 3166-1 alpha-2 code of the fiscal country of the company that owns this entity. Used for VAT calculation, sanctions checks and jurisdiction routing. Kept on the entity so these checks do not have to follow the company relation; the hasFiscalCountry edge gives the same jurisdiction as a FiscalJurisdiction node.";
 	dcterms:valid "start=2026-05-28;";
-	dcterms:creator "Claude (AdaWorldAPI/lance-graph 3-hop optim)";
+	dcterms:creator "Claude (AdaWorldAPI)";
 .

@@ -1,0 +1,14 @@
+@prefix ogit.Accounting:  <http://www.purl.org/ogit/Accounting/> .
+@prefix ogit:             <http://www.purl.org/ogit/> .
+@prefix owl:              <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:             <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:          <http://purl.org/dc/terms/> .
+
+ogit.Accounting:counterpartyCountryCode
+	a owl:DatatypeProperty;
+	rdfs:subPropertyOf ogit:Attribute;
+	rdfs:label "counterpartyCountryCode";
+	dcterms:description "ISO 3166-1 alpha-2 code of the country of the counterparty (the customer or supplier) of a journal entry. Used to match sanctions-list jurisdictions, to decide VAT reverse charge and to route e-invoices (Peppol/UBL). Kept on the entry so these checks do not have to follow the counterparty relation.";
+	dcterms:valid "start=2026-05-28;";
+	dcterms:creator "Claude (AdaWorldAPI)";
+.

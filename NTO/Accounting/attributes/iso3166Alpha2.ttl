@@ -8,7 +8,7 @@ ogit.Accounting:iso3166Alpha2
 	a owl:DatatypeProperty;
 	rdfs:subPropertyOf ogit:Attribute;
 	rdfs:label "iso3166Alpha2";
-	dcterms:description "Two-letter ISO 3166-1 alpha-2 country code (e.g. `DE`, `AT`, `CH`, `US`). Canonical codebook key for the FiscalJurisdiction entity — used as the indexed attribute that makes country lookups O(1). The two-letter form is the universal join key across Odoo (`res.country.code`), Peppol/UBL (`ram:CountryCode`), SWIFT BIC country segment, and OFAC sanctions list jurisdiction filters.";
+	dcterms:description "Two-letter ISO 3166-1 alpha-2 country code (for example `DE`, `AT`, `CH`, `US`). The indexed key of FiscalJurisdiction: one jurisdiction per code. The same two-letter code is used by Peppol/UBL, by the country segment of a SWIFT BIC and by sanctions-list jurisdiction filters.";
 	dcterms:valid "start=2026-05-28;";
-	dcterms:creator "Claude (AdaWorldAPI/lance-graph 3-hop optim)";
+	dcterms:creator "Claude (AdaWorldAPI)";
 .
