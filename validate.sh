@@ -14,7 +14,7 @@
 # such a run prints two `Count of errors:` summary blocks (e.g. 2943
 # and 312) full of "doesn't exist!" errors against ogit:name,
 # ogit:Node, ogit:generates, ogit:Timeseries, ogit:Location etc. --
-# all of which are correctly defined in SGO/sgo/.
+# all of which are correctly defined in SGO/ogit/.
 #
 # Note: passing the repo root as a directory argument
 # (`java -jar bin/ogit-validator.jar .`) is NOT a usable fix even
