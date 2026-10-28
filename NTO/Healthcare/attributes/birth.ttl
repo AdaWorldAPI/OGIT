@@ -1,0 +1,16 @@
+@prefix ogit.Healthcare:      <http://www.purl.org/ogit/Healthcare/> .
+@prefix ogit:                <http://www.purl.org/ogit/> .
+@prefix owl:                 <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:                <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:             <http://purl.org/dc/terms/> .
+
+ogit.Healthcare:birth
+	a owl:DatatypeProperty;
+	rdfs:subPropertyOf ogit:Attribute;
+	rdfs:label "birth";
+	dcterms:description "Patient date of birth (praxis_patient.p_birth).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:praxis_patient.p_birth";
+	ogit:type "xsd:dateTime";
+	dcterms:valid "start=2026-10-10;";
+	dcterms:creator "claude-ogit-bootstrap";
+.

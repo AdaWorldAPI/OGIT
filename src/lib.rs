@@ -64,7 +64,7 @@ include!(concat!(env!("OUT_DIR"), "/ttls.rs"));
 ///
 /// Note: this is a linear scan (`ALL_TTLS.len()` ~ 1500). For hot paths
 /// the consumer's own build.rs should generate a perfect-hash table.
-pub fn by_branch(branch: &str) -> impl Iterator<Item = &'static OgitTtl> {
+pub fn by_branch(branch: &str) -> impl Iterator<Item = &'static OgitTtl> + '_ {
     ALL_TTLS.iter().filter(move |t| t.branch == branch)
 }
 

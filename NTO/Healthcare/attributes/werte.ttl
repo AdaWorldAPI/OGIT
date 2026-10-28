@@ -1,0 +1,16 @@
+@prefix ogit.Healthcare:      <http://www.purl.org/ogit/Healthcare/> .
+@prefix ogit:                <http://www.purl.org/ogit/> .
+@prefix owl:                 <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:                <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:             <http://purl.org/dc/terms/> .
+
+ogit.Healthcare:werte
+	a owl:DatatypeProperty;
+	rdfs:subPropertyOf ogit:Attribute;
+	rdfs:label "werte";
+	dcterms:description "Numeric measured value (pf_laboratory_values.werte).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:pf_laboratory_values.werte";
+	ogit:type "xsd:float";
+	dcterms:valid "start=2026-10-10;";
+	dcterms:creator "claude-ogit-bootstrap";
+.

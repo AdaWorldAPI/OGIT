@@ -1,0 +1,15 @@
+@prefix ogit.WorkOrder:       <http://www.purl.org/ogit/WorkOrder/> .
+@prefix ogit:                <http://www.purl.org/ogit/> .
+@prefix owl:                 <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:                <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:             <http://purl.org/dc/terms/> .
+
+ogit.WorkOrder:letzteMahnung
+	a owl:DatatypeProperty;
+	rdfs:subPropertyOf ogit:Attribute;
+	rdfs:label "letzteMahnung";
+	dcterms:description "Date of the most recent dunning notice (letzte Mahnung). ISO-8601 date, advanced when mahnstufe is incremented.";
+	dcterms:source "AdaWorldAPI/WoA/models.py:WorkOrder.letzte_mahnung";
+	dcterms:valid "start=2026-10-10;";
+	dcterms:creator "claude-ogit-bootstrap";
+.

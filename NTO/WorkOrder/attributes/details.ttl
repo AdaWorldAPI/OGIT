@@ -1,0 +1,15 @@
+@prefix ogit.WorkOrder:       <http://www.purl.org/ogit/WorkOrder/> .
+@prefix ogit:                <http://www.purl.org/ogit/> .
+@prefix owl:                 <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:                <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:             <http://purl.org/dc/terms/> .
+
+ogit.WorkOrder:details
+	a owl:DatatypeProperty;
+	rdfs:subPropertyOf ogit:Attribute;
+	rdfs:label "details";
+	dcterms:description "Free-text details of a history entry.";
+	dcterms:source "AdaWorldAPI/WoA/models.py:HistoryEntry.details";
+	dcterms:valid "start=2026-10-10;";
+	dcterms:creator "claude-ogit-bootstrap";
+.

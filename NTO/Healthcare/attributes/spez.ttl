@@ -1,0 +1,16 @@
+@prefix ogit.Healthcare:      <http://www.purl.org/ogit/Healthcare/> .
+@prefix ogit:                <http://www.purl.org/ogit/> .
+@prefix owl:                 <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:                <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:             <http://purl.org/dc/terms/> .
+
+ogit.Healthcare:spez
+	a owl:DatatypeProperty;
+	rdfs:subPropertyOf ogit:Attribute;
+	rdfs:label "spez";
+	dcterms:description "Specialty / profile assigned to the patient (praxis_patient.p_spez).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:praxis_patient.p_spez";
+	ogit:type "xsd:string";
+	dcterms:valid "start=2026-10-10;";
+	dcterms:creator "claude-ogit-bootstrap";
+.

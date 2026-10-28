@@ -1,0 +1,20 @@
+@prefix ogit:               <http://www.purl.org/ogit/> .
+@prefix ogit.Healthcare:    <http://www.purl.org/ogit/Healthcare/> .
+@prefix owl:                <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:            <http://purl.org/dc/terms/> .
+@prefix xsd:                <http://www.w3.org/2001/XMLSchema#> .
+
+ogit.Healthcare:MriAssessment
+	a rdfs:Class;
+	rdfs:subClassOf ogit.Healthcare:Assessment;
+	rdfs:label "MriAssessment";
+	dcterms:description "An assessment performed by magnetic-resonance imaging. Same reusable shape as SonographicAssessment — a different modality over the identical anatomy grounding.";
+	dcterms:source "SNOMED-CT:113091000";
+	dcterms:creator "claude-ogit-bootstrap";
+	ogit:scope "NTO";
+	ogit:parent ogit.Healthcare:Assessment;
+	ogit:allowed (
+			[ ogit.Healthcare:assesses  ogit.Healthcare:AnatomicalStructure ]
+	);
+.

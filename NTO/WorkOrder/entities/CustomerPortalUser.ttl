@@ -8,6 +8,7 @@ ogit.WorkOrder:CustomerPortalUser
 	a rdfs:Class;
 	rdfs:subClassOf ogit:Entity;
 	rdfs:label "CustomerPortalUser";
+	dcterms:valid "start=2026-10-10;";
 	dcterms:description "External self-service portal login bound to exactly one Customer. Authenticates via the same werkzeug pbkdf2:sha256 scheme as the internal User (with legacy SHA256+salt fallback and transparent upgrade), but has NO admin/superadmin scope. Used by customers to view their own work orders, invoices, and pay-status. Tracks last-login for audit, and carries an active-flag for soft-disabling and a forced-password-change marker.";
 	dcterms:source "AdaWorldAPI/WoA/models.py:CustomerPortalUser";
 	dcterms:creator "bus-compiler";
@@ -30,13 +31,4 @@ ogit.WorkOrder:CustomerPortalUser
 	ogit:allowed (
 			[ ogit:belongs  ogit.WorkOrder:Customer ]
 	);
-.
-
-# ── attributes ───────────────────────────────────────────────────────────
-
-ogit.WorkOrder:lastLogin
-	a rdfs:Property;
-	rdfs:label "lastLogin";
-	dcterms:description "ISO-8601 UTC timestamp of the most recent successful portal login. Null on accounts that have never signed in.";
-	dcterms:source "AdaWorldAPI/WoA/models.py:CustomerPortalUser.last_login";
 .

@@ -1,0 +1,15 @@
+@prefix ogit.WorkOrder:       <http://www.purl.org/ogit/WorkOrder/> .
+@prefix ogit:                <http://www.purl.org/ogit/> .
+@prefix owl:                 <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:                <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:             <http://purl.org/dc/terms/> .
+
+ogit.WorkOrder:icon
+	a owl:DatatypeProperty;
+	rdfs:subPropertyOf ogit:Attribute;
+	rdfs:label "icon";
+	dcterms:description "Icon glyph name (max 50 chars, default 'key') used by the UI to render the entry visually.";
+	dcterms:source "AdaWorldAPI/WoA/models.py:PasswordEntry.icon";
+	dcterms:valid "start=2026-10-10;";
+	dcterms:creator "claude-ogit-bootstrap";
+.

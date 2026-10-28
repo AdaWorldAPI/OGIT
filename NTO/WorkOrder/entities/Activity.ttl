@@ -8,6 +8,7 @@ ogit.WorkOrder:Activity
 	a rdfs:Class;
 	rdfs:subClassOf ogit:Entity;
 	rdfs:label "Activity";
+	dcterms:valid "start=2026-10-10;";
 	dcterms:description "A logged work activity attached to a WorkOrder. Carries optional device/asset reference (geraet), free-text description, logbook flag (export to driver/work logbook), internal-only flag, and creation timestamp. One Activity per discrete on-site or remote action.";
 	dcterms:source "AdaWorldAPI/WoA/models.py:Activity";
 	dcterms:creator "family-codec-smith";
@@ -21,10 +22,10 @@ ogit.WorkOrder:Activity
 		ogit.WorkOrder:beschreibung
 		ogit.WorkOrder:logbuch
 		ogit.WorkOrder:intern
-		ogit:created-at
+		ogit:createdAt
 	);
 	ogit:indexed-attributes (
-		ogit:created-at
+		ogit:createdAt
 	);
 	ogit:allowed (
 			[ ogit:belongs  ogit.WorkOrder:Order ]

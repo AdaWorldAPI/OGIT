@@ -1,0 +1,20 @@
+@prefix ogit:               <http://www.purl.org/ogit/> .
+@prefix ogit.Healthcare:    <http://www.purl.org/ogit/Healthcare/> .
+@prefix owl:                <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:            <http://purl.org/dc/terms/> .
+@prefix xsd:                <http://www.w3.org/2001/XMLSchema#> .
+
+ogit.Healthcare:HistologicAssessment
+	a rdfs:Class;
+	rdfs:subClassOf ogit.Healthcare:Assessment;
+	rdfs:label "HistologicAssessment";
+	dcterms:description "An assessment performed by histopathological examination of tissue. The third modality sibling; reuses the Assessment root and the anatomy grounding at zero additional shape cost.";
+	dcterms:source "SNOMED-CT:250537006";
+	dcterms:creator "claude-ogit-bootstrap";
+	ogit:scope "NTO";
+	ogit:parent ogit.Healthcare:Assessment;
+	ogit:allowed (
+			[ ogit.Healthcare:assesses  ogit.Healthcare:AnatomicalStructure ]
+	);
+.

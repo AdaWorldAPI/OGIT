@@ -8,7 +8,7 @@ ogit.Accounting:isEuMember
 	a owl:DatatypeProperty;
 	rdfs:subPropertyOf ogit:Attribute;
 	rdfs:label "isEuMember";
-	dcterms:description "Boolean — true iff this fiscal jurisdiction is a current EU member state. Codebook attribute on FiscalJurisdiction. Hot path for VAT reverse-charge eligibility (intra-EU B2B reverse-charge rules), Peppol/UBL e-invoice routing, and MOSS / OSS classification.";
+	dcterms:description "True if this fiscal jurisdiction is a current EU member state. Used to decide intra-EU reverse charge, Peppol/UBL routing and OSS classification.";
 	dcterms:valid "start=2026-05-28;";
-	dcterms:creator "Claude (AdaWorldAPI/lance-graph 3-hop optim)";
+	dcterms:creator "Claude (AdaWorldAPI)";
 .

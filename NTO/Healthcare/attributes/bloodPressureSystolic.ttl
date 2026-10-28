@@ -1,0 +1,16 @@
+@prefix ogit.Healthcare:      <http://www.purl.org/ogit/Healthcare/> .
+@prefix ogit:                <http://www.purl.org/ogit/> .
+@prefix owl:                 <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:                <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:             <http://purl.org/dc/terms/> .
+
+ogit.Healthcare:bloodPressureSystolic
+	a owl:DatatypeProperty;
+	rdfs:subPropertyOf ogit:Attribute;
+	rdfs:label "bloodPressureSystolic";
+	dcterms:description "Systolic blood pressure in mmHg (pf_vital_bloodpressure.sys).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:pf_vital_bloodpressure.sys";
+	ogit:type "xsd:float";
+	dcterms:valid "start=2026-10-10;";
+	dcterms:creator "claude-ogit-bootstrap";
+.

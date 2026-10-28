@@ -8,6 +8,7 @@ ogit.WorkOrder:HistoryEntry
 	a rdfs:Class;
 	rdfs:subClassOf ogit:Entity;
 	rdfs:label "HistoryEntry";
+	dcterms:valid "start=2026-10-10;";
 	dcterms:description "An immutable audit/log row for a WorkOrder. Records an action label (aktion), free-text details, the User who performed the action, and a creation timestamp. Append-only: every state change to an Order should produce one HistoryEntry.";
 	dcterms:source "AdaWorldAPI/WoA/models.py:HistoryEntry";
 	dcterms:creator "family-codec-smith";
@@ -19,10 +20,10 @@ ogit.WorkOrder:HistoryEntry
 	ogit:optional-attributes (
 		ogit.WorkOrder:aktion
 		ogit.WorkOrder:details
-		ogit:created-at
+		ogit:createdAt
 	);
 	ogit:indexed-attributes (
-		ogit:created-at
+		ogit:createdAt
 		ogit.WorkOrder:aktion
 	);
 	ogit:allowed (

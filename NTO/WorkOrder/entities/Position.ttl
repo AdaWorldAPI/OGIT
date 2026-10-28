@@ -8,6 +8,7 @@ ogit.WorkOrder:Position
 	a rdfs:Class;
 	rdfs:subClassOf ogit:Entity;
 	rdfs:label "Position";
+	dcterms:valid "start=2026-10-10;";
 	dcterms:description "A line item (Position) on a WorkOrder/Order document. Represents one billable or descriptive row carrying quantity, unit, unit-price, VAT rate, optional Article reference, and ordering. Used across offer/order/invoice/credit doc types.";
 	dcterms:source "AdaWorldAPI/WoA/models.py:Position";
 	dcterms:creator "family-codec-smith";

@@ -8,6 +8,7 @@ ogit.WorkOrder:Picture
 	a rdfs:Class;
 	rdfs:subClassOf ogit:Entity;
 	rdfs:label "Picture";
+	dcterms:valid "start=2026-10-10;";
 	dcterms:description "An image/document attachment on a WorkOrder. Carries the stored filename (dateiname), an optional caption (beschreibung), a logbook flag (include in driver/work logbook export), an an_kunde flag (visible to / send to customer), and a creation timestamp.";
 	dcterms:source "AdaWorldAPI/WoA/models.py:Picture";
 	dcterms:creator "family-codec-smith";
@@ -21,10 +22,10 @@ ogit.WorkOrder:Picture
 		ogit.WorkOrder:beschreibung
 		ogit.WorkOrder:logbuch
 		ogit.WorkOrder:anKunde
-		ogit:created-at
+		ogit:createdAt
 	);
 	ogit:indexed-attributes (
-		ogit:created-at
+		ogit:createdAt
 	);
 	ogit:allowed (
 			[ ogit:belongs  ogit.WorkOrder:Order ]

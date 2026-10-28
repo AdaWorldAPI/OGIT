@@ -1,0 +1,15 @@
+@prefix ogit.WorkOrder:       <http://www.purl.org/ogit/WorkOrder/> .
+@prefix ogit:                <http://www.purl.org/ogit/> .
+@prefix owl:                 <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:                <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:             <http://purl.org/dc/terms/> .
+
+ogit.WorkOrder:orderId
+	a owl:DatatypeProperty;
+	rdfs:subPropertyOf ogit:Attribute;
+	rdfs:label "orderId";
+	dcterms:description "Public document number. The Python source carries five parallel slots (angebot_nr, auftrags_nr, workorder_nr, rechnung_nr, gutschrift_nr) plus a derived beleg_nr that picks the active one. orderId is the OGIT-side projection of beleg_nr — the human-facing identifier regardless of doc_type.";
+	dcterms:source "AdaWorldAPI/WoA/models.py:WorkOrder.beleg_nr";
+	dcterms:valid "start=2026-10-10;";
+	dcterms:creator "claude-ogit-bootstrap";
+.

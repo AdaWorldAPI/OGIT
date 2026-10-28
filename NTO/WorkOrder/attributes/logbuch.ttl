@@ -1,0 +1,15 @@
+@prefix ogit.WorkOrder:       <http://www.purl.org/ogit/WorkOrder/> .
+@prefix ogit:                <http://www.purl.org/ogit/> .
+@prefix owl:                 <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:                <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:             <http://purl.org/dc/terms/> .
+
+ogit.WorkOrder:logbuch
+	a owl:DatatypeProperty;
+	rdfs:subPropertyOf ogit:Attribute;
+	rdfs:label "logbuch";
+	dcterms:description "Logbook flag (Logbuch). Boolean, default false; true lists the activity or picture in the customer's logbook, both on the customer page and in the customer portal.";
+	dcterms:source "AdaWorldAPI/WoA/models.py:Activity.logbuch", "AdaWorldAPI/WoA/models.py:Picture.logbuch";
+	dcterms:valid "start=2026-10-10;";
+	dcterms:creator "claude-ogit-bootstrap";
+.

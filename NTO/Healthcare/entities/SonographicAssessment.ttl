@@ -1,0 +1,20 @@
+@prefix ogit:               <http://www.purl.org/ogit/> .
+@prefix ogit.Healthcare:    <http://www.purl.org/ogit/Healthcare/> .
+@prefix owl:                <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:            <http://purl.org/dc/terms/> .
+@prefix xsd:                <http://www.w3.org/2001/XMLSchema#> .
+
+ogit.Healthcare:SonographicAssessment
+	a rdfs:Class;
+	rdfs:subClassOf ogit.Healthcare:Assessment;
+	rdfs:label "SonographicAssessment";
+	dcterms:description "An assessment performed by ultrasound (sonography). Reusable across any sonographic examination; the assessed structure is fixed by the part_of grounding (e.g. a joint, an abdomen), never by the modality.";
+	dcterms:source "SNOMED-CT:16310003";
+	dcterms:creator "claude-ogit-bootstrap";
+	ogit:scope "NTO";
+	ogit:parent ogit.Healthcare:Assessment;
+	ogit:allowed (
+			[ ogit.Healthcare:assesses  ogit.Healthcare:AnatomicalStructure ]
+	);
+.

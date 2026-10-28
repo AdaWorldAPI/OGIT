@@ -1,5 +1,7 @@
 @prefix ogit.Accounting:  <http://www.purl.org/ogit/Accounting/> .
 @prefix ogit:             <http://www.purl.org/ogit/> .
+@prefix ogit.Compliance:  <http://www.purl.org/ogit/Compliance/> .
+@prefix ogit.FinancialMarket: <http://www.purl.org/ogit/FinancialMarket/> .
 @prefix rdfs:             <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix dcterms:          <http://purl.org/dc/terms/> .
 
@@ -7,9 +9,9 @@ ogit.Accounting:FiscalJurisdiction
 	a rdfs:Class;
 	rdfs:subClassOf ogit:Entity;
 	rdfs:label "FiscalJurisdiction";
-	dcterms:description "Codebook entry pinning a fiscal jurisdiction by ISO 3166-1 alpha-2 code. The canonical lookup target for `hasFiscalCountry` edges and the resolved leaf of the Odoo 3-hop chain `entity.company_id.account_fiscal_country_id`. Strict codebook semantics: one entry per ISO 3166-1 alpha-2 code, no duplicates. Standard VAT rate + EU membership are denormalised onto the entry so jurisdiction-conditional logic (reverse-charge, MOSS/OSS, GoBD applicability) reads as O(1) attribute access, not a downstream graph join. Cross-jurisdictional sanctions cross-reference is supported via an outbound edge to ogit.Compliance:SanctionsEntry when the jurisdiction maintains a sanctions programme.";
+	dcterms:description "A fiscal jurisdiction, identified by its ISO 3166-1 alpha-2 code: one entry per code. The target of hasFiscalCountry edges. Carries the standard VAT rate and EU membership, so jurisdiction-dependent rules (reverse charge, OSS, record-keeping obligations) read an attribute instead of following further edges. Links to a sanctions entry when the jurisdiction runs a sanctions programme.";
 	dcterms:valid "start=2026-05-28;";
-	dcterms:creator "Claude (AdaWorldAPI/lance-graph 3-hop optim)";
+	dcterms:creator "Claude (AdaWorldAPI)";
 	ogit:scope "NTO";
 	ogit:parent ogit:Node;
 	ogit:mandatory-attributes (
