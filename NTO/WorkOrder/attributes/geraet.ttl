@@ -8,8 +8,8 @@ ogit.WorkOrder:geraet
 	a owl:DatatypeProperty;
 	rdfs:subPropertyOf ogit:Attribute;
 	rdfs:label "geraet";
-	dcterms:description "Optional reference to the device or asset (Geraet) the activity was performed on.";
-	dcterms:source "AdaWorldAPI/WoA/models.py:Activity";
+	dcterms:description "Device or asset (Geraet) the activity was performed on. Free text, up to 150 characters.";
+	dcterms:source "AdaWorldAPI/WoA/models.py:Activity.geraet";
 	dcterms:valid "start=2026-10-10;";
 	dcterms:creator "claude-ogit-bootstrap";
 .

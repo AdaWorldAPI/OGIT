@@ -8,8 +8,8 @@ ogit.WorkOrder:menge
 	a owl:DatatypeProperty;
 	rdfs:subPropertyOf ogit:Attribute;
 	rdfs:label "menge";
-	dcterms:description "Quantity (Menge) of a line item.";
-	dcterms:source "AdaWorldAPI/WoA/models.py:Position";
+	dcterms:description "Quantity (Menge) of a line item. Default 1.";
+	dcterms:source "AdaWorldAPI/WoA/models.py:Position.menge";
 	dcterms:valid "start=2026-10-10;";
 	dcterms:creator "claude-ogit-bootstrap";
 .

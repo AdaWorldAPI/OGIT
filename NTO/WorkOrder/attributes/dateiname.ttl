@@ -8,8 +8,8 @@ ogit.WorkOrder:dateiname
 	a owl:DatatypeProperty;
 	rdfs:subPropertyOf ogit:Attribute;
 	rdfs:label "dateiname";
-	dcterms:description "Stored file name (Dateiname) of an image or document attachment.";
-	dcterms:source "AdaWorldAPI/WoA/models.py:Picture";
+	dcterms:description "Stored file name (Dateiname) of a picture on disk.";
+	dcterms:source "AdaWorldAPI/WoA/models.py:Picture.dateiname";
 	dcterms:valid "start=2026-10-10;";
 	dcterms:creator "claude-ogit-bootstrap";
 .

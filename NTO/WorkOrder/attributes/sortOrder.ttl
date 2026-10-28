@@ -8,8 +8,8 @@ ogit.WorkOrder:sortOrder
 	a owl:DatatypeProperty;
 	rdfs:subPropertyOf ogit:Attribute;
 	rdfs:label "sortOrder";
-	dcterms:description "Ordering index of a line item within its document.";
-	dcterms:source "AdaWorldAPI/WoA/models.py:Position";
+	dcterms:description "Ordering index of a line item within its document. Integer, default 0.";
+	dcterms:source "AdaWorldAPI/WoA/models.py:Position.sort_order";
 	dcterms:valid "start=2026-10-10;";
 	dcterms:creator "claude-ogit-bootstrap";
 .

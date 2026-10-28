@@ -8,8 +8,8 @@ ogit.WorkOrder:einheit
 	a owl:DatatypeProperty;
 	rdfs:subPropertyOf ogit:Attribute;
 	rdfs:label "einheit";
-	dcterms:description "Unit (Einheit) in which the quantity of a line item is measured.";
-	dcterms:source "AdaWorldAPI/WoA/models.py:Position";
+	dcterms:description "Unit (Einheit) of a line item's quantity, such as Stk. Default Stk.";
+	dcterms:source "AdaWorldAPI/WoA/models.py:Position.einheit";
 	dcterms:valid "start=2026-10-10;";
 	dcterms:creator "claude-ogit-bootstrap";
 .

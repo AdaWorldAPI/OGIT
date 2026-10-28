@@ -8,8 +8,8 @@ ogit.WorkOrder:aktion
 	a owl:DatatypeProperty;
 	rdfs:subPropertyOf ogit:Attribute;
 	rdfs:label "aktion";
-	dcterms:description "Action label (Aktion) of an audit entry, naming the state change that was recorded.";
-	dcterms:source "AdaWorldAPI/WoA/models.py:HistoryEntry";
+	dcterms:description "Action label (Aktion) of a history entry, naming what happened to the work order. Up to 255 characters.";
+	dcterms:source "AdaWorldAPI/WoA/models.py:HistoryEntry.aktion";
 	dcterms:valid "start=2026-10-10;";
 	dcterms:creator "claude-ogit-bootstrap";
 .

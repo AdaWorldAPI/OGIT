@@ -8,8 +8,8 @@ ogit.WorkOrder:logbuch
 	a owl:DatatypeProperty;
 	rdfs:subPropertyOf ogit:Attribute;
 	rdfs:label "logbuch";
-	dcterms:description "Logbook flag (Logbuch). Boolean; true includes the record in the driver/work logbook export.";
-	dcterms:source "AdaWorldAPI/WoA/models.py:Activity", "AdaWorldAPI/WoA/models.py:Picture";
+	dcterms:description "Logbook flag (Logbuch). Boolean, default false; true lists the activity or picture in the customer's logbook, both on the customer page and in the customer portal.";
+	dcterms:source "AdaWorldAPI/WoA/models.py:Activity.logbuch", "AdaWorldAPI/WoA/models.py:Picture.logbuch";
 	dcterms:valid "start=2026-10-10;";
 	dcterms:creator "claude-ogit-bootstrap";
 .

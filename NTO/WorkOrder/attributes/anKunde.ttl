@@ -8,8 +8,8 @@ ogit.WorkOrder:anKunde
 	a owl:DatatypeProperty;
 	rdfs:subPropertyOf ogit:Attribute;
 	rdfs:label "anKunde";
-	dcterms:description "Customer flag (an_kunde). Boolean; true makes the attachment visible to, or sends it to, the customer.";
-	dcterms:source "AdaWorldAPI/WoA/models.py:Picture";
+	dcterms:description "Customer flag (an_kunde). Boolean, default false; true includes the picture when pictures are collected for the customer.";
+	dcterms:source "AdaWorldAPI/WoA/models.py:Picture.an_kunde";
 	dcterms:valid "start=2026-10-10;";
 	dcterms:creator "claude-ogit-bootstrap";
 .

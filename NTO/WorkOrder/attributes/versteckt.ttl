@@ -8,8 +8,8 @@ ogit.WorkOrder:versteckt
 	a owl:DatatypeProperty;
 	rdfs:subPropertyOf ogit:Attribute;
 	rdfs:label "versteckt";
-	dcterms:description "Hidden flag (versteckt). Boolean; true omits the line item from the printed document.";
-	dcterms:source "AdaWorldAPI/WoA/models.py:Position";
+	dcterms:description "Hidden flag (versteckt). Boolean, default false; a hidden line item is left out of the DATEV export and of the customer portal's acceptance page.";
+	dcterms:source "AdaWorldAPI/WoA/models.py:Position.versteckt";
 	dcterms:valid "start=2026-10-10;";
 	dcterms:creator "claude-ogit-bootstrap";
 .

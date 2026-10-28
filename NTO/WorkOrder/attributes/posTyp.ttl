@@ -8,8 +8,8 @@ ogit.WorkOrder:posTyp
 	a owl:DatatypeProperty;
 	rdfs:subPropertyOf ogit:Attribute;
 	rdfs:label "posTyp";
-	dcterms:description "Line-item type (Positionstyp): a billable row or a descriptive row.";
-	dcterms:source "AdaWorldAPI/WoA/models.py:Position";
+	dcterms:description "Line-item type (pos_typ), such as material, dienstleistung, fahrt or oneshot. Default material.";
+	dcterms:source "AdaWorldAPI/WoA/models.py:Position.pos_typ";
 	dcterms:valid "start=2026-10-10;";
 	dcterms:creator "claude-ogit-bootstrap";
 .

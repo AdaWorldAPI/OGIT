@@ -8,8 +8,8 @@ ogit.WorkOrder:einzelpreis
 	a owl:DatatypeProperty;
 	rdfs:subPropertyOf ogit:Attribute;
 	rdfs:label "einzelpreis";
-	dcterms:description "Unit price (Einzelpreis) of a line item.";
-	dcterms:source "AdaWorldAPI/WoA/models.py:Position";
+	dcterms:description "Net unit price (Einzelpreis) of a line item, a decimal with two places. Default 0.";
+	dcterms:source "AdaWorldAPI/WoA/models.py:Position.einzelpreis";
 	dcterms:valid "start=2026-10-10;";
 	dcterms:creator "claude-ogit-bootstrap";
 .

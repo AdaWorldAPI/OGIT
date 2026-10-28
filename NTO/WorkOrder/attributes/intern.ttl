@@ -8,8 +8,8 @@ ogit.WorkOrder:intern
 	a owl:DatatypeProperty;
 	rdfs:subPropertyOf ogit:Attribute;
 	rdfs:label "intern";
-	dcterms:description "Internal-only flag (intern). Boolean; true keeps the activity off customer-facing documents.";
-	dcterms:source "AdaWorldAPI/WoA/models.py:Activity";
+	dcterms:description "Internal flag (intern). Boolean, default false; true hides the activity from the customer portal's logbook.";
+	dcterms:source "AdaWorldAPI/WoA/models.py:Activity.intern";
 	dcterms:valid "start=2026-10-10;";
 	dcterms:creator "claude-ogit-bootstrap";
 .
