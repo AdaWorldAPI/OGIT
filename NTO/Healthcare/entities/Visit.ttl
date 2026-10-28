@@ -9,6 +9,7 @@ ogit.Healthcare:Visit
 	a rdfs:Class;
 	rdfs:subClassOf ogit:Entity;
 	rdfs:label "Visit";
+	dcterms:valid "start=2026-10-10;";
 	dcterms:description "A patient visit / waiting-room session — login, doctor assignment, priority, time-in-waiting and logout. Source-of-truth: praxis_patient_waitingroom.";
 	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:praxis_patient_waitingroom";
 	dcterms:creator "claude-ogit-bootstrap";
@@ -35,52 +36,3 @@ ogit.Healthcare:Visit
 			[ ogit:belongs  ogit.Healthcare:Patient ]
 	);
 .
-
-ogit.Healthcare:waitingroomId
-	a ogit:Property;
-	rdfs:label "waitingroomId";
-	dcterms:description "FK to praxis_waitingroom (praxis_patient_waitingroom.praxis_waitingroomid).";
-	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:praxis_patient_waitingroom.praxis_waitingroomid";
-	ogit:type "xsd:integer" .
-
-ogit.Healthcare:toDocId
-	a ogit:Property;
-	rdfs:label "toDocId";
-	dcterms:description "Doctor assigned to handle the visit (praxis_patient_waitingroom.p_to_doc_id).";
-	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:praxis_patient_waitingroom.p_to_doc_id";
-	ogit:type "xsd:integer" .
-
-ogit.Healthcare:loginAt
-	a ogit:Property;
-	rdfs:label "loginAt";
-	dcterms:description "Patient login time into waiting room (praxis_patient_waitingroom.p_login).";
-	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:praxis_patient_waitingroom.p_login";
-	ogit:type "xsd:dateTime" .
-
-ogit.Healthcare:logoutAt
-	a ogit:Property;
-	rdfs:label "logoutAt";
-	dcterms:description "Patient logout / visit-end time (praxis_patient_waitingroom.p_logout).";
-	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:praxis_patient_waitingroom.p_logout";
-	ogit:type "xsd:dateTime" .
-
-ogit.Healthcare:timeInWaiting
-	a ogit:Property;
-	rdfs:label "timeInWaiting";
-	dcterms:description "Computed waiting duration in minutes (praxis_patient_waitingroom.p_time_in_waiting).";
-	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:praxis_patient_waitingroom.p_time_in_waiting";
-	ogit:type "xsd:integer" .
-
-ogit.Healthcare:priority
-	a ogit:Property;
-	rdfs:label "priority";
-	dcterms:description "Visit triage priority (praxis_patient_waitingroom.p_priority).";
-	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:praxis_patient_waitingroom.p_priority";
-	ogit:type "xsd:integer" .
-
-ogit.Healthcare:noticeForDoc
-	a ogit:Property;
-	rdfs:label "noticeForDoc";
-	dcterms:description "Free-text reception notice for the doctor (praxis_patient_waitingroom.p_notice_for_doc).";
-	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:praxis_patient_waitingroom.p_notice_for_doc";
-	ogit:type "xsd:string" .

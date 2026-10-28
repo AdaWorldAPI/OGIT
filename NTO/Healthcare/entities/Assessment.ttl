@@ -19,6 +19,7 @@ ogit.Healthcare:Assessment
 	a rdfs:Class;
 	rdfs:subClassOf ogit:Entity;
 	rdfs:label "Assessment";
+	dcterms:valid "start=2026-10-10;";
 	dcterms:description "A diagnostic evaluation act that produces findings about an anatomical structure. Modality-agnostic root: an assessment is performed by some modality (its is_a subclass) and evaluates some anatomical structure (its part_of grounding).";
 	dcterms:source "SNOMED-CT:386053000";
 	dcterms:creator "claude-ogit-bootstrap";
@@ -35,67 +36,7 @@ ogit.Healthcare:Assessment
 		ogit.Healthcare:performedAt
 	);
 	ogit:allowed (
-			[ ogit:assesses  ogit.Healthcare:AnatomicalStructure ]
+			[ ogit.Healthcare:assesses  ogit.Healthcare:AnatomicalStructure ]
 			[ ogit:belongs   ogit.Healthcare:Patient ]
 	);
 .
-
-# ── is_a rail — the modality taxonomy (each modality is-a Assessment) ──
-
-ogit.Healthcare:SonographicAssessment
-	a rdfs:Class;
-	rdfs:subClassOf ogit.Healthcare:Assessment;
-	rdfs:label "SonographicAssessment";
-	dcterms:description "An assessment performed by ultrasound (sonography). Reusable across any sonographic examination; the assessed structure is fixed by the part_of grounding (e.g. a joint, an abdomen), never by the modality.";
-	dcterms:source "SNOMED-CT:16310003";
-	dcterms:creator "claude-ogit-bootstrap";
-	ogit:scope "NTO";
-	ogit:parent ogit.Healthcare:Assessment;
-	ogit:allowed (
-			[ ogit:assesses  ogit.Healthcare:AnatomicalStructure ]
-	);
-.
-
-ogit.Healthcare:MriAssessment
-	a rdfs:Class;
-	rdfs:subClassOf ogit.Healthcare:Assessment;
-	rdfs:label "MriAssessment";
-	dcterms:description "An assessment performed by magnetic-resonance imaging. Same reusable shape as SonographicAssessment — a different modality over the identical anatomy grounding.";
-	dcterms:source "SNOMED-CT:113091000";
-	dcterms:creator "claude-ogit-bootstrap";
-	ogit:scope "NTO";
-	ogit:parent ogit.Healthcare:Assessment;
-	ogit:allowed (
-			[ ogit:assesses  ogit.Healthcare:AnatomicalStructure ]
-	);
-.
-
-ogit.Healthcare:HistologicAssessment
-	a rdfs:Class;
-	rdfs:subClassOf ogit.Healthcare:Assessment;
-	rdfs:label "HistologicAssessment";
-	dcterms:description "An assessment performed by histopathological examination of tissue. The third modality sibling; reuses the Assessment root and the anatomy grounding at zero additional shape cost.";
-	dcterms:source "SNOMED-CT:250537006";
-	dcterms:creator "claude-ogit-bootstrap";
-	ogit:scope "NTO";
-	ogit:parent ogit.Healthcare:Assessment;
-	ogit:allowed (
-			[ ogit:assesses  ogit.Healthcare:AnatomicalStructure ]
-	);
-.
-
-# ── shared agnostic properties ──
-
-ogit.Healthcare:performedAt
-	a ogit:Property;
-	rdfs:label "performedAt";
-	dcterms:description "Timestamp at which the assessment was performed.";
-	dcterms:source "SNOMED-CT:386053000";
-	ogit:type "xsd:dateTime" .
-
-ogit.Healthcare:findingSummary
-	a ogit:Property;
-	rdfs:label "findingSummary";
-	dcterms:description "Free-text or coded summary of the assessment's finding. Structured per-site findings are cascade-path nodes part_of the assessment, not a codebook slot.";
-	dcterms:source "SNOMED-CT:404684003";
-	ogit:type "xsd:string" .

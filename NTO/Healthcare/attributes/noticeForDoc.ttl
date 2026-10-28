@@ -1,0 +1,16 @@
+@prefix ogit.Healthcare:      <http://www.purl.org/ogit/Healthcare/> .
+@prefix ogit:                <http://www.purl.org/ogit/> .
+@prefix owl:                 <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:                <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:             <http://purl.org/dc/terms/> .
+
+ogit.Healthcare:noticeForDoc
+	a owl:DatatypeProperty;
+	rdfs:subPropertyOf ogit:Attribute;
+	rdfs:label "noticeForDoc";
+	dcterms:description "Free-text reception notice for the doctor (praxis_patient_waitingroom.p_notice_for_doc).";
+	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:praxis_patient_waitingroom.p_notice_for_doc";
+	ogit:type "xsd:string";
+	dcterms:valid "start=2026-10-10;";
+	dcterms:creator "claude-ogit-bootstrap";
+.

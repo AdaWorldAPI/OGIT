@@ -1,0 +1,14 @@
+@prefix ogit:               <http://www.purl.org/ogit/> .
+@prefix ogit.Healthcare:    <http://www.purl.org/ogit/Healthcare/> .
+@prefix owl:                <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:            <http://purl.org/dc/terms/> .
+
+ogit.Healthcare:assesses
+	a owl:ObjectProperty;
+	rdfs:subPropertyOf ogit:Verb;
+	rdfs:label "assesses";
+	dcterms:description "An assessment evaluates an anatomical structure and produces findings about it.";
+	dcterms:valid "start=2026-10-10;";
+	dcterms:creator "claude-ogit-bootstrap";
+.

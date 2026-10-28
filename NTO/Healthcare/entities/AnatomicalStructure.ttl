@@ -1,0 +1,26 @@
+@prefix ogit:               <http://www.purl.org/ogit/> .
+@prefix ogit.Healthcare:    <http://www.purl.org/ogit/Healthcare/> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:            <http://purl.org/dc/terms/> .
+
+ogit.Healthcare:AnatomicalStructure
+	a rdfs:Class;
+	rdfs:subClassOf ogit:Entity;
+	rdfs:label "AnatomicalStructure";
+	dcterms:valid "start=2026-10-10;";
+	dcterms:description "A part of the body that an assessment evaluates, such as an organ or a joint. Identified by an external anatomy reference.";
+	dcterms:creator "claude-ogit-bootstrap";
+	ogit:scope "NTO";
+	ogit:parent ogit:Node;
+	ogit:mandatory-attributes (
+		ogit:id
+		ogit:name
+	);
+	ogit:optional-attributes (
+	);
+	ogit:indexed-attributes (
+		ogit:name
+	);
+	ogit:allowed (
+	);
+.
