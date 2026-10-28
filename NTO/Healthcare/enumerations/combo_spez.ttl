@@ -7,8 +7,9 @@
 
 ogit.Healthcare:combo_spez
 	a rdfs:Class;
-	rdfs:subClassOf ogit:Enumeration;
+	rdfs:subClassOf ogit:Entity;
 	rdfs:label "combo_spez";
+	dcterms:valid "start=2026-10-10;";
 	dcterms:description "Enumeration of medical specialties / Fachrichtungen used to scope diagnoses, therapies and patient profiles. Values populated as a follow-on import from MedCare-rs.";
 	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:combo_spez";
 	dcterms:creator "claude-ogit-bootstrap";

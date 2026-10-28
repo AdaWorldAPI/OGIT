@@ -7,8 +7,9 @@
 
 ogit.Healthcare:combo_addtreatment
 	a rdfs:Class;
-	rdfs:subClassOf ogit:Enumeration;
+	rdfs:subClassOf ogit:Entity;
 	rdfs:label "combo_addtreatment";
+	dcterms:valid "start=2026-10-10;";
 	dcterms:description "Enumeration of additional-treatment categories attached to a clinical record. Values populated as a follow-on import from MedCare-rs.";
 	dcterms:source "AdaWorldAPI/MedCare-rs/.MYSQL/Struktur.sql:combo_addtreatment";
 	dcterms:creator "claude-ogit-bootstrap";
