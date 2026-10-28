@@ -1,0 +1,15 @@
+@prefix ogit.WorkOrder:       <http://www.purl.org/ogit/WorkOrder/> .
+@prefix ogit:                <http://www.purl.org/ogit/> .
+@prefix owl:                 <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:                <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:             <http://purl.org/dc/terms/> .
+
+ogit.WorkOrder:mitarbeiter
+	a owl:DatatypeProperty;
+	rdfs:subPropertyOf ogit:Attribute;
+	rdfs:label "mitarbeiter";
+	dcterms:description "Crew on site (Mitarbeiter). Free-form short label or comma-separated names; the Python source keeps it as a string column rather than a User-relation join because crew composition is often informal.";
+	dcterms:source "AdaWorldAPI/WoA/models.py:WorkOrder.mitarbeiter";
+	dcterms:valid "start=2026-10-10;";
+	dcterms:creator "claude-ogit-bootstrap";
+.

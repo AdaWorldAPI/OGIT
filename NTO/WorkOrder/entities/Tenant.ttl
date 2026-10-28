@@ -7,6 +7,8 @@ ogit.WorkOrder:Tenant
     a rdfs:Class;
     rdfs:subClassOf ogit:Entity;
     rdfs:label "Tenant";
+    dcterms:valid "start=2026-10-10;";
+    dcterms:creator "claude-ogit-bootstrap";
     dcterms:description "Multi-tenancy root for the WoA application. Every tenant-scoped business entity (Customer, Order, Article, etc.) carries a tenant_id foreign key referring to this class. Backed by SQLAlchemy table 'tenants'.";
     dcterms:source "AdaWorldAPI/WoA/models.py:Tenant";
     ogit:scope "NTO";
@@ -25,34 +27,6 @@ ogit.WorkOrder:Tenant
         ogit:id
         ogit.WorkOrder:slug
     );
-.
-
-# ── attributes ───────────────────────────────────────────────────────────
-
-ogit.WorkOrder:slug
-    a rdfs:Property;
-    rdfs:label "slug";
-    dcterms:description "Unique URL-safe short identifier for the tenant (max 50 chars). Used in routing and as a stable handle independent of the numeric id.";
-    dcterms:source "AdaWorldAPI/WoA/models.py:Tenant.slug";
-.
-
-ogit.WorkOrder:aktiv
-    a rdfs:Property;
-    rdfs:label "aktiv";
-    dcterms:description "Boolean active-flag. Inactive tenants are soft-disabled rather than deleted.";
-    dcterms:source "AdaWorldAPI/WoA/models.py:Tenant.aktiv";
-.
-
-ogit.WorkOrder:logoPath
-    a rdfs:Property;
-    rdfs:label "logoPath";
-    dcterms:description "Filesystem or URL path to the tenant's logo image used in PDF/HTML rendering of work orders.";
-    dcterms:source "AdaWorldAPI/WoA/models.py:Tenant.logo_path";
-.
-
-ogit.WorkOrder:createdAt
-    a rdfs:Property;
-    rdfs:label "createdAt";
-    dcterms:description "ISO-8601 UTC timestamp recording when the entity was first persisted.";
-    dcterms:source "AdaWorldAPI/WoA/models.py";
+    ogit:allowed (
+    );
 .

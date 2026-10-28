@@ -1,0 +1,15 @@
+@prefix ogit.WorkOrder:       <http://www.purl.org/ogit/WorkOrder/> .
+@prefix ogit:                <http://www.purl.org/ogit/> .
+@prefix owl:                 <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:                <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:             <http://purl.org/dc/terms/> .
+
+ogit.WorkOrder:fahrtKosten
+	a owl:DatatypeProperty;
+	rdfs:subPropertyOf ogit:Attribute;
+	rdfs:label "fahrtKosten";
+	dcterms:description "Per-kilometre travel cost in the tenant's currency (Fahrt Kosten). Float; default 0.0. Used together with fahrtKm and Order.anfahrten to compute trip-cost line items.";
+	dcterms:source "AdaWorldAPI/WoA/models.py:Customer.fahrt_kosten";
+	dcterms:valid "start=2026-10-10;";
+	dcterms:creator "claude-ogit-bootstrap";
+.

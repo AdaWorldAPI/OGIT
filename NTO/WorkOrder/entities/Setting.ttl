@@ -8,6 +8,7 @@ ogit.WorkOrder:Setting
 	a rdfs:Class;
 	rdfs:subClassOf ogit:Entity;
 	rdfs:label "Setting";
+	dcterms:valid "start=2026-10-10;";
 	dcterms:description "Per-tenant key/value configuration row. Stores arbitrary string-typed application settings (e.g. company address fields, default VAT rate, PDF footer text) outside of code. The label provides a human-readable caption used in admin UIs; the value is free-form text.";
 	dcterms:source "AdaWorldAPI/WoA/models.py:Setting";
 	dcterms:creator "bus-compiler";
@@ -27,27 +28,4 @@ ogit.WorkOrder:Setting
 	ogit:allowed (
 			[ ogit:belongs  ogit.WorkOrder:Tenant ]
 	);
-.
-
-# ── attributes ───────────────────────────────────────────────────────────
-
-ogit.WorkOrder:settingKey
-	a rdfs:Property;
-	rdfs:label "settingKey";
-	dcterms:description "Setting identifier (max 100 chars), unique per tenant. Conventionally dot-namespaced (e.g. 'company.address', 'pdf.footer').";
-	dcterms:source "AdaWorldAPI/WoA/models.py:Setting.key";
-.
-
-ogit.WorkOrder:settingValue
-	a rdfs:Property;
-	rdfs:label "settingValue";
-	dcterms:description "Free-form text value associated with the key. Application-side code is responsible for any type coercion (int/bool/json).";
-	dcterms:source "AdaWorldAPI/WoA/models.py:Setting.value";
-.
-
-ogit.WorkOrder:label
-	a rdfs:Property;
-	rdfs:label "label";
-	dcterms:description "Human-readable caption (max 200 chars) shown next to the key in admin UIs.";
-	dcterms:source "AdaWorldAPI/WoA/models.py:Setting.label";
 .

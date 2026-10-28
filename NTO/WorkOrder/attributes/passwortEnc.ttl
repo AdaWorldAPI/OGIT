@@ -1,0 +1,15 @@
+@prefix ogit.WorkOrder:       <http://www.purl.org/ogit/WorkOrder/> .
+@prefix ogit:                <http://www.purl.org/ogit/> .
+@prefix owl:                 <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:                <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:             <http://purl.org/dc/terms/> .
+
+ogit.WorkOrder:passwortEnc
+	a owl:DatatypeProperty;
+	rdfs:subPropertyOf ogit:Attribute;
+	rdfs:label "passwortEnc";
+	dcterms:description "Fernet-encrypted ciphertext of the password (base64-urlsafe over AES-128-CBC + HMAC-SHA256). Decryption requires the WOA_SECRET-derived key; failure produces the placeholder '*** Entschluesselung fehlgeschlagen ***'.";
+	dcterms:source "AdaWorldAPI/WoA/models.py:PasswordEntry.passwort_enc";
+	dcterms:valid "start=2026-10-10;";
+	dcterms:creator "claude-ogit-bootstrap";
+.
