@@ -36,7 +36,7 @@ with the OGIT review):
   `securityLevel` 0-100.
 - `ogit.Auth:usesDevice` -- Account-to-Device, many-to-many.
 - `ogit:hasVault` -- Person-to-DataScope anchor for Personal
-  Vaults (location open: `SGO/ogit/verbs/` or `NTO/Auth/verbs/`).
+  Vaults (location open: `SGO/sgo/verbs/` or `NTO/Auth/verbs/`).
 - A Workspace marker (boolean attribute) on `ogit.Auth:Team`.
 
 ## Audit

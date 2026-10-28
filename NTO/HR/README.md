@@ -120,7 +120,7 @@ Organization <--belongs--  Position  <--describes--  JobDescription
   the time share, so its numbered sub-items are held as a list on it rather than
   promoted to siblings, which would invent shares the source does not state.
 - **`postNumber`, not `positionNumber`.** `ogit:positionNumber` already exists
-  in `SGO/ogit/attributes/` and means an ordinal -- "an integer, which displays a
+  in `SGO/sgo/attributes/` and means an ordinal -- "an integer, which displays a
   position of numbering" -- so it cannot carry an establishment-plan post
   identifier.
 - Generic attributes (`ogit:name`, `description`, `content`, `values`, `reason`,
