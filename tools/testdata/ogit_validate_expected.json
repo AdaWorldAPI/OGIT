@@ -1,0 +1,164 @@
+{
+ "ok": [
+  0,
+  [
+   "Validation successful."
+  ],
+  []
+ ],
+ "node_outside_ogit_dir": [
+  1,
+  [
+   "\u001b[31mValidation failed\u001b[0m: \u001b[33mDirectory mismatch:  Node.ttl should be under directory ogit, according to http:/www.purl.org/ogit/Node\u001b[0m"
+  ],
+  []
+ ],
+ "prefix_mismatch": [
+  1,
+  [
+   "\u001b[31mValidation failed\u001b[0m: \u001b[33mSyntax error: \"Error in validation query co.arago.meerkat.validator.FileDataSource@H: A.ttl Declared prefix ogit.X does not match expected ogit convention http://www.purl.org/ogit/X/. declared as http://www.purl.org/ogit/Y/\" at Source:  <no location data available>\u001b[0m"
+  ],
+  []
+ ],
+ "file_name_mismatch": [
+  1,
+  [
+   "file name is not same as namespace name",
+   "\u001b[31mValidation failed\u001b[0m: \u001b[33mFile Name mismatch: B.ttl does not match with name: A\u001b[0m",
+   "\u001b[31mValidation failed\u001b[0m: \u001b[33mDirectory mismatch:  B.ttl should be under directory X, according to http:/www.purl.org/ogit/X/A\u001b[0m"
+  ],
+  []
+ ],
+ "directory_mismatch": [
+  1,
+  [
+   "\u001b[31mValidation failed\u001b[0m: \u001b[33mDirectory mismatch:  A.ttl should be under directory X, according to http:/www.purl.org/ogit/X/A\u001b[0m"
+  ],
+  []
+ ],
+ "undeclared_prefix": [
+  1,
+  [],
+  [
+   "TIME [main] ERROR o.e.r.rio.helpers.ParseErrorLogger - [Rio fatal] Namespace prefix 'ogit.Q' used but not defined (18, -1)",
+   "Exception in thread \"main\" org.eclipse.rdf4j.rio.RDFParseException: Namespace prefix 'ogit.Q' used but not defined [line 18]"
+  ]
+ ],
+ "single_file": [
+  1,
+  [
+   "\u001b[31mValidation failed\u001b[0m: \u001b[33mEntity http://www.purl.org/ogit/X/A is missing property(ies): http://purl.org/dc/terms/description (/validation0.rq)\u001b[0m"
+  ],
+  []
+ ],
+ "stage2_each_query": [
+  1,
+  [
+   "\u001b[31mValidation failed\u001b[0m: \u001b[33mEntity http://www.purl.org/ogit/X/A is missing property(ies): http://purl.org/dc/terms/creator (/validation0.rq)\u001b[0m",
+   "\u001b[31mValidation failed\u001b[0m: \u001b[33mEntity http://www.purl.org/ogit/X/A has invalid value for dcterms:created/modified/date: Should be in ISO 8601 format (YYYY-MM-DD) (/validation3.rq)\u001b[0m",
+   "\u001b[31mValidation failed\u001b[0m: \u001b[33mAttribute http://www.purl.org/ogit/X/c is missing property(ies): http://purl.org/dc/terms/valid (/validation4.rq)\u001b[0m",
+   "\u001b[31mValidation failed\u001b[0m: \u001b[33mVerb http://www.purl.org/ogit/X/v is missing property(ies): http://purl.org/dc/terms/valid (/validation5.rq)\u001b[0m"
+  ],
+  []
+ ],
+ "stage2_validation_params": [
+  1,
+  [
+   "\u001b[31mValidation failed\u001b[0m: \u001b[33mAttribute http://www.purl.org/ogit/X/a6 is missing property(ies): http://www.purl.org/ogit/validation-parameter (/validation6.rq)\u001b[0m",
+   "\u001b[31mValidation failed\u001b[0m: \u001b[33mAttribute http://www.purl.org/ogit/X/a7 has empty value for ogit:validation-parameter(ies):  (/validation7.rq)\u001b[0m"
+  ],
+  []
+ ],
+ "stage2_validation_params_b": [
+  1,
+  [
+   "\u001b[31mValidation failed\u001b[0m: \u001b[33mAttribute http://www.purl.org/ogit/X/a8 has empty value for ogit:validation-type(ies):  (/validation8.rq)\u001b[0m"
+  ],
+  []
+ ],
+ "stage2_validation_params_c": [
+  1,
+  [
+   "\u001b[31mValidation failed\u001b[0m: \u001b[33mAttribute http://www.purl.org/ogit/X/a9 is missing property(ies): http://www.purl.org/ogit/validation-type (/validation9.rq)\u001b[0m"
+  ],
+  []
+ ],
+ "stage2_history": [
+  1,
+  [
+   "\u001b[31mValidation failed\u001b[0m: \u001b[33mEntity http://www.purl.org/ogit/X/A is missing property(ies) in one of its ogit:history items: http://purl.org/dc/terms/description http://purl.org/dc/terms/creator (/validation1.rq)\u001b[0m",
+   "\u001b[31mValidation failed\u001b[0m: \u001b[33mEntity http://www.purl.org/ogit/X/A has duplicate dcterms:identifier in its ogit:history items (1) (/validation2.rq)\u001b[0m",
+   "\u001b[31mValidation failed\u001b[0m: \u001b[33mEntity http://www.purl.org/ogit/X/A has invalid value for dcterms:created/modified/date: Should be in ISO 8601 format (YYYY-MM-DD) (/validation3.rq)\u001b[0m"
+  ],
+  []
+ ],
+ "stage3_errors": [
+  1,
+  [],
+  [
+   "Count of errors: 9",
+   "Count of warnings: 0",
+   "ERROR: entities id: http://www.purl.org/ogit/X/A , description missing!",
+   "ERROR: entities id: http://www.purl.org/ogit/X/A , valid from missing!",
+   "ERROR: type id: http://www.purl.org/ogit/X/A , unknown scope XYZ",
+   "ERROR: type id: http://www.purl.org/ogit/X/A , parent id : http://www.purl.org/ogit/X/Missing doesn't exist!",
+   "ERROR: type id: http://www.purl.org/ogit/X/A , attribute id : http://www.purl.org/ogit/X/nope doesn't exist!",
+   "ERROR: type id: http://www.purl.org/ogit/X/A , attribute id : http://www.purl.org/ogit/X/gone doesn't exist!",
+   "ERROR: edge id: http://www.purl.org/ogit/X/A , head connection id : http://www.purl.org/ogit/X/Nowhere doesn't exist!",
+   "ERROR: edge id: http://www.purl.org/ogit/X/A , connection id e: http://www.purl.org/ogit/X/noverb doesn't exist!",
+   "ERROR: edge id: http://www.purl.org/ogit/X/v , unknown cardinality lots"
+  ]
+ ],
+ "stage3_order": [
+  1,
+  [],
+  [
+   "Count of errors: 3",
+   "Count of warnings: 0",
+   "ERROR: type id: http://www.purl.org/ogit/Abc , unknown scope BAD",
+   "ERROR: type id: http://www.purl.org/ogit/Q/Z , unknown scope BAD",
+   "ERROR: type id: http://www.purl.org/ogit/X/M , unknown scope BAD"
+  ]
+ ],
+ "stage3_list_head_null": [
+  1,
+  [],
+  [
+   "Error while loading entity registry: list head may not be null",
+   "Exception in thread \"main\" java.lang.NullPointerException: Cannot invoke \"java.util.Map.get(Object)\" because \"ontMap\" is null"
+  ]
+ ],
+ "ogit_ttl_skipped": [
+  1,
+  [
+   "\u001b[31mValidation failed\u001b[0m: \u001b[33mSyntax error: \"Expected ':', found ' ' [line 6]\" at Source: <root>/ogit.ttl Line: 6 Column: -1 \u001b[0m"
+  ],
+  [
+   "TIME [main] ERROR o.e.r.rio.helpers.ParseErrorLogger - [Rio fatal] Expected ':', found ' ' (6, -1)"
+  ]
+ ],
+ "stage2_syntax_error_single": [
+  1,
+  [
+   "\u001b[31mValidation failed\u001b[0m: \u001b[33mSyntax error: \"Namespace prefix 'ogit.Q' used but not defined [line 13]\" at Source: <root>/NTO/X/entities/A.ttl Line: 13 Column: -1 \u001b[0m"
+  ],
+  [
+   "TIME [main] ERROR o.e.r.rio.helpers.ParseErrorLogger - [Rio fatal] Namespace prefix 'ogit.Q' used but not defined (13, -1)"
+  ]
+ ],
+ "stage3_concat_glue": [
+  1,
+  [],
+  [
+   "TIME [main] ERROR o.e.r.rio.helpers.ParseErrorLogger - [Rio fatal] Namespace prefix 'ogit.X' used but not defined (1, -1)",
+   "Exception in thread \"main\" org.eclipse.rdf4j.rio.RDFParseException: Namespace prefix 'ogit.X' used but not defined [line 1]"
+  ]
+ ],
+ "no_ogit_prefix_ok_glue": [
+  0,
+  [
+   "Validation successful."
+  ],
+  []
+ ]
+}

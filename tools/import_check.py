@@ -114,11 +114,13 @@ def tokenize(text):
                 value = text[i + 1:j]
                 start_line = line
                 i = j + 1
+            lang = None
             if i < n and text[i] == "@":
                 m = re.compile(r"@[A-Za-z]+(-[A-Za-z0-9]+)*").match(text, i)
                 if m:
+                    lang = m.group(0)[1:]
                     i = m.end()
-            yield ("lit", value, start_line)
+            yield ("lit", (value, lang), start_line)
         elif c in SEPARATORS:
             yield (c, c, line)
             i += 1
@@ -145,13 +147,15 @@ def tokenize(text):
 # --------------------------------------------------------------------------
 
 class Term:
-    __slots__ = ("kind", "value", "line", "curie")
+    __slots__ = ("kind", "value", "line", "curie", "lang", "datatype")
 
-    def __init__(self, kind, value, line, curie=None):
+    def __init__(self, kind, value, line, curie=None, lang=None):
         self.kind = kind      # iri | lit | list | bnode
         self.value = value    # str | list[Term] | list[(Term, Term)]
         self.line = line
         self.curie = curie    # prefixed spelling, when written that way
+        self.lang = lang      # language tag of a literal
+        self.datatype = None  # datatype IRI of a literal (set by ogit_validate)
 
 
 class FileParse:
@@ -162,8 +166,11 @@ class FileParse:
         self.undeclared = []   # (line, curie)
 
 
-def parse(path, text):
+def parse(path, text, default_prefixes=None):
+    """Parse one file. `default_prefixes` resolves prefixes a file uses
+    without declaring them, as rdf4j's parser does; import_check passes none."""
     fp = FileParse(path)
+    defaults = default_prefixes or {}
     toks = list(tokenize(text))
     pos = 0
 
@@ -184,10 +191,15 @@ def parse(path, text):
         if word == "a":
             return Term("iri", RDF_TYPE, line, "a")
         if word in ("true", "false") or re.fullmatch(r"[+-]?\d+(\.\d+)?", word):
-            return Term("lit", word, line)
+            t = Term("lit", word, line)
+            kind = "boolean" if word in ("true", "false") else "decimal" if "." in word else "integer"
+            t.datatype = "http://www.w3.org/2001/XMLSchema#" + kind
+            return t
         if ":" not in word:
             raise ParseError(f"line {line}: bare word {word!r}")
         prefix, local = word.split(":", 1)
+        if prefix not in fp.prefixes and prefix in defaults:
+            return Term("iri", defaults[prefix] + local, line, word)
         if prefix not in fp.prefixes:
             fp.undeclared.append((line, word))
             return Term("iri", "urn:undeclared:" + word, line, word)
@@ -200,7 +212,7 @@ def parse(path, text):
             return Term("iri", value, line)
         if kind == "lit":
             take()
-            return Term("lit", value, line)
+            return Term("lit", value[0], line, lang=value[1])
         if kind == "word":
             take()
             return resolve(value, line)
